@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ebcic module &#8212; EBCIC 0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to EBCIC’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to EBCIC’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ebcic module</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-ebcic">
+<span id="ebcic-module"></span><h1>ebcic module<a class="headerlink" href="#module-ebcic" title="Permalink to this headline">¶</a></h1>
+<p>Exact Binomial Interval Calculator</p>
+<p>This module provides functions to calculate exact binomial intervals
+and some of the approximated intervals, such as normal approximation,
+generalized rule of three, Wilson score intervals and so on.</p>
+<p>This module also provides functions to depict their intervals.</p>
+<p>When you use or publish the confidence interval obtained with the software,
+please <strong>refer to the program name, version, platform,</strong> etc, so that
+readers can verify the correctness and reproducibility of the interval
+with the parameters, n, k and the confidence level.</p>
+<p>Example of the reference is:</p>
+<p><strong>“This confidence interval is obtained by EBCIC 0.0.0 on Python 3.”</strong></p>
+<p>The initial software is based on results obtained from a project,
+JPNP16007, commissioned by
+the New Energy and Industrial Technology Development Organization (NEDO).</p>
+<p>THE SOFTWARE COMES WITH ABSOLUTELY NO WARRANTY.</p>
+<p>Copyright (C) 2020 National Institute of Advanced Industrial Science
+and Technology (AIST).</p>
+<dl class="py class">
+<dt id="ebcic.GraProps">
+<em class="property">class </em><code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">GraProps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k_start</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">k_end</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">k_step</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">log_n_end</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">confi_perc_list</span><span class="o">=</span><span class="default_value">[99]</span></em>, <em class="sig-param"><span class="n">line_list</span><span class="o">=</span><span class="default_value">['with_exact']</span></em>, <em class="sig-param"><span class="n">savefig</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">fig_file_name</span><span class="o">=</span><span class="default_value">'intervals.png'</span></em>, <em class="sig-param"><span class="n">leg_pos</span><span class="o">=</span><span class="default_value">'auto'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Parameter pool class for graph properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k_start</strong> – Start range of k.</p></li>
+<li><p><strong>k_end</strong> – End range of k.</p></li>
+<li><p><strong>k_step</strong> – Step of k in range(k_start, k_end, k_step).</p></li>
+<li><p><strong>log_n_end</strong> – Max of x-axis given by (3 k_end * 10^log_n_end).</p></li>
+<li><p><strong>confi_perc_list</strong> – List of confidence percentages, e.g. [95, 99].</p></li>
+<li><p><strong>savefig</strong> – Whether save the figure or not.</p></li>
+<li><p><strong>fig_file_name</strong> – File name of the saved figure where extension may
+include, eps, jpeg, jpg, pdf, pgf, png, ps,
+raw, rgba, svg, svgz, tif, tiff.</p></li>
+<li><p><strong>leg_pos</strong> – Position of legend in the figure. Choose from ‘auto’,
+‘upper_right’, ‘upper_right_nm’ (no margin)
+‘out_right’ (outside right).</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It seems that saveifg, i.e. plt.savefig(),
+in jupyter saves blank figure.
+In jupyter, drag and drop the displayed figure to a folder,
+open it with Paint app and so on and then overwrite the figure.</p>
+</div>
+<dl class="py method">
+<dt id="ebcic.GraProps.set_k">
+<code class="sig-name descname">set_k</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k_start</span></em>, <em class="sig-param"><span class="n">k_end</span></em>, <em class="sig-param"><span class="n">k_step</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps.set_k" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.GraProps.set_n">
+<code class="sig-name descname">set_n</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">log_n_end</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps.set_n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="ebcic.Params">
+<em class="property">class </em><code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">Params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">alpha</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">confi_perc</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">warn_line_confi_perc</span><span class="o">=</span><span class="default_value">60</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Parameter pool class for Binomial and confidence.</p>
+<p>This stores parameters regarding Binomial and confidence after
+checking them and avoiding duplicate checks and warnings.</p>
+<dl class="py method">
+<dt id="ebcic.Params.alpha_to_confi_perc">
+<code class="sig-name descname">alpha_to_confi_perc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.alpha_to_confi_perc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alpha to confidence percentage.</p>
+<p>Convert given ‘alpha’ in between 0 to 1 exclusive
+to ‘confi_perc’ in percentage between 0 to 100 exclusive
+after input check.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.Params.check_and_warn_alpha">
+<code class="sig-name descname">check_and_warn_alpha</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.check_and_warn_alpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.Params.check_and_warn_confi_perc">
+<code class="sig-name descname">check_and_warn_confi_perc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">confi_perc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.check_and_warn_confi_perc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.Params.confi_perc_to_alpha">
+<code class="sig-name descname">confi_perc_to_alpha</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">confi_perc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.confi_perc_to_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Confidence percentage to alpha.</p>
+<p>This converts ‘confi_perc’ given in percentage between
+0 to 100 exclusive
+to alpha in between 0 to 1 exclusive after input check.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.Params.set_alpha">
+<code class="sig-name descname">set_alpha</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set alpha, i.e. (1 - (confidence percentage)/100), and more.</p>
+<p>This also sets its corresponding
+‘perc_confi’ (confidence percentage),
+Z_{alpha} and Z_{alpha/2}.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.Params.set_confi_perc">
+<code class="sig-name descname">set_confi_perc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">confi_perc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_confi_perc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set confidence percentage and more.</p>
+<p>This also sets its corresponding alpha, Z_{alpha} and Z_{alpha/2}.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.Params.set_k">
+<code class="sig-name descname">set_k</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_k" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.Params.set_n">
+<code class="sig-name descname">set_n</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.alpha_to_confi_perc_wo_check">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">alpha_to_confi_perc_wo_check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.alpha_to_confi_perc_wo_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.alpha_to_za">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">alpha_to_za</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span></em>, <em class="sig-param"><span class="n">sig_digits</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.alpha_to_za" title="Permalink to this definition">¶</a></dt>
+<dd><p>alpha to Z_alpha for one-sided test in normal distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alpha</strong> (<em>float</em>) – (1 - (confidence percentage)/100)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>za (Z_alpha)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha_to_za</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="go">1.64485</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha_to_za</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="go">2.32635</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.alpha_to_zah">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">alpha_to_zah</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span></em>, <em class="sig-param"><span class="n">sig_digits</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.alpha_to_zah" title="Permalink to this definition">¶</a></dt>
+<dd><p>alpha to Z_{alpha/2} for two-sided test in normal distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alpha</strong> (<em>float</em>) – (1 - (confidence percentage)/100)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>zah (Z_{alpha/2})</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha_to_zah</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="go">1.95996</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">alpha_to_zah</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="go">2.57583</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.check_alpha">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">check_alpha</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alpha</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_alpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.check_between_k_and_n">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">check_between_k_and_n</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em>, <em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_between_k_and_n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.check_confi_perc">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">check_confi_perc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">confi_perc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_confi_perc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.check_k">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">check_k</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_k" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.check_n">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">check_n</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.compare_dist">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">compare_dist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.compare_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare major probability distributions in a graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and zah (Z_{alpha/2})
+where zah is set by giving either ‘alpha’ or ‘confi_perc’
+to Params().</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">compare_dist</span><span class="p">(</span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.confi_perc_to_alpha_wo_check">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">confi_perc_to_alpha_wo_check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">confi_perc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.confi_perc_to_alpha_wo_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.exact">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">exact</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.exact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return exact Binomial confidence interval for the parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and
+alpha (or confi_perc).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>tuple containing:</p>
+<blockquote>
+<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
+<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.interval_graph">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">interval_graph</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gra_props</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.interval_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show interval graphs.</p>
+<p>Coloring rule:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Exact lines and the line for k/n for the same k are depicted</dt><dd><p>in the same color.</p>
+</dd>
+</dl>
+</li>
+<li><p>If k_start == k_end, approximated lines are depicted in uniq colors.</p></li>
+<li><p>Otherwise, all the lines per the same k are depicted in the same color.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>gra_props</strong> (<a class="reference internal" href="#ebcic.GraProps" title="ebcic.GraProps"><em>GraProps</em></a>) – Instance including k_start, k_end, k_step,
+log_n_end, confi_perc_line, line_list.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Show intervals for multiple confidence percentages.
+See ebcic.ipynb for more examples.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">interval_graph</span><span class="p">(</span><span class="n">GraProps</span><span class="p">(</span>
+<span class="go">    k_start=1,  # &gt;= 0</span>
+<span class="go">    k_end=1,    # &gt; k_start</span>
+<span class="go">    k_step=1,   # &gt; 0</span>
+<span class="go">    log_n_end=6,  # max(n) = 3*k_end*10**log_n_end</span>
+<span class="go">    confi_perc_list=[90, 95, 99, 99.9, 99.99],</span>
+<span class="go">    line_list=[</span>
+<span class="go">        &#39;with_exact&#39;,</span>
+<span class="go">        # The followings are approximation.</span>
+<span class="go">        &#39;with_line_kn&#39;,  # Line of k/n</span>
+<span class="go">        # Available only when k = 0</span>
+<span class="go">        # &#39;with_rule_of_la&#39;,</span>
+<span class="go">        # Available only when k &gt; 0</span>
+<span class="go">        # &#39;with_normal&#39;,</span>
+<span class="go">        # &#39;with_wilson&#39;,</span>
+<span class="go">        # &#39;with_wilson_cc&#39;,</span>
+<span class="go">    ],</span>
+<span class="go">    # savefig = True,</span>
+<span class="go">    # fig_file_name=&#39;intervals.jpg&#39;</span>
+<span class="go">    ))</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It seems that saveifg, i.e. plt.savefig(),
+in jupyter saves blank figure.
+In jupyter, drag and drop the displayed figure to a folder,
+open it with Paint app and so on and then overwrite the figure.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.normal_approx">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">normal_approx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.normal_approx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximated interval using normal distribution.</p>
+<p>Interval obtained by approximating Binomial distribution
+to normal distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and zah (Z_{alpha/2})
+where zah is set by giving either ‘alpha’ or ‘confi_perc’
+to Params().</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>tuple containing:</p>
+<blockquote>
+<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
+<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Normal approximation does not give good approximation for small
+n or k being close to 0 or n.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.print_interval">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">print_interval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.print_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print exact interval as text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and
+‘confi_perc’ (confidence percentage) or ‘alpha’.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_interval</span><span class="p">(</span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.round_h_up">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">round_h_up</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">sig_digits</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.round_h_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Round half up.</p>
+<p>Round half up $x$ to the decimal point corresponding to $10^sig_digits$.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em><em> or </em><em>float</em>) – Input value.</p></li>
+<li><p><strong>sig_digits</strong> (<em>int</em>) – Significant digits.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The rounded-half-up number of x.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int or float</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">round_h_up</span><span class="p">(</span><span class="mf">123.45678</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">123.4</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">round_h_up</span><span class="p">(</span><span class="mf">123.45678</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
+<span class="go">123.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">round_h_up</span><span class="p">(</span><span class="mf">123.45678</span><span class="p">,</span>  <span class="mi">1</span><span class="p">)</span>
+<span class="go">120.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.rule_of_ln_alpha">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">rule_of_ln_alpha</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.rule_of_ln_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generalized rule of three.</p>
+<p>Interval of rule of $ln(lpha)$, i.e generalized version of
+‘rule of three’.
+This can be used only when (k == 0 or k == n) and
+reliable if n is large enough, say n &gt; 50.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>tuple containing:</p>
+<blockquote>
+<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
+<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.test_all">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">test_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test of all or some of the above tests.</p>
+<p>Higher ‘ret’ is more critical.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.test_for_z">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">test_for_z</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_for_z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Self test regarding Z_{alpha/2} and Z_{alpha}.</p>
+<p>alpha_to_za(), za_to_alpha(),
+alpha_to_zah() and zah_to_alpha() are tested.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>0 for no error, 1 otherwise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.test_of_intervals">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">test_of_intervals</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n_start</span></em>, <em class="sig-param"><span class="n">n_end</span></em>, <em class="sig-param"><span class="n">n_step</span></em>, <em class="sig-param"><span class="n">confi_perc</span></em>, <em class="sig-param"><span class="n">sig_digits</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_of_intervals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test of reliability of obtained intervals for given parameters.</p>
+<p>Check if integral of outside of the interval is alpha for given k, n, etc
+and return 0 if it holds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>num_of_wrongs, the number of unreliable intervals.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>See ebcic.ipynb for the parameters where reliable intervas
+might not be able to be obtained.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">test_of_intervals</span><span class="p">(</span>
+<span class="go">    n_start=1,</span>
+<span class="go">    n_end=1000,</span>
+<span class="go">    n_step=1,</span>
+<span class="go">    confi_perc=99.0,  # Confidence Percentage (90 &lt;= confi_perc &lt; 100)</span>
+<span class="go">    sig_digits=-5)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.test_warning_once">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">test_warning_once</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_warning_once" title="Permalink to this definition">¶</a></dt>
+<dd><p>Self test of warning once.</p>
+<p>Test of warning once for the same setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>0 for no error, 1 otherwise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.verify_interval_of_p">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">verify_interval_of_p</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em>, <em class="sig-param"><span class="n">lower_p</span></em>, <em class="sig-param"><span class="n">upper_p</span></em>, <em class="sig-param"><span class="n">sig_digits</span><span class="o">=</span><span class="default_value">- 5</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.verify_interval_of_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the reliability of the given interval.</p>
+<p>This checks, for given parameteres, if integral of outside of
+the interval is alpha or not, and so on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p></li>
+<li><p><strong>lower_p</strong> – Lower interval of p for the params.</p></li>
+<li><p><strong>upper_p</strong> – Upper interval of p for the params.</p></li>
+<li><p><strong>sig_digits</strong> – Significant digits.</p></li>
+<li><p><strong>verbose</strong> – 0: no message
+1: show only errors
+2: show always</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1 if unreliable, 0 reliable,
+i.e. no evidence was found to consider them unreliable.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.wilson_score">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">wilson_score</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.wilson_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wilson score interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and zah (Z_{alpha/2})
+where zah is set by giving either ‘alpha’ or ‘confi_perc’
+to Params().</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>tuple containing:</p>
+<blockquote>
+<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
+<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Upper interval seems close to the exact one, but
+lower one seems a little greater than the exact one.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.wilson_score_cc">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">wilson_score_cc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.wilson_score_cc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wilson score interval with continuity correction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and zah (Z_{alpha/2})
+where zah is set by giving either ‘alpha’ or ‘confi_perc’
+to Params().</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>tuple containing:</p>
+<blockquote>
+<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
+<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lower interval is not a good approximation for small k,
+i.e. it becomes higher than the exact lower interval,
+though it is better than Wilson score interval
+(without continuity correction).</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.za_to_alpha">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">za_to_alpha</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">za</span></em>, <em class="sig-param"><span class="n">sig_digits</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.za_to_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Z_alpha to alpha.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>za</strong> – Z_alpha for one-sided test in normal distribution.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>alpha, i.e. (1 - (confidence percentage)/100))</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">za_to_alpha</span><span class="p">(</span><span class="mf">1.64485</span><span class="p">)</span>
+<span class="go">0.05</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">za_to_alpha</span><span class="p">(</span><span class="mf">2.32635</span><span class="p">)</span>
+<span class="go">0.01</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ebcic.zah_to_alpha">
+<code class="sig-prename descclassname">ebcic.</code><code class="sig-name descname">zah_to_alpha</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">zah</span></em>, <em class="sig-param"><span class="n">sig_digits</span><span class="o">=</span><span class="default_value">- 5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.zah_to_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Z_{alpha/2} to alpha.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>zah</strong> – Z_{alpha/2} for two-sided test in normal distribution.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>alpha, i.e. (1 - (confidence percentage)/100))</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">zah_to_alpha</span><span class="p">(</span><span class="mf">1.95996</span><span class="p">)</span>
+<span class="go">0.05</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">zah_to_alpha</span><span class="p">(</span><span class="mf">2.57583</span><span class="p">)</span>
+<span class="go">0.01</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to EBCIC’s documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ebcic.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to EBCIC’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ebcic module</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020 National Institute of Advanced Industrial Science and Technology (AIST).
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+  </body>
+</html>
