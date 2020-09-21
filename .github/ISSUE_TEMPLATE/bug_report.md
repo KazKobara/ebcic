@@ -30,5 +30,5 @@ If applicable, add screenshots to help explain your problem.
    - Jupyter Notebook: [e.g. 6.1.0]
    - Browser: [e.g. chrome, safari]
 
-**Additional context**
-Add any other context about the problem here.
+**Candidate solutions**
+Concrete description (and code) to solve this bug.
