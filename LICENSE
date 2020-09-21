@@ -1,17 +1,6 @@
 MIT License
 
-Copyright (c) 2020 National Institute of Advanced Industrial Science and Technology (AIST)
-
-The initial software is based on results obtained from a project, JPNP16007,
-commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
-
-When you use or publish the confidence interval obtained with the software,
-please refer to the software name, version, platform, etc, so that readers can
-verify the correctness and reproducibility of the interval with the input parameters.
-
-Example of the reference is:
-"The confidence interval is obtained by EBCIC X.X.X on Python 3."
-where EBCIC is the name of the software, X.X.X is the version of it.
+Copyright (c) 2020 National Institute of Advanced Industrial Science and Technology (AIST). The initial software is based on results obtained from a project, JPNP16007, commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
