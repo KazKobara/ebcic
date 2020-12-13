@@ -10,8 +10,8 @@ EBCIC calculates binomial intervals exactly, i.e. by implementing Clopper–Pear
 
 ## How to use
 
-1. Open [ebcic.ipynb](./ebcic.ipynb) with jupyter or jupyter-lab.
-2. Run the cells you want to execute.
+1. Open [ebcic.ipynb](./ebcic.ipynb) with either jupyter, jupyter-lab or Visual Studio Code.
+2. Run the first cell and any cell you want to execute.
 
 or
 
@@ -90,10 +90,10 @@ Result:
 
 For comparison with approximated intervals for k=0, `rule_of_la` and `Wilson_cc` are available where:
 
-- `rule_of_la` or `rule of log(alpha)` denotes the generalized version of `rule of three` [Lou81,HL83,JL97,Way00,ISO/IEC19795-1]. `rule of three` corresponds with `rule of log(alpha)` for alpha = 0.05.
+- `rule_of_la` or `rule of -ln(alpha)` (or `-log_e(alpha)`) denotes the generalized version of `rule of three` [Lou81,HL83,JL97,Way00,ISO/IEC19795-1]. `rule of three` corresponds with `rule of -ln(alpha)` for alpha = 0.05.
 - `Wilson_cc` denotes `Wilson score interval with continuity correction` [New98].
 
-As you can see from the following figure, `rule of log(alpha)` is a good approximation for n > 20 when k=0.
+As you can see from the following figure, `rule of -ln(alpha)` is a good approximation for n > 20 when k=0.
 
 Jupyter cell to run:
 
@@ -103,7 +103,7 @@ interval_graph(GraProps(
     k_end=0,    # > k_start
     line_list=[
         'with_exact',
-        'with_rule_of_la',  # rule of ln(alpha)
+        'with_rule_of_la',  # rule of -ln(alpha)
         'with_normal',      # not available for k=0
         'with_wilson',      # not available for k=0
         'with_wilson_cc',

@@ -566,7 +566,7 @@ def verify_interval_of_p(
 def rule_of_ln_alpha(params):
     """ Generalized rule of three.
 
-    Interval of rule of $ln(\alpha)$, i.e generalized version of
+    Interval of rule of -ln(alpha), i.e generalized version of
     'rule of three'.
     This can be used only when (k == 0 or k == n) and
     reliable if n is large enough, say n > 50.
@@ -1075,7 +1075,7 @@ def interval_graph(gra_props):
                          marker=3,
                          # linestyle='dotted',
                          linestyle='dashdot',
-                         label=f"$k$={k} {confi_perc}% rule of ln(a)")
+                         label=f"$k$={k} {confi_perc}% rule of -ln(a)")
                 leg += 1
                 if k_diff == 0:
                     col_offset += 1
