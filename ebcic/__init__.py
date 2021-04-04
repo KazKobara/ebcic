@@ -1,6 +1,6 @@
-# %load ebcic.py
-# %%writefile ebcic.py
-# To be syncronized with ebcic.py copy either of the above magic functions
+# %load ./ebcic/ebcic.py
+# %%writefile ./ebcic/ebcic.py
+# To be synchronized with ebcic.py copy either of the above magic functions
 # depending on whether to overwrite or to load, and then run this cell.
 """Exact Binomial Interval Calculator
 
@@ -48,12 +48,14 @@ from matplotlib import pyplot as plt
 from platform import python_version
 from decimal import Decimal, ROUND_HALF_UP
 
+'''
 print(f"python    : {python_version()}")  # os, math, warnings
 print(f"np        : {np.__version__}")
 print(f"sys       : {sys.version[:6]}")
 print(f"logging   : {logging.__version__}")
 print(f"scipy     : {scipy.version.full_version}")
 print(f"matplotlib: {matplotlib.__version__}")
+'''
 
 warnings.filterwarnings(
         'ignore', 'The iteration is not making good progress')

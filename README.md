@@ -10,12 +10,40 @@ EBCIC calculates binomial intervals exactly, i.e. by implementing Clopper–Pear
 
 ## How to use
 
-1. Open [ebcic.ipynb](./ebcic.ipynb) with either jupyter, jupyter-lab or Visual Studio Code.
-2. Run the first cell and any cell you want to execute.
+### jupyter notebook
 
-or
+1. Open [ebcic.ipynb](https://kazkobara.github.io/ebcic/ebcic.ipynb) with either jupyter, jupyter-lab or Visual Studio Code.
+2. Run the cells you want to execute.
 
-- Use [ebcic.py](./ebcic.py) as a python module, c.f. [API Manual](./docs/_build/ebcic.html).
+### ebcic package
+
+1. install with pip command
+
+    ~~~console
+    pip install ebcic
+    ~~~
+
+2. import in your *.py file
+
+    ~~~python
+    import ebcic
+    from ebcic import *
+    ~~~
+
+### [API Manual](https://github.com/KazKobara/ebcic/tree/master/docs/_build)
+
+1. Download
+
+    ~~~console
+    git clone https://github.com/KazKobara/ebcic.git
+    ~~~
+
+2. Open `'file://<path to the downloaded ebcic>/docs/_build/index.html'` with your browser:
+    - For WSL Ubuntu-20.04, replace `<username>` and `<path to the downloaded ebcic>` appropriately in:
+
+        ~~~text
+        file://wsl%24/Ubuntu-20.04/home/<username>/<path to the downloaded ebcic>/docs/_build/index.html
+        ~~~
 
 ## Examples
 
