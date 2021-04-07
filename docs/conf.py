@@ -18,11 +18,11 @@ sys.path.insert(0, os.path.abspath('../'))
 # -- Project information -----------------------------------------------------
 
 project = 'EBCIC'
-copyright = '2020 National Institute of Advanced Industrial Science and Technology (AIST)'
+copyright = '2020-2021 National Institute of Advanced Industrial Science and Technology (AIST)'
 author = 'Kazukuni Kobara, AIST'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.0'
+release = '0.0.1'
 
 
 # -- General configuration ---------------------------------------------------
