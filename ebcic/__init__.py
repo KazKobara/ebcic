@@ -18,7 +18,7 @@ with the parameters, n, k and the confidence level.
 
 Example of the reference is:
 
-**"This confidence interval is obtained by EBCIC 0.0.0 on Python 3."**
+**"This confidence interval is obtained by EBCIC 0.0.1 on Python 3."**
 
 The initial software is based on results obtained from a project,
 JPNP16007, commissioned by
@@ -26,17 +26,15 @@ the New Energy and Industrial Technology Development Organization (NEDO).
 
 THE SOFTWARE COMES WITH ABSOLUTELY NO WARRANTY.
 
-Copyright (C) 2020 National Institute of Advanced Industrial Science
+Copyright (C) 2020-2021 National Institute of Advanced Industrial Science
 and Technology (AIST).
 """
-__version__ = '0.0.0'
+__version__ = '0.0.1'
 import os
 import sys
 import logging
 import numpy as np
-import scipy
 import math
-import matplotlib
 import matplotlib.cm as mplcm
 import matplotlib.colors as colors
 import warnings
@@ -45,16 +43,20 @@ from scipy import optimize
 from scipy import stats as st
 from scipy.stats import binom
 from matplotlib import pyplot as plt
-from platform import python_version
 from decimal import Decimal, ROUND_HALF_UP
 
 '''
+import scipy
+import matplotlib
+from platform import python_version
+
+print(f"scipy     : {scipy.version.full_version}")
+print(f"matplotlib: {matplotlib.__version__}")
 print(f"python    : {python_version()}")  # os, math, warnings
+
 print(f"np        : {np.__version__}")
 print(f"sys       : {sys.version[:6]}")
 print(f"logging   : {logging.__version__}")
-print(f"scipy     : {scipy.version.full_version}")
-print(f"matplotlib: {matplotlib.__version__}")
 '''
 
 warnings.filterwarnings(
@@ -211,6 +213,20 @@ class Params:
 
     This stores parameters regarding Binomial and confidence after
     checking them and avoiding duplicate checks and warnings.
+
+    Args:
+        k (int):
+            Number of errors.
+        n (int):
+            Number of trials.
+        alpha (float):
+            1 - 'confi_perc'/100
+        confi_perc (float):
+            Confidence percentage for two-sided [0-100].
+            For one-sided, set 'confi_perc' =
+            {2 * (confidence percentage for one-sided [50-100]) - 100}
+        warn_line_confi_perc (float):
+            Warned, if 'confi_perc' is smaller than this value.
     """
 
     def __init__(
@@ -809,12 +825,15 @@ def print_interval(params):
     # sig_digits = -10
     sig_digits = -14  # To show lower interval around 10^-8.
 
+    print("\nExact Binomial Interval Calculator, "
+          f"ver. {__version__}\n")
+
     # Print Parameters
     print("===== Parameters =====")
     print("n (num of trials)  :", params.n)
     print("k (num of failures):", params.k)
     print("k/n (observed p')  :",
-          {round_h_up(params.k/params.n, sig_digits)})
+          round_h_up(params.k/params.n, sig_digits))
 
     # Instantiation of parameters where alpha is set as well.
     lower_p, upper_p = exact(params)
@@ -823,9 +842,9 @@ def print_interval(params):
           params.confi_perc, "[%] two-sided (or",
           100 - (100 - params.confi_perc)/2,
           "[%] one-sided) confidence  =====")
-    print(f"Upper : {round_h_up(upper_p, sig_digits)}")
-    print(f"Lower : {round_h_up(lower_p, sig_digits)}")
-    print(f"Width : {round_h_up(upper_p - lower_p, sig_digits)}")
+    print("Upper : ", round_h_up(upper_p, sig_digits))
+    print("Lower : ", round_h_up(lower_p, sig_digits))
+    print("Width : ", round_h_up(upper_p - lower_p, sig_digits))
     '''
     # NOTE: if the numbers are too small, use below.
     print(f"Upper : {result_upper[0]:.6g}")
@@ -1657,9 +1676,3 @@ def test_all():
         print("\n== OK : All the tests are succeeded. ==\n")
     else:
         print("\n== NG : Some tests are failed!! ==\n")
-
-
-if __name__ == "__main__":
-    '''
-    Examples:
-    '''

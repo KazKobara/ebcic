@@ -6,29 +6,45 @@ These programs are mainly for researchers, developers, and designers who calcula
 - k: the number of target events happened.
 - confi_perc: Confidence percentage given in percentage between 0 to 100.
 
-EBCIC calculates binomial intervals exactly, i.e. by implementing Clopper–Pearson interval [CP34] without simplifying mathematical equations that may deteriorate intervals for certain combinations of the above parameters. EBCIC can also shows graphs for comparing exact intervals with approximated ones.
+[EBCIC](https://kazkobara.github.io/ebcic/) calculates binomial intervals exactly, i.e. by implementing Clopper–Pearson interval [CP34] without simplifying mathematical equations that may deteriorate intervals for certain combinations of the above parameters. EBCIC can also shows graphs for comparing exact intervals with approximated ones.
 
 ## How to use
 
-### jupyter notebook
+### Jupyter notebook
 
 1. Open [ebcic.ipynb](https://kazkobara.github.io/ebcic/ebcic.ipynb) with either jupyter, jupyter-lab or Visual Studio Code.
 2. Run the cells you want to execute.
 
-### ebcic package
+### Command line (with `ebcic` package)
 
-1. install with pip command
+1. Install [PyPI ebcic package](https://pypi.org/project/ebcic/)
 
     ~~~console
     pip install ebcic
     ~~~
 
-2. import in your *.py file
+2. Show help and see the [examples](#Examples) below:
 
-    ~~~python
-    import ebcic
-    from ebcic import *
+    ~~~console
+    python -m ebcic -h
     ~~~
+
+<!--
+### Command line (with git `ebcic` repo)
+
+1. Get repo
+
+    ~~~console
+    git clone https://github.com/KazKobara/ebcic.git
+    cd ebcic
+    ~~~
+
+2. Show help or see the [examples](#Examples) below:
+
+    ~~~console
+    python -m ebcic -h
+    ~~~
+-->
 
 ### [API Manual](https://github.com/KazKobara/ebcic/tree/master/docs/_build)
 
@@ -38,16 +54,27 @@ EBCIC calculates binomial intervals exactly, i.e. by implementing Clopper–Pear
     git clone https://github.com/KazKobara/ebcic.git
     ~~~
 
-2. Open `'file://<path to the downloaded ebcic>/docs/_build/index.html'` with your browser:
-    - For WSL Ubuntu-20.04, replace `<username>` and `<path to the downloaded ebcic>` appropriately in:
+2. Open the following file with your browser (after replacing `<path to the downloaded ebcic>` appropriately):
 
-        ~~~text
-        file://wsl%24/Ubuntu-20.04/home/<username>/<path to the downloaded ebcic>/docs/_build/index.html
-        ~~~
+    ~~~text
+    file://<path to the downloaded ebcic>/docs/_build/index.html
+    ~~~
+
+    For WSL Ubuntu-20.04, replace `<username>` and `<path to the downloaded ebcic>` appropriately:
+
+    ~~~text
+    file://wsl%24/Ubuntu-20.04/home/<username>/<path to the downloaded ebcic>/docs/_build/index.html
+    ~~~
 
 ## Examples
 
 ### Print exact interval as text
+
+Command line:
+
+~~~console
+python -m ebcic -k 1 -n 501255 --confi-perc 99.0
+~~~
 
 Jupyter cell to run:
 
@@ -71,7 +98,7 @@ Lower : 9.99998e-09
 Width : 1.481295808e-05
 ~~~
 
-### Depict graphs
+### Depict graphs (available only with Jupyter)
 
 #### Exact intervals and the line of k/n for k=1
 
@@ -98,6 +125,8 @@ interval_graph(GraProps(
 Result:
 
 ![Exact intervals and the line of k/n for k=1](./figs/confidence_percentage.png)
+
+If figures or links are not shown appropriately, visit [here](https://kazkobara.github.io/ebcic/).
 
 #### Exact intervals for k=0 to 5
 
@@ -237,6 +266,8 @@ Clopper, C. and Pearson, E.S. "The use of confidence or fiducial limits illustra
 [Wil27]: Wilson, E.B. "Probable inference, the law of succession, and statistical inference," Journal of the American Statistical Association. 22 (158): pp.209–212, 1927
 
 [BLC01]: Brown, L.D., Cai, T.T. and DasGupta, A. "Interval Estimation for a Binomial Proportion," Statistical Science. 16 (2): pp. 101–133, 2001
+
+## [Changelog](./CHANGELOG.md)
 
 ## License etc
 
