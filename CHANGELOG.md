@@ -5,6 +5,12 @@ All notable changes, such as backward incompatibilities, will be documented in t
 <!-- markdownlint-disable MD024 no-duplicate-heading -->
 <!-- ## [Unreleased 0.0.2] -->
 
+## [Unreleased 0.0.2]
+
+### Added
+
+- Usage in MATLAB.
+
 ## [0.0.1]
 
 ### Added

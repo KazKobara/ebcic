@@ -13,7 +13,17 @@ These programs are mainly for researchers, developers, and designers who calcula
 ### Jupyter notebook
 
 1. Open [ebcic.ipynb](https://kazkobara.github.io/ebcic/ebcic.ipynb) with either jupyter, jupyter-lab or Visual Studio Code.
-2. Run the cells you want to execute.
+2. Run the cells you want to execute after running the following initial cells:
+
+    ~~~python
+    # Run this cell, if `ebcic` package has not been installed yet:
+    !pip install ebcic
+    ~~~
+
+    ~~~python
+    import ebcic
+    from ebcic import *
+    ~~~
 
 ### Command line (with `ebcic` package)
 
@@ -23,11 +33,21 @@ These programs are mainly for researchers, developers, and designers who calcula
     pip install ebcic
     ~~~
 
-2. Show help and see the [examples](#Examples) below:
+2. Show help:
 
     ~~~console
     python -m ebcic -h
     ~~~
+
+    Cf. the [examples](#Examples) below as well.
+
+### MATLAB (with Python and `ebcic` package)
+
+1. Install Python for MATLAB and `ebcic` package according to [this page](https://kazkobara.github.io/ebcic/matlab/ebcic_in_matlab.html).
+2. Open a sample MATLAB code file [ebcic_in_matlab.m](https://kazkobara.github.io/ebcic/matlab/ebcic_in_matlab.m) as a 'live script' as shown [this page](https://jp.mathworks.com/help/matlab/matlab_prog/create-live-scripts.html?lang=en).
+3. Edit and run the sections you want to execute.
+
+- NOTE If you manage the edited file with git, save it as a MATLAB code file (*\.m) file to commit (or commit the live code file (\*.mlx) to a git LFS (Large File Storage)) since live code files (\*.mlx) are not git friendly. If necessary, save it as a \*.html file as well to check its look.
 
 <!--
 ### Command line (with git `ebcic` repo)
@@ -68,6 +88,8 @@ These programs are mainly for researchers, developers, and designers who calcula
 
 ## Examples
 
+For MATLAB, see [this page](https://kazkobara.github.io/ebcic/matlab/ebcic_in_matlab.html).
+
 ### Print exact interval as text
 
 Command line:
@@ -85,8 +107,12 @@ Edit the following parameters, k, n, confi_perc, and run this cell.
 print_interval(Params(
     k=1,               # Number of errors
     n=501255,          # number of trials
-    confi_perc = 99.0  # Confidence percentage (0-100)
-))
+    confi_perc = 99.0  # Confidence percentage for two-sided
+                       # where 0 < confi_perc < 100.
+                       # For one-sided,
+                       # set confi_perc = (2 * confi_perc_for_one_sided - 100)
+                       # where 50 < confi_perc_for_one_sided < 100.
+    ))
 ~~~
 
 Result:
@@ -98,7 +124,9 @@ Lower : 9.99998e-09
 Width : 1.481295808e-05
 ~~~
 
-### Depict graphs (available only with Jupyter)
+### Depict graphs
+
+NOTE Command-line options do not support depicting graphs, so try the following examples in a Jupyter cell, and so on.
 
 #### Exact intervals and the line of k/n for k=1
 
@@ -110,9 +138,13 @@ Jupyter cell to run:
 interval_graph(GraProps(
     # Set the range of k with k_*
     k_start=1,  # >= 0
-    k_end=1,    # > k_start
-    k_step=1,   # > 0
-    # Edit the list of confidence percentages (0-100):
+    k_end=1,    # >= k_start
+    k_step=1,   # >= 1
+    # Edit the list of confidence percentages, [confi_perc, ...], to depict
+    # where 0 < confi_perc < 100 for two-sided.
+    # NOTE For one-sided, set confi_perc=(2 * confi_perc_for_one_sided - 100)
+    #   where 50 < confi_perc_for_one_sided < 100
+    #   (though both lower and upper intervals are shown).
     confi_perc_list=[90, 95, 99, 99.9, 99.99],
     # Lines to depict
     line_list=[
@@ -135,7 +167,7 @@ Jupyter cell to run:
 ~~~python
 interval_graph(GraProps(
     k_start=0,  # >= 0
-    k_end=5,    # > k_start
+    k_end=5,    # >= k_start
     line_list=['with_exact']))
 ~~~
 
@@ -157,10 +189,10 @@ Jupyter cell to run:
 ~~~python
 interval_graph(GraProps(
     k_start=0,  # >= 0
-    k_end=0,    # > k_start
+    k_end=0,    # >= k_start
     line_list=[
         'with_exact',
-        'with_rule_of_la',  # rule of -ln(alpha)
+        'with_rule_of_la',  # rule of -ln(alpha); available only for k=0
         'with_normal',      # not available for k=0
         'with_wilson',      # not available for k=0
         'with_wilson_cc',
@@ -185,7 +217,7 @@ Jupyter cell to run:
 ~~~python
 interval_graph(GraProps(
     k_start=1,  # >= 0
-    k_end=1,    # > k_start
+    k_end=1,    # >= k_start
     line_list=[
         'with_exact',
         'with_normal',
@@ -207,7 +239,7 @@ Jupyter cell to run:
 ~~~python
 interval_graph(GraProps(
     k_start=10,   # >= 0
-    k_end=10,     # > k_start
+    k_end=10,     # >= k_start
     log_n_end=3,  # max(n) = 3*k_end*10**log_n_end
     line_list=[
         'with_exact',
@@ -231,7 +263,7 @@ Jupyter cell to run:
 ~~~python
 interval_graph(GraProps(
     k_start=10,   # >= 0
-    k_end=10,     # > k_start
+    k_end=10,     # >= k_start
     log_n_end=3,  # max(n) = 3*k_end*10**log_n_end
     line_list=[
         'with_exact',
@@ -269,13 +301,13 @@ Clopper, C. and Pearson, E.S. "The use of confidence or fiducial limits illustra
 
 ## [Changelog](./CHANGELOG.md)
 
-## License etc
+## License
 
 [MIT License](./LICENSE)
 
-When you use or publish the confidence interval obtained with the software, please **refer to the software name, version, platform,** , etc, so that readers can verify the correctness and reproducibility of the interval with the input parameters.
+When you use or publish the confidence interval obtained with the software, please **refer to the software name, version, platform**, and so on, so that readers can verify the correctness and reproducibility of the interval with the input parameters.
 
-Example of the reference is:
+An example of the reference is:
 
 ~~~text
 The confidence interval is obtained by EBCIC X.X.X on Python 3."

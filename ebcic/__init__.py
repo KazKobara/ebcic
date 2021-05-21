@@ -2,7 +2,7 @@
 # %%writefile ./ebcic/ebcic.py
 # To be synchronized with ebcic.py copy either of the above magic functions
 # depending on whether to overwrite or to load, and then run this cell.
-"""Exact Binomial Interval Calculator
+"""Exact Binomial Confidence Interval Calculator
 
 This module provides functions to calculate exact binomial intervals
 and some of the approximated intervals, such as normal approximation,
@@ -12,7 +12,7 @@ This module also provides functions to depict their intervals.
 
 
 When you use or publish the confidence interval obtained with the software,
-please **refer to the program name, version, platform,** etc, so that
+please **refer to the program name, version, platform**, and so on, so that
 readers can verify the correctness and reproducibility of the interval
 with the parameters, n, k and the confidence level.
 
@@ -222,9 +222,9 @@ class Params:
         alpha (float):
             1 - 'confi_perc'/100
         confi_perc (float):
-            Confidence percentage for two-sided [0-100].
-            For one-sided, set 'confi_perc' =
-            {2 * (confidence percentage for one-sided [50-100]) - 100}
+            Confidence percentage for two-sided where 0 < confi_perc < 100.
+            For one-sided, set confi_perc=(2 * confi_perc_for_one_sided - 100)
+            where 50 < confi_perc_for_one_sided < 100.
         warn_line_confi_perc (float):
             Warned, if 'confi_perc' is smaller than this value.
     """
@@ -1577,8 +1577,8 @@ def test_of_intervals(
         sig_digits=-5):
     """Test of reliability of obtained intervals for given parameters.
 
-    Check if integral of outside of the interval is alpha for given k, n, etc
-    and return 0 if it holds.
+    Check if 'alpha' is equal to the integral of the outside of the interval
+    for given parameters, such as k and n, and then return 0 if it holds.
 
     Returns:
         int: num_of_wrongs, the number of unreliable intervals.

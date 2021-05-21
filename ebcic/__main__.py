@@ -9,7 +9,7 @@ def main():
 
     parser = argparse.ArgumentParser(
         description=(
-            "Exact Binomial Interval Calculator, "
+            "Exact Binomial Confidence Interval Calculator, "
             f"ver. {ebcic.__version__}"),
         # For __main__.py, c.f. https://bugs.python.org/issue22240
         prog=(
@@ -35,17 +35,17 @@ def main():
         "--confi-perc",
         type=float,
         help=(
-            "Confidence percentage for two-sided [0-100]. "
-            "For one-sided, set '--confi-perc <cp_t>' where"
-            " cp_t ="
-            "   2 * (confidence percentage for one-sided [50-100]) - 100."
+            "set confidence percentage for two-sided where "
+            "0 < CONFI_PERC < 100; for one-sided " 
+            "CONFI_PERC = (2 * confi_perc_for_one_sided - 100) "
+            "and 50 < confi_perc_for_one_sided < 100"
             )
     )
     parser.add_argument(
         "-a",
         "--alpha",
         type=float,
-        help="ALPHA = 1 - CONFI_PERC/100"
+        help="ALPHA = 1 - CONFI_PERC/100, do not use with -c (--confi-perc)"
     )
     parser.add_argument(
         "-u",
