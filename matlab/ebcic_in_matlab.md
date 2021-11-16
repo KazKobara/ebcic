@@ -124,3 +124,7 @@ py.ebcic.interval_graph(py.ebcic.GraProps(pyargs( ...
 ### Known bug
 
 - Legend outside of the graph area is not displayed in MATLAB. So it seems better to use Python directly to depict graphs.
+
+---
+
+[EBCIC README](https://kazkobara.github.io/ebcic/)

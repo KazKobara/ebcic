@@ -18,7 +18,9 @@ with the parameters, n, k and the confidence level.
 
 Example of the reference is:
 
-**"This confidence interval is obtained by EBCIC 0.0.1 on Python 3."**
+**"This confidence interval is obtained by EBCIC x.x.x on Python 3."**
+
+where X.X.X is the version of EBCIC.
 
 The initial software is based on results obtained from a project,
 JPNP16007, commissioned by
@@ -29,7 +31,7 @@ THE SOFTWARE COMES WITH ABSOLUTELY NO WARRANTY.
 Copyright (C) 2020-2021 National Institute of Advanced Industrial Science
 and Technology (AIST).
 """
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 import os
 import sys
 import logging
@@ -222,8 +224,10 @@ class Params:
         alpha (float):
             1 - 'confi_perc'/100
         confi_perc (float):
-            Confidence percentage for two-sided where 0 < confi_perc < 100.
-            For one-sided, set confi_perc=(2 * confi_perc_for_one_sided - 100)
+            Confidence percentage for two-sided of 0<k<n
+            where 0 < confi_perc < 100, or for one-sided of k=0 or k=n.
+            For one-sided of 0<k<n, set
+            confi_perc=(2 * confi_perc_for_one_sided - 100)
             where 50 < confi_perc_for_one_sided < 100.
         warn_line_confi_perc (float):
             Warned, if 'confi_perc' is smaller than this value.
@@ -235,10 +239,10 @@ class Params:
             n=None,
             alpha=None,
             confi_perc=None,
-            # FIDO Biometrics Requirements v1.1
+            # FIDO Biometrics Requirements v2.0
             # https://fidoalliance.org/specs/biometric/requirements/
-            # Biometrics-Requirements-v1.1-fd-20190606.pdf
-            # uses 80% for one-sided (60% for two-sided) confidence.
+            # uses 80% for one-sided
+            # (which corresponds with 60% for two-sided) confidence.
             # (confi_perc < warn_line_confi_perc) is warned
             warn_line_confi_perc=60):  # for two-sided confidence
         self.n = None
@@ -421,7 +425,7 @@ def exact(params):
     k = params.k
     alpha = params.alpha
 
-    r = alpha / 2
+    r = alpha / 2  # for two-sided
     reverse_mode = False
     # Cumulative error becomes large for k >> n/2,
     # so make k < n/2.
@@ -838,10 +842,14 @@ def print_interval(params):
     # Instantiation of parameters where alpha is set as well.
     lower_p, upper_p = exact(params)
 
-    print("\n===== Exact interval of p with",
-          params.confi_perc, "[%] two-sided (or",
-          100 - (100 - params.confi_perc)/2,
-          "[%] one-sided) confidence  =====")
+    if params.k == 0 or params.k == params.n:
+        print("\n===== Exact interval of p with",
+              params.confi_perc, "[%] one-sided confidence  =====")
+    else:
+        print("\n===== Exact interval of p with",
+              params.confi_perc, "[%] two-sided (or",
+              100 - (100 - params.confi_perc)/2,
+              "[%] one-sided) confidence  =====")
     print("Upper : ", round_h_up(upper_p, sig_digits))
     print("Lower : ", round_h_up(lower_p, sig_digits))
     print("Width : ", round_h_up(upper_p - lower_p, sig_digits))

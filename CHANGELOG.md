@@ -10,6 +10,7 @@ All notable changes, such as backward incompatibilities, will be documented in t
 ### Added
 
 - Usage in MATLAB.
+- Notes that 'confidence percentage' of k=0 or k=n is for one-sided.
 
 ## [0.0.1]
 

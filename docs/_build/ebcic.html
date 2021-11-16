@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-    <title>ebcic module &#8212; EBCIC 0.0.1 documentation</title>
+    <title>ebcic module &#8212; EBCIC 0.0.2 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to EBCIC’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.2 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">ebcic module</a></li> 
       </ul>
     </div>  
@@ -41,17 +41,18 @@
             
   <section id="module-ebcic">
 <span id="ebcic-module"></span><h1>ebcic module<a class="headerlink" href="#module-ebcic" title="Permalink to this headline">¶</a></h1>
-<p>Exact Binomial Interval Calculator</p>
+<p>Exact Binomial Confidence Interval Calculator</p>
 <p>This module provides functions to calculate exact binomial intervals
 and some of the approximated intervals, such as normal approximation,
 generalized rule of three, Wilson score intervals and so on.</p>
 <p>This module also provides functions to depict their intervals.</p>
 <p>When you use or publish the confidence interval obtained with the software,
-please <strong>refer to the program name, version, platform,</strong> etc, so that
+please <strong>refer to the program name, version, platform</strong>, and so on, so that
 readers can verify the correctness and reproducibility of the interval
 with the parameters, n, k and the confidence level.</p>
 <p>Example of the reference is:</p>
-<p><strong>“This confidence interval is obtained by EBCIC 0.0.1 on Python 3.”</strong></p>
+<p><strong>“This confidence interval is obtained by EBCIC x.x.x on Python 3.”</strong></p>
+<p>where X.X.X is the version of EBCIC.</p>
 <p>The initial software is based on results obtained from a project,
 JPNP16007, commissioned by
 the New Energy and Industrial Technology Development Organization (NEDO).</p>
@@ -113,9 +114,11 @@ checking them and avoiding duplicate checks and warnings.</p>
 <li><p><strong>k</strong> (<em>int</em>) – Number of errors.</p></li>
 <li><p><strong>n</strong> (<em>int</em>) – Number of trials.</p></li>
 <li><p><strong>alpha</strong> (<em>float</em>) – 1 - ‘confi_perc’/100</p></li>
-<li><p><strong>confi_perc</strong> (<em>float</em>) – Confidence percentage for two-sided [0-100].
-For one-sided, set ‘confi_perc’ =
-{2 * (confidence percentage for one-sided [50-100]) - 100}</p></li>
+<li><p><strong>confi_perc</strong> (<em>float</em>) – Confidence percentage for two-sided of 0&lt;k&lt;n
+where 0 &lt; confi_perc &lt; 100, or for one-sided of k=0 or k=n.
+For one-sided of 0&lt;k&lt;n, set
+confi_perc=(2 * confi_perc_for_one_sided - 100)
+where 50 &lt; confi_perc_for_one_sided &lt; 100.</p></li>
 <li><p><strong>warn_line_confi_perc</strong> (<em>float</em>) – Warned, if ‘confi_perc’ is smaller than this value.</p></li>
 </ul>
 </dd>
@@ -491,8 +494,8 @@ alpha_to_zah() and zah_to_alpha() are tested.</p>
 <dt id="ebcic.test_of_intervals">
 <code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">test_of_intervals</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_of_intervals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test of reliability of obtained intervals for given parameters.</p>
-<p>Check if integral of outside of the interval is alpha for given k, n, etc
-and return 0 if it holds.</p>
+<p>Check if ‘alpha’ is equal to the integral of the outside of the interval
+for given parameters, such as k and n, and then return 0 if it holds.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>num_of_wrongs, the number of unreliable intervals.</p>
@@ -714,7 +717,7 @@ though it is better than Wilson score interval
         <li class="right" >
           <a href="index.html" title="Welcome to EBCIC’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.2 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">ebcic module</a></li> 
       </ul>
     </div>

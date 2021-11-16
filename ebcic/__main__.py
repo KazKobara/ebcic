@@ -35,31 +35,33 @@ def main():
         "--confi-perc",
         type=float,
         help=(
-            "set confidence percentage for two-sided where "
-            "0 < CONFI_PERC < 100; for one-sided " 
+            "set confidence percentage for two-sided of 0<k<n where "
+            "0 < CONFI_PERC < 100, or for one-sided of k=0 or k=n; "
+            "for one-sided of 0<k<n, set "
             "CONFI_PERC = (2 * confi_perc_for_one_sided - 100) "
-            "and 50 < confi_perc_for_one_sided < 100"
-            )
+            "where 50 < confi_perc_for_one_sided < 100"
+        )
     )
     parser.add_argument(
         "-a",
         "--alpha",
         type=float,
-        help="ALPHA = 1 - CONFI_PERC/100, do not use with -c (--confi-perc)"
+        help=(
+            "ALPHA = 1 - CONFI_PERC/100, "
+            "cannot be used with -c (--confi-perc)"
+        )
     )
     parser.add_argument(
         "-u",
         "--upper",
         action='store_true',
-        help="print upper interval of given confidence percentage "
-             "for two-sided"
+        help="print upper interval"
     )
     parser.add_argument(
         "-l",
         "--lower",
         action='store_true',
-        help="print lower interval of given confidence percentage "
-             "for two-sided"
+        help="print lower interval"
     )
     args = parser.parse_args()
 

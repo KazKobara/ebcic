@@ -105,13 +105,14 @@ Jupyter cell to run:
 Edit the following parameters, k, n, confi_perc, and run this cell.
 """
 print_interval(Params(
-    k=1,               # Number of errors
-    n=501255,          # number of trials
-    confi_perc = 99.0  # Confidence percentage for two-sided
-                       # where 0 < confi_perc < 100.
-                       # For one-sided,
-                       # set confi_perc = (2 * confi_perc_for_one_sided - 100)
-                       # where 50 < confi_perc_for_one_sided < 100.
+    k=1,             # Number of errors
+    n=501255,        # number of trials
+    confi_perc=99.0  # Confidence percentage
+        # for two-sided of 0<k<n where 0 < confi_perc < 100,
+        # or for one-sided of k=0 or k=n.
+        # For one-sided of 0<k<n, set
+        # confi_perc = (2 * confi_perc_for_one_sided - 100)
+        # where 50 < confi_perc_for_one_sided < 100.
     ))
 ~~~
 
@@ -140,9 +141,11 @@ interval_graph(GraProps(
     k_start=1,  # >= 0
     k_end=1,    # >= k_start
     k_step=1,   # >= 1
-    # Edit the list of confidence percentages, [confi_perc, ...], to depict
-    # where 0 < confi_perc < 100 for two-sided.
-    # NOTE For one-sided, set confi_perc=(2 * confi_perc_for_one_sided - 100)
+    # Edit the list of confidence percentages to depict, [confi_perc, ...],
+    #   for two-sided of 0<k<n where 0 < confi_perc < 100, or
+    #   for one-sided of k=0 or k=n.
+    # NOTE For one-sided of 0<k<n, set 
+    #   confi_perc=(2 * confi_perc_for_one_sided - 100)
     #   where 50 < confi_perc_for_one_sided < 100
     #   (though both lower and upper intervals are shown).
     confi_perc_list=[90, 95, 99, 99.9, 99.99],
@@ -313,7 +316,7 @@ An example of the reference is:
 The confidence interval is obtained by EBCIC X.X.X on Python 3."
 ~~~
 
-where EBCIC is the name of the software, and X.X.X is the version of it.
+where X.X.X is the version of EBCIC.
 
 The initial software is based on results obtained from a project, JPNP16007, commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
 
