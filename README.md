@@ -4,7 +4,9 @@ These programs are mainly for researchers, developers, and designers who calcula
 
 - n: the number of Bernoulli or Binomial trials.
 - k: the number of target events happened.
-- confi_perc: Confidence percentage given in percentage between 0 to 100.
+- confi_perc: confidence percentage:
+  - for two-sided of 0<k<n where 0 < confi_perc < 100, or for one-sided of k=0 or k=n.
+  - for one-sided of 0<k<n, set confi_perc = (2 * confi_perc_for_one_sided - 100) where 50 < confi_perc_for_one_sided < 100.
 
 [EBCIC](https://kazkobara.github.io/ebcic/) calculates binomial intervals exactly, i.e. by implementing Clopper–Pearson interval [CP34] without simplifying mathematical equations that may deteriorate intervals for certain combinations of the above parameters. EBCIC can also shows graphs for comparing exact intervals with approximated ones.
 

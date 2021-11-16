@@ -58,8 +58,9 @@ Widows 10 (64-bit 20H2)
 
 ## How to use [EBCIC](https://kazkobara.github.io/ebcic/) from MATLAB
 
-1. Open [ebcic_in_matlab.mlx](https://kazkobara.github.io/ebcic/matlab/ebcic_in_matlab.mlx) with MATLAB Live Editor.
+1. Open [ebcic_in_matlab.m](https://kazkobara.github.io/ebcic/matlab/ebcic_in_matlab.m) as a 'live script' with MATLAB Live Editor.
 1. Edit and run the sections you want to execute.
+1. (To commit, save it as a MATLAB code (\*.m) file, and then commit \*.m file to git since Live Code File Format (*.mlx) is not git friendly. :-))
 
 ## Examples
 
@@ -69,9 +70,13 @@ Widows 10 (64-bit 20H2)
 confidence_interval=cell(py.ebcic.exact(py.ebcic.Params(pyargs( ...
     'k',1,                  ...% # of errors
     'n',100,                ...% # of trials
-    'confi_perc',confi_perc ...% Confidence percentage for two-sided where 0 < confi_perc < 100.
-                            ...% For one-sided, set confi_perc=(2 * confi_perc_for_one_sided - 100)
-                            ...% where 50 < confi_perc_for_one_sided < 100.
+    'confi_perc',confi_perc ...% Confidence percentage:
+      ...%   for two-sided of 0<k<n where 0 < confi_perc < 100, or
+      ...%   for one-sided of k=0 or k=n.
+      ...% NOTE
+      ...%   For one-sided of 0<k<n,
+      ...%     set confi_perc=(2 * confi_perc_for_one_sided - 100)
+      ...%     where 50 < confi_perc_for_one_sided < 100.
     ))));
 
 % As variables.
@@ -95,9 +100,11 @@ py.ebcic.interval_graph(py.ebcic.GraProps(pyargs( ...
     ...% Set the range of k to depict with k_*
     'k_start',int32(1), ...
     'k_end',  int32(1), ...
-    ...% Edit the list of confidence percentages, [confi_perc, ...], to depict
-    ...% where 0 < confi_perc < 100 for two-sided.
-    ...% NOTE For one-sided, set confi_perc=(2 * confi_perc_for_one_sided - 100)
+    ...% Edit the list of confidence percentages to depict, [confi_perc, ...],
+    ...%   for two-sided of 0<k<n where 0 < confi_perc < 100, or
+    ...%   for one-sided of k=0 or k=n.
+    ...% NOTE For one-sided of 0<k<n, set 
+    ...%   confi_perc=(2 * confi_perc_for_one_sided - 100)
     ...%   where 50 < confi_perc_for_one_sided < 100
     ...%   (though both lower and upper intervals are shown).
     'confi_perc_list',[95.0, 99.0], ...
