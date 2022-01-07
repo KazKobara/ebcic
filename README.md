@@ -322,4 +322,4 @@ where X.X.X is the version of EBCIC.
 
 The initial software is based on results obtained from a project, JPNP16007, commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
 
-Copyright (c) 2020 National Institute of Advanced Industrial Science and Technology (AIST)
+Copyright (c) 2020-2022 National Institute of Advanced Industrial Science and Technology (AIST)

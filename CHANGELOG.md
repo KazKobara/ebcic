@@ -3,9 +3,9 @@
 All notable changes, such as backward incompatibilities, will be documented in this file.
 
 <!-- markdownlint-disable MD024 no-duplicate-heading -->
-<!-- ## [Unreleased 0.0.2] -->
+<!-- ## [Unreleased] -->
 
-## [Unreleased 0.0.2]
+## [0.0.2]
 
 ### Added
 
