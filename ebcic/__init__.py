@@ -28,10 +28,10 @@ the New Energy and Industrial Technology Development Organization (NEDO).
 
 THE SOFTWARE COMES WITH ABSOLUTELY NO WARRANTY.
 
-Copyright (C) 2020-2021 National Institute of Advanced Industrial Science
+Copyright (C) 2020-2022 National Institute of Advanced Industrial Science
 and Technology (AIST).
 """
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 import os
 import sys
 import logging
@@ -43,10 +43,9 @@ import warnings
 from numpy import log
 from scipy import optimize
 from scipy import stats as st
-from scipy.stats import binom
+from scipy.stats import binom, beta
 from matplotlib import pyplot as plt
 from decimal import Decimal, ROUND_HALF_UP
-
 '''
 import scipy
 import matplotlib
@@ -406,6 +405,111 @@ class Params:
         confi_perc = alpha_to_confi_perc_wo_check(alpha)
         return confi_perc
 
+    def exact_border(self) -> tuple:
+        """Exact Binomial Confidence Interval for k==0 or k==n.
+
+        Return the exact binomial confidence interval for given parameters
+        for k==0 or k==n.
+
+        Args:
+            params (Params):
+                Instance including k, n and
+                alpha (or confi_perc) where k==0 or k==n.
+
+        Returns:
+            tuple: tuple containing:
+                lower_p (float):
+                    lower interval of Binomial confidence
+                    for k==0 or k==n.
+                upper_p (float):
+                    upper interval of Binomial confidence
+                    for k==0 or k==n.
+        """
+        # NOTE: Do not replace self.alpha with self.alpha/2.
+        #       These are one-sided confidence intervals.
+        tmp = (self.alpha)**(1 / self.n)
+        if self.k == 0:
+            lower_p = 0.0
+            upper_p = 1 - tmp
+        elif self.k == self.n:
+            lower_p = tmp
+            upper_p = 1.0
+        else:  # 0 < k < n
+            # Use exact()
+            logger.error(
+                "either k==0 or k==n must hold where "
+                f"k={self.k} and n={self.n}!!")
+            sys.exit(1)
+        return lower_p, upper_p
+
+    def exact(self):
+        """Return exact Binomial confidence interval for the parameter.
+
+        Args:
+            params (Params): Instance including k, n and
+                alpha (or confi_perc).
+
+        Returns:
+            tuple: tuple containing:
+
+                lower_p (float): lower interval of Binomial confidence.
+
+                upper_p (float): upper interval of Binomial confidence.
+        """
+        n = self.n
+        k = self.k
+        alpha = self.alpha
+
+        if k == 0 or k == n:
+            lower_p, upper_p = self.exact_border()
+        else:
+            # 0 < k < n
+            r = alpha / 2  # for two-sided
+            reverse_mode = False
+            # Cumulative error becomes large for k >> n/2,
+            # so make k < n/2.
+            if k > n / 2:
+                reverse_mode = True
+                k = n - k
+
+            def upper(p):
+                """
+                Upper interval is the p making the following 0.
+                """
+                return binom.cdf(k, n, p) - r
+
+            def lower(p):
+                """
+                Lower interval for k>0 is the p making the following 0.
+                """
+                return binom.cdf(n - k, n, 1 - p) - r
+            # Alternatives:
+            # return 1-sum([binom.pmf(i,n,result_lower) for i in range(k)]) - r
+            # return sum([binom.pmf(i,n,result_lower) for i in range(k,n)]) - r
+
+            # 0 < k < n
+            tmp = k / n
+            u_init = tmp
+            l_init = tmp
+            if k == 1:
+                l_init = 0
+            elif k == 2:
+                l_init = k / (2 * n)
+            # print(f"l_init={l_init}, u_init={u_init}")
+            lower_p = optimize.fsolve(lower, l_init)[0]
+            if n == 2 and k == 1:
+                # Exception of k/n = 1/2 and n is too small.
+                upper_p = 1 - lower_p
+            else:
+                upper_p = optimize.fsolve(upper, u_init)[0]
+
+            if reverse_mode:
+                tmp = lower_p
+                lower_p = 1 - upper_p
+                upper_p = 1 - tmp
+
+        return lower_p, upper_p
+
 
 def exact(params):
     """Return exact Binomial confidence interval for the parameter.
@@ -417,69 +521,11 @@ def exact(params):
     Returns:
         tuple: tuple containing:
 
-            lower_p (float): lower bound of Binomial confidence interval.
+            lower_p (float): lower interval of Binomial confidence.
 
-            upper_p (float): upper bound of Binomial confidence interval.
+            upper_p (float): upper interval of Binomial confidence.
     """
-    n = params.n
-    k = params.k
-    alpha = params.alpha
-
-    r = alpha / 2  # for two-sided
-    reverse_mode = False
-    # Cumulative error becomes large for k >> n/2,
-    # so make k < n/2.
-    if k > n / 2:
-        reverse_mode = True
-        k = n - k
-
-    def upper(p):
-        """
-        Upper bound is the p making the following 0.
-        """
-        return binom.cdf(k, n, p) - r
-
-    def lower(p):
-        """
-        Lower bound for k>0 is the p making the following 0.
-        """
-        return binom.cdf(n - k, n, 1 - p) - r
-        # Alternatives:
-        # return 1-sum([binom.pmf(i,n,result_lower) for i in range(k)]) - r
-        # return sum([binom.pmf(i,n,result_lower) for i in range(k,n)]) - r
-
-    if k == 0 or k == n:
-        tmp = (alpha)**(1 / n)
-        if k == 0:
-            lower_p = 0.0
-            upper_p = 1 - tmp
-        else:
-            # k == n:
-            lower_p = tmp
-            upper_p = 1.0
-    else:
-        # 0 < k < n
-        tmp = k / n
-        u_init = tmp
-        l_init = tmp
-        if k == 1:
-            l_init = 0
-        elif k == 2:
-            l_init = k / (2 * n)
-        # print(f"l_init={l_init}, u_init={u_init}")
-        lower_p = optimize.fsolve(lower, l_init)[0]
-        if n == 2 and k == 1:
-            # Exception of k/n = 1/2 and n is too small.
-            upper_p = 1 - lower_p
-        else:
-            upper_p = optimize.fsolve(upper, u_init)[0]
-
-    if reverse_mode:
-        tmp = lower_p
-        lower_p = 1 - upper_p
-        upper_p = 1 - tmp
-
-    return lower_p, upper_p
+    return params.exact()
 
 
 def verify_interval_of_p(
@@ -573,13 +619,13 @@ def verify_interval_of_p(
         ret = 1
         tmp_ret = 1
     if (verbose == 1 and tmp_ret == 1) or verbose >= 2:
-        print(f"Upper : check if upper bound ({upper_p}) >= k/n ({pp})")
+        print(f"Upper : check if upper interval ({upper_p}) >= k/n ({pp})")
     tmp_ret = 0
     if lower_p > pp:
         ret = 1
         tmp_ret = 1
     if (verbose == 1 and tmp_ret == 1) or verbose >= 2:
-        print(f"Lower : check if lower bound ({lower_p}) <= k/n ({pp})")
+        print(f"Lower : check if lower interval ({lower_p}) <= k/n ({pp})")
 
     return ret
 
@@ -599,9 +645,9 @@ def rule_of_ln_alpha(params):
     Returns:
         tuple: tuple containing:
 
-            lower_p (float): lower bound of Binomial confidence interval.
+            lower_p (float): lower interval of Binomial confidence.
 
-            upper_p (float): upper bound of Binomial confidence interval.
+            upper_p (float): upper interval of Binomial confidence.
     """
     n = params.n
     k = params.k
@@ -620,6 +666,36 @@ def rule_of_ln_alpha(params):
         # raise ValueError("either k==0 or k==n must hold!!")
         logger.error(f"either k==0 or k==n must hold where k={k} and n={n}!!")
         sys.exit(1)
+    return lower_p, upper_p
+
+
+def beta_approx(params):
+    """Approximated interval using beta function.
+
+    Good approximation for (0 < k < n).
+
+    Args:
+        params (Params): Instance including k, n, alpha (or confi_perc).
+
+    Returns:
+        tuple: tuple containing:
+
+            lower_p (float): lower interval of Binomial confidence.
+
+            upper_p (float): upper interval of Binomial confidence.
+    """
+    n = params.n
+    k = params.k
+    alpha = params.alpha
+
+    '''
+    # NOTE: Use exact_border() or exact() for k == 0 or k == n.
+    if k == 0 or k == n:
+        lower_p, upper_p = params.exact_border()
+    else:
+    '''
+    lower_p = beta.ppf(alpha/2, k, n-k+1)
+    upper_p = beta.ppf(1-alpha/2, k+1, n-k)
     return lower_p, upper_p
 
 
@@ -725,9 +801,9 @@ def normal_approx(params):
     Returns:
         tuple: tuple containing:
 
-            lower_p (float): lower bound of Binomial confidence interval.
+            lower_p (float): lower interval of Binomial confidence.
 
-            upper_p (float): upper bound of Binomial confidence interval.
+            upper_p (float): upper interval of Binomial confidence.
 
     Note:
         Normal approximation does not give good approximation for small
@@ -760,9 +836,9 @@ def wilson_score(params):
     Returns:
         tuple: tuple containing:
 
-            lower_p (float): lower bound of Binomial confidence interval.
+            lower_p (float): lower interval of Binomial confidence.
 
-            upper_p (float): upper bound of Binomial confidence interval.
+            upper_p (float): upper interval of Binomial confidence.
 
     Note:
         Upper interval seems close to the exact one, but
@@ -791,9 +867,9 @@ def wilson_score_cc(params):
     Returns:
         tuple: tuple containing:
 
-            lower_p (float): lower bound of Binomial confidence interval.
+            lower_p (float): lower interval of Binomial confidence.
 
-            upper_p (float): upper bound of Binomial confidence interval.
+            upper_p (float): upper interval of Binomial confidence.
 
     Note:
         Lower interval is not a good approximation for small k,
@@ -883,7 +959,7 @@ class GraProps:
         k_start: Start range of k.
         k_end: End range of k.
         k_step: Step of k in range(k_start, k_end, k_step).
-        log_n_end: Max of x-axis given by (3 k_end * 10^log_n_end).
+        log_n_end: Max of x-axis given by (k_end * 10**log_n_end).
         confi_perc_list: List of confidence percentages, e.g. [95, 99].
         savefig: Whether save the figure or not.
         fig_file_name: File name of the saved figure where extension may
@@ -911,7 +987,8 @@ class GraProps:
             line_list=['with_exact'],
             savefig=False,
             fig_file_name='intervals.png',
-            leg_pos='auto'
+            leg_pos='auto',
+            dpi=150,
             ):
         self.savefig = savefig
         self.fig_file_name = fig_file_name
@@ -924,7 +1001,15 @@ class GraProps:
         self.k_diff = None
         self.log_n_end = None
         self.set_k(k_start, k_end, k_step)  # may exit
-        self.set_n(log_n_end)  # may exit
+        self.set_n(log_n_end)               # may exit
+        # For interval_graph()
+        self.dpi = dpi
+        self.n_list = None
+        self.colorlist = None
+        self.col_max_per_k = None
+        self.col_offset = None
+        self.trans_alpha = None
+        self.leg = None
 
     def set_k(self, k_start, k_end, k_step):
         # Input check
@@ -947,26 +1032,74 @@ class GraProps:
             logger.error(f"'1 <= log_n_end' must hold "
                          f"where log_n_end={log_n_end}!!")
             sys.exit(1)
-        # n <= 3 * k_end * 10^log_n_end <= 10^7 where 3 is floor(sqrt(10)).
+        # n <= k_end * 10^log_n_end <= 10**7.
         RELIABLE_LOG_N_MAX = 7
-        if (10**RELIABLE_LOG_N_MAX < 3 * self.k_end * 10**log_n_end):
+        if (10**RELIABLE_LOG_N_MAX < self.k_end * 10**log_n_end):
             log_n_end_org = log_n_end
             log_n_end = math.floor(
-                np.log10((10**RELIABLE_LOG_N_MAX)/(3 * self.k_end)))
+                np.log10((10**RELIABLE_LOG_N_MAX)/(self.k_end)))
             logger.warning(
                 f"log_n_end={log_n_end_org} was so large and changed to"
                 f" {log_n_end}.")
-            '''
-            logger.error(
-                f"log_n_end={log_n_end} is too large!!"
-                " '3 k_end * 10^log_n_end <= "
-                f"10^{RELIABLE_LOG_N_MAX}' must hold, "
-                f"where k_end={self.k_end} "
-                "and 3 k_end * 10^log_n_end="
-                f"{3 * self.k_end * 10**log_n_end}!!")
-            sys.exit(1)
-            '''
         self.log_n_end = log_n_end
+
+    def set_graph(
+            self, params,
+            lower_upper: tuple,
+            this_linestyle: str, this_label: str,
+            ) -> bool:
+        """Set graphs for interval_graph()
+
+        Subroutine to set graph parameters.
+
+        Args:
+            params (Params): Instance including k, n, alpha (or confi_perc).
+            lower_upper (tuple): tuple containing
+                both for 0<k or upper_p only for k=0:
+
+                lower_p (float): lower interval of Binomial confidence
+
+                upper_p (float): upper interval of Binomial confidence
+
+            this_linestyle (str): linestyle,
+                such as 'solid', 'dashed', 'dashdot' and 'dotted'.
+            this_label (str): label string in the graph legend.
+
+        Returns:
+            bool: 0 for no error, 1 otherwise.
+        """
+        if params.k == 0:
+            lower_upper_size = 1  # upper only
+        else:
+            lower_upper_size = len(lower_upper.shape)
+
+        if (lower_upper_size < 0) or (2 < lower_upper_size):
+            logger.error(
+                f"lower_upper_size:{lower_upper_size} is out of range")
+            return 1
+        lower_upper_text = [' lower', ' upper']
+        lower_upper_marker = [2, 3]
+        for pre_i in range(lower_upper_size):
+            i = 1 - pre_i
+            # upper, lower for lower_upper_size == 2
+            # upper only for lower_upper_size == 1
+            plt.plot(
+                self.n_list,
+                lower_upper[:, i],
+                color=self.colorlist[
+                    (params.k - self.k_start) * self.col_max_per_k
+                    + self.col_offset],
+                alpha=self.trans_alpha,
+                marker=lower_upper_marker[i],
+                linestyle=this_linestyle,
+                label=(
+                    f"$k$={params.k} {params.confi_perc}% {this_label}"
+                    + lower_upper_text[i]))
+            self.leg += 1
+
+        if self.k_diff == 0:
+            self.col_offset += 1
+        return 0
 
 
 def interval_graph(gra_props):
@@ -990,10 +1123,10 @@ def interval_graph(gra_props):
         See ebcic.ipynb for more examples.
 
         >>> interval_graph(GraProps(
-            k_start=1,  # >= 0
-            k_end=1,    # > k_start
-            k_step=1,   # > 0
-            log_n_end=6,  # max(n) = 3*k_end*10**log_n_end
+            k_start=1,    # >= 0
+            k_end=1,      # > k_start
+            k_step=1,     # > 0
+            log_n_end=6,  # max(n) = k_end*10**log_n_end
             confi_perc_list=[90, 95, 99, 99.9, 99.99],
             line_list=[
                 'with_exact',
@@ -1005,9 +1138,11 @@ def interval_graph(gra_props):
                 # 'with_normal',
                 # 'with_wilson',
                 # 'with_wilson_cc',
+                # 'with_beta_approx',
             ],
             # savefig = True,
-            # fig_file_name='intervals.jpg'
+            # fig_file_name='intervals.png',
+            # leg_pos='upper_right_nm',
             ))
 
     Note:
@@ -1037,232 +1172,135 @@ def interval_graph(gra_props):
         'after $k$ errors are observed among $n$ trials')
     x_label = 'Number of Trials ($n$)'
     y_label = 'Error Rate ($p$)'
-    trans_alpha = 0.6  # Transparency
+    gra_props.trans_alpha = 0.6  # Transparency
 
     # Set colorlist
     # With other lines
     line_types_per_k = 1  # Exact interval
     if k_diff == 0:
+        # commmon
+        if 'with_wilson' in line_list:
+            line_types_per_k += 1
+        if 'with_wilson_cc' in line_list:
+            line_types_per_k += 1
+        if 'with_beta_approx' in line_list:
+            line_types_per_k += 1
+        # k specific
         if k_start == 0:
             if 'with_rule_of_la' in line_list:
                 line_types_per_k += 1
-            if 'with_wilson_cc' in line_list:
-                line_types_per_k += 1
-        else:
+        else:  # k_start > 0
             if 'with_normal' in line_list:
-                line_types_per_k += 1
-            if 'with_wilson' in line_list:
-                line_types_per_k += 1
-            if 'with_wilson_cc' in line_list:
                 line_types_per_k += 1
 
     # Max num of colors
-    col_max_per_k = line_types_per_k * len(gra_props.confi_perc_list)
-    col_max = (k_end - k_start + 1) * col_max_per_k
+    gra_props.col_max_per_k = line_types_per_k * len(gra_props.confi_perc_list)
+    col_max = (
+        gra_props.k_end - gra_props.k_start + 1) * gra_props.col_max_per_k
     cm = plt.get_cmap('brg')
     # yellow lines are haed to see.
     # cm = plt.get_cmap('gist_rainbow')
     # cm = plt.get_cmap('rainbow')
     cNorm = colors.Normalize(vmin=0, vmax=col_max - 1)
     scalarMap = mplcm.ScalarMappable(norm=cNorm, cmap=cm)
-    colorlist = [scalarMap.to_rgba(i) for i in range(col_max)]
+    gra_props.colorlist = [scalarMap.to_rgba(i) for i in range(col_max)]
 
     n_list_base = (
-        sorted([10**i for i in range(0, log_n_end + 1, 1)]
-               + [3 * 10**i for i in range(0, log_n_end + 1, 1)]))
+        sorted(
+            [10**i for i in range(0, log_n_end + 1, 1)]
+            # intermediates where 3 is floor(sqrt(10))
+            + [3 * 10**i for i in range(0, log_n_end, 1)]
+            + [2]))
     # print(n_list_base)
 
     params = Params()
-    leg = 0  # Num of legend
-    if (k_start == 0):
-        k = 0  # lower_p = 0
-        params.set_k(k)
-        n_list = n_list_base
-        col_offset = 0
-        for confi_perc in gra_props.confi_perc_list:
-            params.set_confi_perc(confi_perc)
-            if 'with_exact' in line_list:
-                k0_upper = [exact(params)[1] for params.n in n_list]
-                plt.plot(
-                    n_list, k0_upper, color=colorlist[k + col_offset],
-                    alpha=trans_alpha, marker=3,
-                    # linestyle='dashdot',
-                    linestyle='solid',
-                    label=f"$k$={k} {confi_perc}% exact upper")
-                leg += 1
-                if k_diff == 0:
-                    col_offset += 1
-            # Approximated upper bound
-            # col_offset = 0
-            if 'with_rule_of_la' in line_list:
-                k0_rule_of_ln_a = [rule_of_ln_alpha(
-                    params)[1] for params.n in n_list]
-                plt.plot(n_list,
-                         k0_rule_of_ln_a,
-                         color=colorlist[k + col_offset],
-                         alpha=trans_alpha,
-                         marker=3,
-                         # linestyle='dotted',
-                         linestyle='dashdot',
-                         label=f"$k$={k} {confi_perc}% rule of -ln(a)")
-                leg += 1
-                if k_diff == 0:
-                    col_offset += 1
-            if 'with_wilson_cc' in line_list:
-                # Wilson with continuity correction
-                tmp = np.array(
-                    [wilson_score_cc(params) for params.n in n_list])
-                wilson_cc_lower = tmp[:, 0]
-                wilson_cc_upper = tmp[:, 1]
-                plt.plot(n_list,
-                         wilson_cc_upper,
-                         color=colorlist[
-                             (k - k_start) * col_max_per_k + col_offset],
-                         alpha=trans_alpha,
-                         marker=3,
-                         # linestyle='dotted',
-                         linestyle='dashdot',
-                         label=f"$k$={k} {confi_perc}% Wilson cc upper")
-                leg += 1
-                plt.plot(n_list,
-                         wilson_cc_lower,
-                         color=colorlist[
-                             (k - k_start) * col_max_per_k + col_offset],
-                         alpha=trans_alpha,
-                         marker=2,
-                         # linestyle='dotted',
-                         linestyle='dashdot',
-                         label=f"$k$={k} {confi_perc}% Wilson cc lower")
-                leg += 1
-                if k_diff == 0:
-                    col_offset += 1
+    gra_props.leg = 0  # Num of legend
+    for params.k in range(k_start, k_end + 1, k_step):
+        gra_props.n_list = np.array(n_list_base)
+        if params.k > 1:
+            gra_props.n_list *= params.k
 
-    for k in range(max(1, k_start), k_end + 1, k_step):
-        n_list = np.array(n_list_base) * k
-        # print(n_list)
-        if 'with_line_kn' in line_list:
+        if ('with_line_kn' in line_list) and (params.k > 0):
             # Line of k/n
-            k_expect = [k / n for n in n_list]
-            plt.plot(n_list,
+            k_expect = [params.k / n for n in gra_props.n_list]
+            plt.plot(gra_props.n_list,
                      k_expect,
-                     color=colorlist[(k - k_start) * col_max_per_k],
-                     alpha=trans_alpha,
+                     color=gra_props.colorlist[(
+                        params.k - gra_props.k_start)
+                        * gra_props.col_max_per_k],
+                     alpha=gra_props.trans_alpha,
                      linestyle='dashed',
-                     label=f"$k$={k} k/n={k}/n")
-            leg += 1
+                     label=f"$k$={params.k} k/n={params.k}/n")
+            gra_props.leg += 1
 
-        # Exact lower and upper
-        params.set_k(k)
-        col_offset = 0
+        gra_props.col_offset = 0
         for confi_perc in gra_props.confi_perc_list:
             params.set_confi_perc(confi_perc)
+            # Exact lower and upper
             if 'with_exact' in line_list:
-                tmp = np.array([exact(params) for params.n in n_list])
-                k_lower = tmp[:, 0]
-                k_upper = tmp[:, 1]
-                plt.plot(n_list,
-                         k_upper,
-                         color=colorlist[
-                             (k - k_start) * col_max_per_k + col_offset],
-                         alpha=trans_alpha,
-                         marker=3,
-                         # linestyle='dashdot',
-                         linestyle='solid',
-                         label=f"$k$={k} {confi_perc}% exact upper")
-                leg += 1
-                plt.plot(n_list,
-                         k_lower,
-                         color=colorlist[
-                             (k - k_start) * col_max_per_k + col_offset],
-                         alpha=trans_alpha,
-                         marker=2,
-                         # linestyle='dashdot',
-                         linestyle='solid',
-                         label=f"$k$={k} {confi_perc}% exact lower")
-                leg += 1
-                if k_diff == 0:
-                    col_offset += 1
-
+                gra_props.set_graph(
+                    params,
+                    lower_upper=np.array(
+                        [exact(params) for params.n in gra_props.n_list]),
+                    this_linestyle='solid',
+                    this_label="exact",
+                    )
             # Approximated Intervals
-            # col_offset = 0
-            if 'with_normal' in line_list:
-                # Normal
-                tmp = np.array([normal_approx(params) for params.n in n_list])
-                norm_lower = tmp[:, 0]
-                norm_upper = tmp[:, 1]
-                plt.plot(
-                    n_list, norm_upper, color=colorlist[
-                        (k - k_start) * col_max_per_k + col_offset],
-                    alpha=trans_alpha, marker=3,
-                    # linestyle='dotted',
-                    linestyle='dashdot',
-                    label=f"$k$={k} {confi_perc}% normal upper")
-                leg += 1
-                plt.plot(
-                    n_list, norm_lower, color=colorlist[
-                        (k - k_start) * col_max_per_k + col_offset],
-                    alpha=trans_alpha, marker=2,
-                    # linestyle='dotted',
-                    linestyle='dashdot',
-                    label=f"$k$={k} {confi_perc}% normal lower")
-                leg += 1
-                if k_diff == 0:
-                    col_offset += 1
+            if params.k == 0:
+                if 'with_rule_of_la' in line_list:
+                    gra_props.set_graph(
+                        params,
+                        lower_upper=np.array(
+                            [rule_of_ln_alpha(params)
+                             for params.n in gra_props.n_list]),
+                        this_linestyle='dashdot',
+                        this_label="rule of -ln(a)",
+                        )
+
+            if 0 < params.k:
+                if 'with_normal' in line_list:
+                    # Normal
+                    gra_props.set_graph(
+                        params,
+                        lower_upper=np.array(
+                            [normal_approx(params)
+                             for params.n in gra_props.n_list]),
+                        this_linestyle='dashdot',
+                        this_label="normal",
+                        )
+
             if 'with_wilson' in line_list:
                 # Wilson
-                tmp = np.array([wilson_score(params) for params.n in n_list])
-                wilson_lower = tmp[:, 0]
-                wilson_upper = tmp[:, 1]
-                plt.plot(n_list,
-                         wilson_upper,
-                         color=colorlist[
-                             (k - k_start) * col_max_per_k + col_offset],
-                         alpha=trans_alpha,
-                         marker=3,
-                         # linestyle='dotted',
-                         linestyle='dashdot',
-                         label=f"$k$={k} {confi_perc}% Wilson upper")
-                leg += 1
-                plt.plot(n_list,
-                         wilson_lower,
-                         color=colorlist[
-                             (k - k_start) * col_max_per_k + col_offset],
-                         alpha=trans_alpha,
-                         marker=2,
-                         # linestyle='dotted',
-                         linestyle='dashdot',
-                         label=f"$k$={k} {confi_perc}% Wilson lower")
-                leg += 1
-                if k_diff == 0:
-                    col_offset += 1
+                gra_props.set_graph(
+                    params,
+                    lower_upper=np.array(
+                        [wilson_score(params)
+                            for params.n in gra_props.n_list]),
+                    this_linestyle='dashdot',
+                    this_label="Wilson",
+                    )
+
             if 'with_wilson_cc' in line_list:
                 # Wilson with continuity correction
-                tmp = np.array(
-                    [wilson_score_cc(params) for params.n in n_list])
-                wilson_cc_lower = tmp[:, 0]
-                wilson_cc_upper = tmp[:, 1]
-                plt.plot(n_list,
-                         wilson_cc_upper,
-                         color=colorlist[
-                             (k - k_start) * col_max_per_k + col_offset],
-                         alpha=trans_alpha,
-                         marker=3,
-                         # linestyle='dotted',
-                         linestyle='dashdot',
-                         label=f"$k$={k} {confi_perc}% Wilson cc upper")
-                leg += 1
-                plt.plot(n_list,
-                         wilson_cc_lower,
-                         color=colorlist[
-                             (k - k_start) * col_max_per_k + col_offset],
-                         alpha=trans_alpha,
-                         marker=2,
-                         # linestyle='dotted',
-                         linestyle='dashdot',
-                         label=f"$k$={k} {confi_perc}% Wilson cc lower")
-                leg += 1
-                if k_diff == 0:
-                    col_offset += 1
+                gra_props.set_graph(
+                    params,
+                    lower_upper=np.array(
+                        [wilson_score_cc(params)
+                         for params.n in gra_props.n_list]),
+                    this_linestyle='dashdot',
+                    this_label="Wilson cc",
+                    )
+
+            if 'with_beta_approx' in line_list:
+                # Approximation using beta function
+                gra_props.set_graph(
+                    params,
+                    lower_upper=np.array(
+                        [beta_approx(params)
+                            for params.n in gra_props.n_list]),
+                    this_linestyle='dashed',
+                    this_label="beta approx",
+                    )
 
     # Show
     # plt.figure(figsize=(400, 300), dpi=300)
@@ -1273,20 +1311,23 @@ def interval_graph(gra_props):
 
     leg_fontsize = 8
     # print(leg_pos, (leg_pos == 'auto'))
-    if (leg <= 5 and (leg_pos == 'auto')) or (leg_pos == 'upper_right'):
-        plt.legend(
+    if (gra_props.leg <= 5 and (leg_pos == 'auto')) or (
+             leg_pos == 'upper_right'):
+        lgd = plt.legend(
             bbox_to_anchor=(1, 1),
             loc='upper right',
             borderaxespad=1,
             fontsize=leg_fontsize)
-    elif (leg <= 6 and (leg_pos == 'auto')) or (leg_pos == 'upper_right_nm'):
-        plt.legend(
-            bbox_to_anchor=(1, 1),
+    elif (gra_props.leg <= 6 and (leg_pos == 'auto')) or (
+            leg_pos == 'upper_right_nm'):
+        lgd = plt.legend(
+            # bbox_to_anchor=(1, 1),
+            bbox_to_anchor=(0.99, 0.99),
             loc='upper right',
             borderaxespad=0,
             fontsize=leg_fontsize)
     elif (leg_pos == 'auto') or (leg_pos == 'out_right'):
-        plt.legend(
+        lgd = plt.legend(
             # bbox_to_anchor=(1.05, 1),
             bbox_to_anchor=(1.01, 1),
             loc='upper left',
@@ -1299,8 +1340,14 @@ def interval_graph(gra_props):
     plt.show()
 
     if gra_props.savefig:
-        # plt.savefig(gra_props.fig_file_name, dpi = 300)
-        plt.savefig(gra_props.fig_file_name)
+        plt.savefig(
+            gra_props.fig_file_name,
+            dpi=gra_props.dpi,
+            bbox_extra_artists=(lgd,),
+            bbox_inches='tight',)
+
+    plt.cla()
+    plt.clf()
 
 
 def compare_dist(params):

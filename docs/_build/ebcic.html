@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-    <title>ebcic module &#8212; EBCIC 0.0.2 documentation</title>
+    <title>ebcic module &#8212; EBCIC 0.0.3 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to EBCIC’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.3 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">ebcic module</a></li> 
       </ul>
     </div>  
@@ -57,11 +57,11 @@ with the parameters, n, k and the confidence level.</p>
 JPNP16007, commissioned by
 the New Energy and Industrial Technology Development Organization (NEDO).</p>
 <p>THE SOFTWARE COMES WITH ABSOLUTELY NO WARRANTY.</p>
-<p>Copyright (C) 2020-2021 National Institute of Advanced Industrial Science
+<p>Copyright (C) 2020-2022 National Institute of Advanced Industrial Science
 and Technology (AIST).</p>
 <dl class="py class">
 <dt id="ebcic.GraProps">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">GraProps</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_n_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confi_perc_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[99]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['with_exact']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'intervals.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leg_pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">GraProps</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_n_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confi_perc_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[99]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['with_exact']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'intervals.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leg_pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Parameter pool class for graph properties.</p>
 <dl class="field-list simple">
@@ -70,7 +70,7 @@ and Technology (AIST).</p>
 <li><p><strong>k_start</strong> – Start range of k.</p></li>
 <li><p><strong>k_end</strong> – End range of k.</p></li>
 <li><p><strong>k_step</strong> – Step of k in range(k_start, k_end, k_step).</p></li>
-<li><p><strong>log_n_end</strong> – Max of x-axis given by (3 k_end * 10^log_n_end).</p></li>
+<li><p><strong>log_n_end</strong> – Max of x-axis given by (k_end * 10**log_n_end).</p></li>
 <li><p><strong>confi_perc_list</strong> – List of confidence percentages, e.g. [95, 99].</p></li>
 <li><p><strong>savefig</strong> – Whether save the figure or not.</p></li>
 <li><p><strong>fig_file_name</strong> – File name of the saved figure where extension may
@@ -89,6 +89,34 @@ in jupyter saves blank figure.
 In jupyter, drag and drop the displayed figure to a folder,
 open it with Paint app and so on and then overwrite the figure.</p>
 </div>
+<dl class="py method">
+<dt id="ebcic.GraProps.set_graph">
+<code class="sig-name descname"><span class="pre">set_graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_upper</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_linestyle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#ebcic.GraProps.set_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set graphs for interval_graph()</p>
+<p>Subroutine to set graph parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p></li>
+<li><p><strong>lower_upper</strong> (<em>tuple</em>) – <p>tuple containing
+both for 0&lt;k or upper_p only for k=0:</p>
+<p>lower_p (float): lower interval of Binomial confidence</p>
+<p>upper_p (float): upper interval of Binomial confidence</p>
+</p></li>
+<li><p><strong>this_linestyle</strong> (<em>str</em>) – linestyle,
+such as ‘solid’, ‘dashed’, ‘dashdot’ and ‘dotted’.</p></li>
+<li><p><strong>this_label</strong> (<em>str</em>) – label string in the graph legend.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 for no error, 1 otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="ebcic.GraProps.set_k">
 <code class="sig-name descname"><span class="pre">set_k</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps.set_k" title="Permalink to this definition">¶</a></dt>
@@ -149,6 +177,60 @@ after input check.</p>
 <p>This converts ‘confi_perc’ given in percentage between
 0 to 100 exclusive
 to alpha in between 0 to 1 exclusive after input check.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.Params.exact">
+<code class="sig-name descname"><span class="pre">exact</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.exact" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return exact Binomial confidence interval for the parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and
+alpha (or confi_perc).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>tuple containing:</p>
+<blockquote>
+<div><p>lower_p (float): lower interval of Binomial confidence.</p>
+<p>upper_p (float): upper interval of Binomial confidence.</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="ebcic.Params.exact_border">
+<code class="sig-name descname"><span class="pre">exact_border</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#ebcic.Params.exact_border" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exact Binomial Confidence Interval for k==0 or k==n.</p>
+<p>Return the exact binomial confidence interval for given parameters
+for k==0 or k==n.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and
+alpha (or confi_perc) where k==0 or k==n.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple containing:</dt><dd><dl class="simple">
+<dt>lower_p (float):</dt><dd><p>lower interval of Binomial confidence
+for k==0 or k==n.</p>
+</dd>
+<dt>upper_p (float):</dt><dd><p>upper interval of Binomial confidence
+for k==0 or k==n.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -237,6 +319,29 @@ Z_{alpha} and Z_{alpha/2}.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="ebcic.beta_approx">
+<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">beta_approx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.beta_approx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximated interval using beta function.</p>
+<p>Good approximation for (0 &lt; k &lt; n).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>tuple containing:</p>
+<blockquote>
+<div><p>lower_p (float): lower interval of Binomial confidence.</p>
+<p>upper_p (float): upper interval of Binomial confidence.</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ebcic.check_alpha">
 <code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">check_alpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_alpha" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -295,8 +400,8 @@ alpha (or confi_perc).</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p>tuple containing:</p>
 <blockquote>
-<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
-<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+<div><p>lower_p (float): lower interval of Binomial confidence.</p>
+<p>upper_p (float): upper interval of Binomial confidence.</p>
 </div></blockquote>
 </p>
 </dd>
@@ -330,10 +435,10 @@ log_n_end, confi_perc_line, line_list.</p>
 <p>Show intervals for multiple confidence percentages.
 See ebcic.ipynb for more examples.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">interval_graph</span><span class="p">(</span><span class="n">GraProps</span><span class="p">(</span>
-<span class="go">    k_start=1,  # &gt;= 0</span>
-<span class="go">    k_end=1,    # &gt; k_start</span>
-<span class="go">    k_step=1,   # &gt; 0</span>
-<span class="go">    log_n_end=6,  # max(n) = 3*k_end*10**log_n_end</span>
+<span class="go">    k_start=1,    # &gt;= 0</span>
+<span class="go">    k_end=1,      # &gt; k_start</span>
+<span class="go">    k_step=1,     # &gt; 0</span>
+<span class="go">    log_n_end=6,  # max(n) = k_end*10**log_n_end</span>
 <span class="go">    confi_perc_list=[90, 95, 99, 99.9, 99.99],</span>
 <span class="go">    line_list=[</span>
 <span class="go">        &#39;with_exact&#39;,</span>
@@ -345,9 +450,11 @@ See ebcic.ipynb for more examples.</p>
 <span class="go">        # &#39;with_normal&#39;,</span>
 <span class="go">        # &#39;with_wilson&#39;,</span>
 <span class="go">        # &#39;with_wilson_cc&#39;,</span>
+<span class="go">        # &#39;with_beta_approx&#39;,</span>
 <span class="go">    ],</span>
 <span class="go">    # savefig = True,</span>
-<span class="go">    # fig_file_name=&#39;intervals.jpg&#39;</span>
+<span class="go">    # fig_file_name=&#39;intervals.png&#39;,</span>
+<span class="go">    # leg_pos=&#39;upper_right_nm&#39;,</span>
 <span class="go">    ))</span>
 </pre></div>
 </div>
@@ -375,8 +482,8 @@ to Params().</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p>tuple containing:</p>
 <blockquote>
-<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
-<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+<div><p>lower_p (float): lower interval of Binomial confidence.</p>
+<p>upper_p (float): upper interval of Binomial confidence.</p>
 </div></blockquote>
 </p>
 </dd>
@@ -456,8 +563,8 @@ reliable if n is large enough, say n &gt; 50.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p>tuple containing:</p>
 <blockquote>
-<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
-<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+<div><p>lower_p (float): lower interval of Binomial confidence.</p>
+<p>upper_p (float): upper interval of Binomial confidence.</p>
 </div></blockquote>
 </p>
 </dd>
@@ -573,8 +680,8 @@ to Params().</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p>tuple containing:</p>
 <blockquote>
-<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
-<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+<div><p>lower_p (float): lower interval of Binomial confidence.</p>
+<p>upper_p (float): upper interval of Binomial confidence.</p>
 </div></blockquote>
 </p>
 </dd>
@@ -602,8 +709,8 @@ to Params().</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p>tuple containing:</p>
 <blockquote>
-<div><p>lower_p (float): lower bound of Binomial confidence interval.</p>
-<p>upper_p (float): upper bound of Binomial confidence interval.</p>
+<div><p>lower_p (float): lower interval of Binomial confidence.</p>
+<p>upper_p (float): upper interval of Binomial confidence.</p>
 </div></blockquote>
 </p>
 </dd>
@@ -717,12 +824,12 @@ though it is better than Wilson score interval
         <li class="right" >
           <a href="index.html" title="Welcome to EBCIC’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.3 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">ebcic module</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2020-2021 National Institute of Advanced Industrial Science and Technology (AIST).
+        &#169; Copyright 2020-2022 National Institute of Advanced Industrial Science and Technology (AIST).
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
     </div>
   </body>

@@ -5,6 +5,19 @@ All notable changes, such as backward incompatibilities, will be documented in t
 <!-- markdownlint-disable MD024 no-duplicate-heading -->
 <!-- ## [Unreleased] -->
 
+## [0.0.3]
+
+### Added
+
+- Approximation using the beta function.
+- Params.exact_border() and Params.exact().
+
+### Changed
+
+- Max of x-axis in a graph to (`k_end * 10**log_n_end`) from (`3 * k_end * 10**log_n_end`).
+- Made plot settings in interval_graph() in common as set_graph().
+- For k=0, interval_graph() shows only upper intervals due to set_graph().
+
 ## [0.0.2]
 
 ### Added

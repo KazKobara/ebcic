@@ -19,7 +19,7 @@ These programs are mainly for researchers, developers, and designers who calcula
 
     ~~~python
     # Run this cell, if `ebcic` package has not been installed yet:
-    !pip install ebcic
+    %pip install ebcic
     ~~~
 
     ~~~python
@@ -100,7 +100,7 @@ Command line:
 python -m ebcic -k 1 -n 501255 --confi-perc 99.0
 ~~~
 
-Jupyter cell to run:
+Python Interpreter or Jupyter cell to run:
 
 ~~~python
 """Print exact interval as text.
@@ -129,13 +129,11 @@ Width : 1.481295808e-05
 
 ### Depict graphs
 
-NOTE Command-line options do not support depicting graphs, so try the following examples in a Jupyter cell, and so on.
-
 #### Exact intervals and the line of k/n for k=1
 
 This program can show not only the typical 95% and 99% confidence lines but also any confidence percentage lines.
 
-Jupyter cell to run:
+Python Interpreter or Jupyter cell to run:
 
 ~~~python
 interval_graph(GraProps(
@@ -156,6 +154,8 @@ interval_graph(GraProps(
         'with_exact',
         'with_line_kn',  # Line of k/n
     ],
+    # savefig=True,  # uncomment on Python Interpreter 
+    # fig_file_name='intervals.png',
     ))
 ~~~
 
@@ -167,13 +167,16 @@ If figures or links are not shown appropriately, visit [here](https://kazkobara.
 
 #### Exact intervals for k=0 to 5
 
-Jupyter cell to run:
+Python Interpreter or Jupyter cell to run:
 
 ~~~python
 interval_graph(GraProps(
     k_start=0,  # >= 0
     k_end=5,    # >= k_start
-    line_list=['with_exact']))
+    line_list=['with_exact'],
+    # savefig=True,  # uncomment on Python Interpreter 
+    # fig_file_name='intervals.png',
+    ))
 ~~~
 
 Result:
@@ -182,106 +185,125 @@ Result:
 
 #### Comparison of exact and approximated intervals for k=0
 
-For comparison with approximated intervals for k=0, `rule_of_la` and `Wilson_cc` are available where:
+As you can see from the following figure, '`rule of -ln(a)`' is a good approximation for `k=0` and large `n` depending on the confidence percentage where:
 
-- `rule_of_la` or `rule of -ln(alpha)` (or `-log_e(alpha)`) denotes the generalized version of `rule of three` [Lou81,HL83,JL97,Way00,ISO/IEC19795-1]. `rule of three` corresponds with `rule of -ln(alpha)` for alpha = 0.05.
-- `Wilson_cc` denotes `Wilson score interval with continuity correction` [New98].
+- '`rule of -ln(a)`', or '`rule of -log_e(alpha)`', is the generalized version of '`rule of three`' [Lou81,HL83,JL97,Way00,ISO/IEC19795-1], and '`rule of three`' corresponds with '`rule of -ln(0.05)`'.
+- '`Wilson`' and '`Wilson cc`' denote `Wilson score interval` [Wil27] and
+`Wilson score interval with continuity correction` [New98], respectively.
+- '`beta approx`' is an approximation using the beta function.
 
-As you can see from the following figure, `rule of -ln(alpha)` is a good approximation for n > 20 when k=0.
+For `k=0`, interval_graph(), v0.0.3 or later, displays only upper intervals since their lower intervals must be `0` (though some approximations, such as '`Wilson cc`', output wrong greater values than `0`).
 
-Jupyter cell to run:
+Python Interpreter or Jupyter cell to run:
 
 ~~~python
 interval_graph(GraProps(
-    k_start=0,  # >= 0
-    k_end=0,    # >= k_start
+    k_start=0,    # >= 0
+    k_end=0,      # >= k_start
+    log_n_end=3,  # max(n) = k_end*10**log_n_end
     line_list=[
         'with_exact',
         'with_rule_of_la',  # rule of -ln(alpha); available only for k=0
-        'with_normal',      # not available for k=0
-        'with_wilson',      # not available for k=0
+        #'with_normal',     # not available for k=0
+        'with_wilson',
         'with_wilson_cc',
-    ]))
+        'with_beta_approx',
+    ],
+    # savefig=True,  # uncomment on Python Interpreter 
+    # fig_file_name='intervals.png',
+    ))
 ~~~
 
 Result:
 
 ![Comparison of exact and approximated intervals for k=0](./figs/comparison_k0.png)
 
-#### Comparison of exact and approximated intervals for k=1
+#### Comparison of exact and approximated intervals for `k=1`
 
-For comparison with approximated intervals for k>0, `normal`, `Wilson` and `Wilson_cc` are available where:
+As you can see from the following figures and warned in a lot of papers, such as [BLC01], normal approximation intervals are not good approximation for small `k` where:
 
-- `normal` denotes `normal approximation interval` or `Wald confidence interval` that uses approximation to normal distribution approximation, and are introduced in a lot of textbooks.
-- `Wilson` denotes `Wilson score interval` [Wil27].
+- '`normal`' denotes `normal approximation interval` or `Wald confidence interval` that uses approximation to normal distribution, and are introduced in a lot of textbooks.
 
-As you can see from the following figures and warned in a lot of papers, such as [BLC01], and so on, normal approximation intervals are not a good approximation for k < 20. Upper bounds of `Wilson` and `Wilson_cc` are good approximation even for small k, but not necessarily for lower bounds for k < 20.
+Upper intervals of the other approximations look tight.
+The lower interval using the beta function looks tight except for the border `k=n=1`.
 
-Jupyter cell to run:
+Python Interpreter or Jupyter cell to run:
 
 ~~~python
 interval_graph(GraProps(
     k_start=1,  # >= 0
     k_end=1,    # >= k_start
     line_list=[
+        'with_line_kn'
+        # 'with_rule_of_la',  # not available for k=0
         'with_exact',
         'with_normal',
         'with_wilson',
         'with_wilson_cc',
-    ]))
+        'with_beta_approx',
+    ],
+    # savefig=True,  # uncomment on Python Interpreter 
+    # fig_file_name='intervals.png',
+    ))
 ~~~
 
 Result:
 
 ![Comparison of exact and approximated intervals for k=1](./figs/comparison_k1.png)
 
-#### Comparison of exact and approximated intervals for k=10
+#### Comparison of exact and approximated intervals for `k=10`
 
-For k=10, `normal` still does not provide a good approximation.
+For `k=10`, '`normal`' still does not provide a good approximation.
 
-Jupyter cell to run:
+Python Interpreter or Jupyter cell to run:
 
 ~~~python
 interval_graph(GraProps(
     k_start=10,   # >= 0
     k_end=10,     # >= k_start
-    log_n_end=3,  # max(n) = 3*k_end*10**log_n_end
+    log_n_end=2,  # max(n) = k_end*10**log_n_end
     line_list=[
         'with_exact',
         'with_normal',
         'with_wilson',
         'with_wilson_cc',
+        'with_beta_approx',
     ],
-))
+    # savefig=True,  # uncomment on Python Interpreter 
+    # fig_file_name='intervals.png',
+    ))
 ~~~
 
 Result:
 
 ![Comparison of exact and approximated intervals for k=10](./figs/comparison_k10.png)
 
-#### Comparison of exact and approximated intervals for k=20
+#### Comparison of exact and approximated intervals for `k=100`
 
-For k=20, `normal`, `Wilson` and `Wilson_cc` provide good approximation.
+At least for `k=100` and confidence percentage, `confi_perc=99.0`, all these approximations look tight.
 
-Jupyter cell to run:
+Python Interpreter or Jupyter cell to run:
 
 ~~~python
 interval_graph(GraProps(
     k_start=10,   # >= 0
     k_end=10,     # >= k_start
-    log_n_end=3,  # max(n) = 3*k_end*10**log_n_end
+    log_n_end=2,  # max(n) = k_end*10**log_n_end
     line_list=[
         'with_exact',
         'with_normal',
         'with_wilson',
         'with_wilson_cc',
+        'with_beta_approx',
     ],
+    # savefig=True,  # uncomment on Python Interpreter 
+    # fig_file_name='intervals.png',
     ))
 ~~~
 
 Result:
 
-![Comparison of exact and approximated intervals for k=20](./figs/comparison_k20.png)
+![Comparison of exact and approximated intervals for k=20](./figs/comparison_k100.png)
 
 ## Bibliography
 
