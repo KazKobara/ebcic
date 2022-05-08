@@ -37,19 +37,21 @@ import sys
 import logging
 import numpy as np
 import math
-import matplotlib.cm as mplcm
-import matplotlib.colors as colors
 import warnings
-from numpy import log
 from scipy import optimize
-from scipy import stats as st
-from scipy.stats import binom, beta
+from scipy.stats import norm, binom, poisson, beta
 from matplotlib import pyplot as plt
+from matplotlib import cm as mplcm
+from matplotlib import colors as colors
 from decimal import Decimal, ROUND_HALF_UP
+from platform import python_version
+from packaging import version
+if version.parse(python_version()) >= version.parse("3.8"):
+    from statistics import NormalDist
+    USE_NORMAL_DIST = True
 '''
 import scipy
 import matplotlib
-from platform import python_version
 
 print(f"scipy     : {scipy.version.full_version}")
 print(f"matplotlib: {matplotlib.__version__}")
@@ -658,9 +660,9 @@ def rule_of_ln_alpha(params):
     upper_p = None
     if k == 0:
         lower_p = 0
-        upper_p = -log(alpha) / n
+        upper_p = -np.log(alpha) / n
     elif k == n:
-        lower_p = 1 - (-log(alpha) / n)
+        lower_p = 1 - (-np.log(alpha) / n)
         upper_p = 1
     else:  # 0 < k < n
         # raise ValueError("either k==0 or k==n must hold!!")
@@ -715,12 +717,10 @@ def alpha_to_zah(alpha, sig_digits=-5):
         >>> alpha_to_zah(0.01)
         2.57583
     """
-    USE_NORMAL_DIST = True
-    if USE_NORMAL_DIST:  # Python > 3.8
-        from statistics import NormalDist
+    if USE_NORMAL_DIST:  # Python >= 3.8
         tmp_zah = NormalDist(mu=0, sigma=1).inv_cdf(1 - alpha / 2.)
     else:
-        tmp_zah = st.norm.ppf(1 - alpha / 2.)
+        tmp_zah = norm.ppf(1 - alpha / 2.)
     return round_h_up(tmp_zah, sig_digits)
 
 
@@ -740,7 +740,7 @@ def alpha_to_za(alpha, sig_digits=-5):
         >>> alpha_to_za(0.01)
         2.32635
     """
-    return round_h_up(st.norm.ppf(1 - alpha), sig_digits)
+    return round_h_up(norm.ppf(1 - alpha), sig_digits)
 
 
 def zah_to_alpha(zah, sig_digits=-5):
@@ -759,12 +759,10 @@ def zah_to_alpha(zah, sig_digits=-5):
         >>> zah_to_alpha(2.57583)
         0.01
     """
-    USE_NORMAL_DIST = True
-    if USE_NORMAL_DIST:
-        from statistics import NormalDist
+    if USE_NORMAL_DIST:  # Python >= 3.8
         cdf_zah = NormalDist(mu=0, sigma=1).cdf(zah)
     else:
-        cdf_zah = st.norm.cdf(zah)
+        cdf_zah = norm.cdf(zah)
     return round_h_up(2 * (1 - cdf_zah), sig_digits)
 
 
@@ -784,7 +782,7 @@ def za_to_alpha(za, sig_digits=-5):
         >>> za_to_alpha(2.32635)
         0.01
     """
-    return round_h_up(1 - st.norm.cdf(za), sig_digits)
+    return round_h_up(1 - norm.cdf(za), sig_digits)
 
 
 def normal_approx(params):
@@ -1382,16 +1380,16 @@ def compare_dist(params):
     # Distribution
     x = range(0, x_max + 1, 1)
     # Binomial
-    plt.plot(x, st.binom.pmf(x, n, p), label="Binomial")
+    plt.plot(x, binom.pmf(x, n, p), label="Binomial")
 
     # Poisson
-    plt.plot(x, st.poisson.pmf(x, k), label="Poisson")
+    plt.plot(x, poisson.pmf(x, k), label="Poisson")
 
     # Normal distribution
     variance = n * p * (1 - p)
     sigma = np.sqrt(variance)
     x = range(-3, x_max + 1, 1)
-    plt.plot(x, st.norm.pdf(x, k, sigma), label="Normal")
+    plt.plot(x, norm.pdf(x, k, sigma), label="Normal")
 
     # Plot
     plt.title(title)
@@ -1515,11 +1513,11 @@ def test_warning_once():
     print(
         "params.confi_perc_to_alpha(alpha_to_confi_perc_wo_check"
         "({alpha})) = {tmp}")
-    tmp = params.confi_perc_to_alpha(
+    tmp_twice = params.confi_perc_to_alpha(
         alpha_to_confi_perc_wo_check(alpha))
     print(
         "params.confi_perc_to_alpha(alpha_to_confi_perc_wo_check"
-        f"({alpha})) = {tmp}")
+        f"({alpha})) = {tmp_twice}")
     if params.num_of_warned != right_num_of_warned:
         ret = 1
         logger.error("duplicate warnings!!")
@@ -1578,12 +1576,12 @@ def test_warning_once():
         confi_perc_to_alpha_wo_check(confi_perc))
     print(
         "params.alpha_to_confi_perc(confi_perc_to_alpha_wo_check"
-        f"({confi_perc})) = {tmp}")
-    tmp = params.alpha_to_confi_perc(
+        "({confi_perc})) = {tmp}")
+    tmp_twice = params.alpha_to_confi_perc(
         confi_perc_to_alpha_wo_check(confi_perc))
     print(
         "params.alpha_to_confi_perc(confi_perc_to_alpha_wo_check"
-        "({confi_perc})) = {tmp}")
+        f"({confi_perc})) = {tmp_twice}")
     if params.num_of_warned != right_num_of_warned:
         ret = 1
         logger.error("duplicate warnings!!")
