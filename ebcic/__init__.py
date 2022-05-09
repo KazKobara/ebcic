@@ -1510,14 +1510,12 @@ def test_warning_once():
           f"{params.alpha_to_confi_perc(alpha)}")
     tmp = params.confi_perc_to_alpha(
         alpha_to_confi_perc_wo_check(alpha))
-    print(
-        "params.confi_perc_to_alpha(alpha_to_confi_perc_wo_check"
-        "({alpha})) = {tmp}")
-    tmp_twice = params.confi_perc_to_alpha(
+    print("params.confi_perc_to_alpha(alpha_to_confi_perc_wo_check"
+          f"({alpha})) = {tmp}")
+    tmp = params.confi_perc_to_alpha(
         alpha_to_confi_perc_wo_check(alpha))
-    print(
-        "params.confi_perc_to_alpha(alpha_to_confi_perc_wo_check"
-        f"({alpha})) = {tmp_twice}")
+    print("params.confi_perc_to_alpha(alpha_to_confi_perc_wo_check"
+          f"({alpha})) = {tmp}")
     if params.num_of_warned != right_num_of_warned:
         ret = 1
         logger.error("duplicate warnings!!")
@@ -1574,14 +1572,12 @@ def test_warning_once():
           f"{params.confi_perc_to_alpha(confi_perc)}")
     tmp = params.alpha_to_confi_perc(
         confi_perc_to_alpha_wo_check(confi_perc))
-    print(
-        "params.alpha_to_confi_perc(confi_perc_to_alpha_wo_check"
-        "({confi_perc})) = {tmp}")
-    tmp_twice = params.alpha_to_confi_perc(
+    print("params.alpha_to_confi_perc(confi_perc_to_alpha_wo_check"
+          f"({confi_perc})) = {tmp}")
+    tmp = params.alpha_to_confi_perc(
         confi_perc_to_alpha_wo_check(confi_perc))
-    print(
-        "params.alpha_to_confi_perc(confi_perc_to_alpha_wo_check"
-        f"({confi_perc})) = {tmp_twice}")
+    print("params.alpha_to_confi_perc(confi_perc_to_alpha_wo_check"
+          f"({confi_perc})) = {tmp}")
     if params.num_of_warned != right_num_of_warned:
         ret = 1
         logger.error("duplicate warnings!!")
