@@ -1,5 +1,11 @@
 # EBCIC: Exact Binomial Confidence Interval Calculator
 
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/KazKobara/ebcic)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/KazKobara/ebcic.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/KazKobara/ebcic/context:python)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/KazKobara/ebcic.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/KazKobara/ebcic/alerts/)
+![GitHub issues](https://img.shields.io/github/issues/kazkobara/ebcic)
+![GitHub](https://img.shields.io/github/license/kazkobara/ebcic)
+
 These programs are mainly for researchers, developers, and designers who calculate Binomial Confidence Intervals for given parameters:
 
 - n: the number of Bernoulli or Binomial trials.
