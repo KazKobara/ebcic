@@ -903,7 +903,7 @@ def print_interval(params):
     # sig_digits = -10
     sig_digits = -14  # To show lower interval around 10^-8.
 
-    print("\nExact Binomial Interval Calculator, "
+    print("\nExact Binomial Confidence Interval Calculator, "
           f"ver. {__version__}\n")
 
     # Print Parameters

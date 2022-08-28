@@ -1,27 +1,30 @@
 # EBCIC: Exact Binomial Confidence Interval Calculator
 
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/KazKobara/ebcic)
+[![Downloads](https://pepy.tech/badge/ebcic)](https://pepy.tech/project/ebcic)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/KazKobara/ebcic.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/KazKobara/ebcic/context:python)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/KazKobara/ebcic)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/KazKobara/ebcic.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/KazKobara/ebcic/alerts/)
 ![GitHub issues](https://img.shields.io/github/issues/kazkobara/ebcic)
 ![GitHub](https://img.shields.io/github/license/kazkobara/ebcic)
 
+[日本語 <img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/jp.svg" width="20" alt="Japanese" title="Japanese"/>](./README-jp.md)
+
 These programs are mainly for researchers, developers, and designers who calculate Binomial Confidence Intervals for given parameters:
 
-- n: the number of Bernoulli or Binomial trials.
-- k: the number of target events happened.
-- confi_perc: confidence percentage:
-  - for two-sided of 0<k<n where 0 < confi_perc < 100, or for one-sided of k=0 or k=n.
-  - for one-sided of 0<k<n, set confi_perc = (2 * confi_perc_for_one_sided - 100) where 50 < confi_perc_for_one_sided < 100.
+- `n`: the number of Bernoulli or Binomial trials.
+- `k`: the number of target events happened.
+- `confi_perc`: confidence percentage:
+  - for two-sided of `0<k<n` where `0 < confi_perc < 100`, or for one-sided of `k=0` or `k=n`.
+  - for one-sided of `0<k<n`, set `confi_perc = (2 * confi_perc_for_one_sided - 100)` where `50 < confi_perc_for_one_sided < 100`.
 
-[EBCIC](https://kazkobara.github.io/ebcic/) calculates binomial intervals exactly, i.e. by implementing Clopper–Pearson interval [CP34] without simplifying mathematical equations that may deteriorate intervals for certain combinations of the above parameters. EBCIC can also shows graphs for comparing exact intervals with approximated ones.
+[EBCIC](https://kazkobara.github.io/ebcic/) calculates binomial intervals exactly, i.e. by implementing Clopper-Pearson interval [CP34] without simplifying mathematical equations that may deteriorate intervals for certain combinations of the above parameters. EBCIC can also shows graphs for comparing exact intervals with approximated ones.
 
 ## How to use
 
 ### Jupyter notebook
 
-1. Open [ebcic.ipynb](https://kazkobara.github.io/ebcic/ebcic.ipynb) with either jupyter, jupyter-lab or Visual Studio Code.
-2. Run the cells you want to execute after running the following initial cells:
+1. Open [ebcic.ipynb](https://kazkobara.github.io/ebcic/ebcic.ipynb) with Jupyter-notebook-compatible development environment such as Jupyter Notebook, JupyterLab, or Visual Studio Code.
+2. Run the following initial cells:
 
     ~~~python
     # Run this cell, if `ebcic` package has not been installed yet:
@@ -33,21 +36,34 @@ These programs are mainly for researchers, developers, and designers who calcula
     from ebcic import *
     ~~~
 
-### Command line (with `ebcic` package)
+3. Run the cells you want to execute.
 
-1. Install [PyPI ebcic package](https://pypi.org/project/ebcic/)
+### Command line
 
-    ~~~console
-    pip install ebcic
-    ~~~
+1. Installation
 
-2. Show help:
+    - When using [PyPI ebcic package](https://pypi.org/project/ebcic/):
 
-    ~~~console
-    python -m ebcic -h
-    ~~~
+        ~~~console
+        pip install ebcic
+        ~~~
 
-    Cf. the [examples](#Examples) below as well.
+    - When using github `ebcic` repo:
+
+        ~~~console
+        git clone https://github.com/KazKobara/ebcic.git
+        cd ebcic
+        ~~~
+
+2. Command-line help
+
+    - Check the version and options:
+
+        ~~~console
+        python -m ebcic -h
+        ~~~
+
+3. Cf. the [examples](#Examples) below.
 
 ### MATLAB (with Python and `ebcic` package)
 
@@ -55,48 +71,9 @@ These programs are mainly for researchers, developers, and designers who calcula
 2. Open a sample MATLAB code file [ebcic_in_matlab.m](https://kazkobara.github.io/ebcic/matlab/ebcic_in_matlab.m) as a 'live script' as shown [this page](https://jp.mathworks.com/help/matlab/matlab_prog/create-live-scripts.html?lang=en).
 3. Edit and run the sections you want to execute.
 
-- NOTE If you manage the edited file with git, save it as a MATLAB code file (*\.m) file to commit (or commit the live code file (\*.mlx) to a git LFS (Large File Storage)) since live code files (\*.mlx) are not git friendly. If necessary, save it as a \*.html file as well to check its look.
-
-<!--
-### Command line (with git `ebcic` repo)
-
-1. Get repo
-
-    ~~~console
-    git clone https://github.com/KazKobara/ebcic.git
-    cd ebcic
-    ~~~
-
-2. Show help or see the [examples](#Examples) below:
-
-    ~~~console
-    python -m ebcic -h
-    ~~~
--->
-
-### [API Manual](https://github.com/KazKobara/ebcic/tree/master/docs/_build)
-
-1. Download
-
-    ~~~console
-    git clone https://github.com/KazKobara/ebcic.git
-    ~~~
-
-2. Open the following file with your browser (after replacing `<path to the downloaded ebcic>` appropriately):
-
-    ~~~text
-    file://<path to the downloaded ebcic>/docs/_build/index.html
-    ~~~
-
-    For WSL Ubuntu-20.04, replace `<username>` and `<path to the downloaded ebcic>` appropriately:
-
-    ~~~text
-    file://wsl%24/Ubuntu-20.04/home/<username>/<path to the downloaded ebcic>/docs/_build/index.html
-    ~~~
+> NOTE: If you manage the edited file with git, save it as a MATLAB code file (*\.m) file to commit (or commit the live code file (\*.mlx) to a git LFS (Large File Storage)) since live code files (\*.mlx) are not git friendly. If necessary, save it as a \*.html file as well to check its look.
 
 ## Examples
-
-For MATLAB, see [this page](https://kazkobara.github.io/ebcic/matlab/ebcic_in_matlab.html).
 
 ### Print exact interval as text
 
@@ -114,7 +91,7 @@ Edit the following parameters, k, n, confi_perc, and run this cell.
 """
 print_interval(Params(
     k=1,             # Number of errors
-    n=501255,        # number of trials
+    n=501255,        # Number of trials
     confi_perc=99.0  # Confidence percentage
         # for two-sided of 0<k<n where 0 < confi_perc < 100,
         # or for one-sided of k=0 or k=n.
@@ -127,7 +104,7 @@ print_interval(Params(
 Result:
 
 ~~~python
-===== Exact interval of p with 99.0 [%] confidence =====
+===== Exact interval of p with 99.0 [%] two-sided (or 99.5 [%] one-sided) confidence  =====
 Upper : 1.482295806e-05
 Lower : 9.99998e-09
 Width : 1.481295808e-05
@@ -167,9 +144,9 @@ interval_graph(GraProps(
 
 Result:
 
-![Exact intervals and the line of k/n for k=1](./figs/confidence_percentage.png)
-
 If figures or links are not shown appropriately, visit [here](https://kazkobara.github.io/ebcic/).
+
+![Exact intervals and the line of k/n for k=1](./figs/confidence_percentage.png)
 
 #### Exact intervals for k=0 to 5
 
@@ -191,15 +168,6 @@ Result:
 
 #### Comparison of exact and approximated intervals for k=0
 
-As you can see from the following figure, '`rule of -ln(a)`' is a good approximation for `k=0` and large `n` depending on the confidence percentage where:
-
-- '`rule of -ln(a)`', or '`rule of -log_e(alpha)`', is the generalized version of '`rule of three`' [Lou81,HL83,JL97,Way00,ISO/IEC19795-1], and '`rule of three`' corresponds with '`rule of -ln(0.05)`'.
-- '`Wilson`' and '`Wilson cc`' denote `Wilson score interval` [Wil27] and
-`Wilson score interval with continuity correction` [New98], respectively.
-- '`beta approx`' is an approximation using the beta function.
-
-For `k=0`, interval_graph(), v0.0.3 or later, displays only upper intervals since their lower intervals must be `0` (though some approximations, such as '`Wilson cc`', output wrong greater values than `0`).
-
 Python Interpreter or Jupyter cell to run:
 
 ~~~python
@@ -209,8 +177,9 @@ interval_graph(GraProps(
     log_n_end=3,  # max(n) = k_end*10**log_n_end
     line_list=[
         'with_exact',
-        'with_rule_of_la',  # rule of -ln(alpha); available only for k=0
-        #'with_normal',     # not available for k=0
+        'with_rule_of_la',  # rule of -ln(alpha)
+                            # available only for k=0 and k=n
+        #'with_normal',     # not available for k=0 and k=n
         'with_wilson',
         'with_wilson_cc',
         'with_beta_approx',
@@ -220,18 +189,26 @@ interval_graph(GraProps(
     ))
 ~~~
 
+where interval names to be added in the `line_list` and their conditions are as follows:
+
+Interval name (after 'with_')    | Explanation | Condition
+:---------   |:----  |:--
+exact | Implementation of Clopper-Pearson interval [CP34] without approximation. |
+rule_of_la | '`Rule of -ln(a)`' or '`Rule of -log_e(alpha)`'; Generalization of the '`Rule of three`' [Lou81,HL83,JL97,Way00,ISO/IEC19795-1] that is for `k=0` and `alpha=0.05` (95% confidence percentage), to other confidence percentages than 95% and `k=n`. | `k=0` or `k=n`
+wilson | `Wilson score interval` [Wil27].
+wilson_cc | `Wilson score interval with continuity correction` [New98].
+beta_approx | Approximated interval using beta function.
+normal | `Normal approximation interval` or `Wald confidence interval`. | `0<k<n`
+
 Result:
+
+As you can see from the following figure, '`rule of -ln(a)`' is a good approximation for `k=0` and large `n` depending on the confidence percentage.
+
+> For `k=0`, interval_graph(), v0.0.3 or later, displays only upper intervals since their lower intervals must be `0` (though some approximations, such as '`Wilson cc`', output wrong values than `0`).
 
 ![Comparison of exact and approximated intervals for k=0](./figs/comparison_k0.png)
 
 #### Comparison of exact and approximated intervals for `k=1`
-
-As you can see from the following figures and warned in a lot of papers, such as [BLC01], normal approximation intervals are not good approximation for small `k` where:
-
-- '`normal`' denotes `normal approximation interval` or `Wald confidence interval` that uses approximation to normal distribution, and are introduced in a lot of textbooks.
-
-Upper intervals of the other approximations look tight.
-The lower interval using the beta function looks tight except for the border `k=n=1`.
 
 Python Interpreter or Jupyter cell to run:
 
@@ -241,7 +218,7 @@ interval_graph(GraProps(
     k_end=1,    # >= k_start
     line_list=[
         'with_line_kn'
-        # 'with_rule_of_la',  # not available for k=0
+        # 'with_rule_of_la',  # available only for k=0
         'with_exact',
         'with_normal',
         'with_wilson',
@@ -254,13 +231,16 @@ interval_graph(GraProps(
 ~~~
 
 Result:
+
+As you can see from the following figures and warned in a lot of papers, such as [BLC01], normal approximation intervals are not good approximation for small `k`.
+
+Upper intervals of the other approximations look tight.
+The approximation using beta function looks tight except for the border `k=n=1`.
 
 ![Comparison of exact and approximated intervals for k=1](./figs/comparison_k1.png)
 
 #### Comparison of exact and approximated intervals for `k=10`
 
-For `k=10`, '`normal`' still does not provide a good approximation.
-
 Python Interpreter or Jupyter cell to run:
 
 ~~~python
@@ -281,19 +261,19 @@ interval_graph(GraProps(
 ~~~
 
 Result:
+
+For `k=10`, '`normal`' still does not provide a good approximation.
 
 ![Comparison of exact and approximated intervals for k=10](./figs/comparison_k10.png)
 
 #### Comparison of exact and approximated intervals for `k=100`
 
-At least for `k=100` and confidence percentage, `confi_perc=99.0`, all these approximations look tight.
-
 Python Interpreter or Jupyter cell to run:
 
 ~~~python
 interval_graph(GraProps(
-    k_start=10,   # >= 0
-    k_end=10,     # >= k_start
+    k_start=100,  # >= 0
+    k_end=100,    # >= k_start
     log_n_end=2,  # max(n) = k_end*10**log_n_end
     line_list=[
         'with_exact',
@@ -309,12 +289,34 @@ interval_graph(GraProps(
 
 Result:
 
+At least for `k=100` and confidence percentage, `confi_perc=99.0`, all these approximations look tight.
+
 ![Comparison of exact and approximated intervals for k=20](./figs/comparison_k100.png)
+
+### [API Manual](https://github.com/KazKobara/ebcic/tree/master/docs/_build)
+
+1. Download
+
+    ~~~console
+    git clone https://github.com/KazKobara/ebcic.git
+    ~~~
+
+2. Open the following file with your browser (after replacing `<path to the downloaded ebcic>` appropriately):
+
+    ~~~text
+    file://<path to the downloaded ebcic>/docs/_build/index.html
+    ~~~
+
+    For WSL Ubuntu-20.04, replace `<username>` and `<path to the downloaded ebcic>` appropriately:
+
+    ~~~text
+    file://wsl%24/Ubuntu-20.04/home/<username>/<path to the downloaded ebcic>/docs/_build/index.html
+    ~~~
 
 ## Bibliography
 
 [CP34]:
-Clopper, C. and Pearson, E.S. "The use of confidence or fiducial limits illustrated in the case of the binomial," Biometrika. 26 (4): pp.404–413, 1934
+Clopper, C. and Pearson, E.S. "The use of confidence or fiducial limits illustrated in the case of the binomial," Biometrika. 26 (4): pp.404-413, 1934
 
 [Lou81]: Louis, T.A. "Confidence intervals for a binomial parameter after observing no successes," The American Statistician, 35(3), p.154, 1981
 
@@ -324,13 +326,13 @@ Clopper, C. and Pearson, E.S. "The use of confidence or fiducial limits illustra
 
 [Way00]: Wayman, J.L. "Technical testing and evaluation of biometric identification devices," Biometrics: Personal identification in networked society, edited by A.K. Jain, et al., Kluwer, pp.345-368, 2000
 
-[ISO/IEC19795-1]: ISO/IEC 19795-1, "Information technology-Biometric performance testing and reporting-Part 1: Principles and framework," 2006
+[ISO/IEC19795-1]: ISO/IEC 19795-1, "Information technology-Biometric performance testing and reporting-Part 1: Principles and framework" <!-- 2006 2021 -->
 
-[New98]: Newcombe, R.G. "Two-sided confidence intervals for the single proportion: comparison of seven methods," Statistics in Medicine. 17 (8): pp.857–872, 1998
+[New98]: Newcombe, R.G. "Two-sided confidence intervals for the single proportion: comparison of seven methods," Statistics in Medicine. 17 (8): pp.857-872, 1998
 
-[Wil27]: Wilson, E.B. "Probable inference, the law of succession, and statistical inference," Journal of the American Statistical Association. 22 (158): pp.209–212, 1927
+[Wil27]: Wilson, E.B. "Probable inference, the law of succession, and statistical inference," Journal of the American Statistical Association. 22 (158): pp.209-212, 1927
 
-[BLC01]: Brown, L.D., Cai, T.T. and DasGupta, A. "Interval Estimation for a Binomial Proportion," Statistical Science. 16 (2): pp. 101–133, 2001
+[BLC01]: Brown, L.D., Cai, T.T. and DasGupta, A. "Interval Estimation for a Binomial Proportion," Statistical Science. 16 (2): pp. 101-133, 2001
 
 ## [Changelog](./CHANGELOG.md)
 
@@ -351,3 +353,8 @@ where X.X.X is the version of EBCIC.
 The initial software is based on results obtained from a project, JPNP16007, commissioned by the New Energy and Industrial Technology Development Organization (NEDO).
 
 Copyright (c) 2020-2022 National Institute of Advanced Industrial Science and Technology (AIST)
+
+---
+
+- [https://github.com/KazKobara/](https://github.com/KazKobara/)
+- [https://kazkobara.github.io/](https://kazkobara.github.io/)
