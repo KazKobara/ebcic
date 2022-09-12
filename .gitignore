@@ -2,6 +2,7 @@
 *.o
 *.log
 *.org
+trash/
 # Emacs auto save file
 \#*#
 .~lock.*#

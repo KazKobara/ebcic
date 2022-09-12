@@ -63,7 +63,7 @@ These programs are mainly for researchers, developers, and designers who calcula
         python -m ebcic -h
         ~~~
 
-3. Cf. the [examples](#Examples) below.
+3. Cf. the [examples](#examples) below.
 
 ### MATLAB (with Python and `ebcic` package)
 
@@ -202,9 +202,9 @@ normal | `Normal approximation interval` or `Wald confidence interval`. | `0<k<n
 
 Result:
 
-As you can see from the following figure, '`rule of -ln(a)`' is a good approximation for `k=0` and large `n` depending on the confidence percentage.
+As you can see from the following figure, '`rule of -ln(a)`' for large `n` and '`beta_approx`' are good approximations for `k=0`.
 
-> For `k=0`, interval_graph(), v0.0.3 or later, displays only upper intervals since their lower intervals must be `0` (though some approximations, such as '`Wilson cc`', output wrong values than `0`).
+> For `k=0`, interval_graph() of EBCIC v0.0.3 or later, displays only one-sided upper intervals since their lower intervals must be `0` (though some approximations, such as '`Wilson cc`', output wrong values than `0`).
 
 ![Comparison of exact and approximated intervals for k=0](./figs/comparison_k0.png)
 
@@ -232,10 +232,10 @@ interval_graph(GraProps(
 
 Result:
 
-As you can see from the following figures and warned in a lot of papers, such as [BLC01], normal approximation intervals are not good approximation for small `k`.
+As you can see from the following figures and as warned in many papers such as [BLC01], normal-approximation intervals are not good approximations for small `k`.
 
-Upper intervals of the other approximations look tight.
-The approximation using beta function looks tight except for the border `k=n=1`.
+The upper intervals of the other approximations look tight.
+The approximation using beta function looks tight where the confidence interval for `k=n=1` is one-sided.
 
 ![Comparison of exact and approximated intervals for k=1](./figs/comparison_k1.png)
 
@@ -315,24 +315,23 @@ At least for `k=100` and confidence percentage, `confi_perc=99.0`, all these app
 
 ## Bibliography
 
-[CP34]:
-Clopper, C. and Pearson, E.S. "The use of confidence or fiducial limits illustrated in the case of the binomial," Biometrika. 26 (4): pp.404-413, 1934
+[CP34] Clopper, C. and Pearson, E.S. "The use of confidence or fiducial limits illustrated in the case of the binomial," Biometrika. 26 (4): pp.404-413, 1934
 
-[Lou81]: Louis, T.A. "Confidence intervals for a binomial parameter after observing no successes," The American Statistician, 35(3), p.154, 1981
+[Lou81] Louis, T.A. "Confidence intervals for a binomial parameter after observing no successes," The American Statistician, 35(3), p.154, 1981
 
-[HL83]: Hanley, J.A. and Lippman-Hand, A. "If nothing goes wrong, is everything all right? Interpreting zero numerators," Journal of the American Medical Association, 249(13), pp.1743-1745, 1983
+[HL83] Hanley, J.A. and Lippman-Hand, A. "If nothing goes wrong, is everything all right? Interpreting zero numerators," Journal of the American Medical Association, 249(13), pp.1743-1745, 1983
 
-[JL97]: Jovanovic, B.D. and Levy, P.S. "A look at the rule of three," The American Statistician, 51(2), pp.137-139, 1997
+[JL97] Jovanovic, B.D. and Levy, P.S. "A look at the rule of three," The American Statistician, 51(2), pp.137-139, 1997
 
-[Way00]: Wayman, J.L. "Technical testing and evaluation of biometric identification devices," Biometrics: Personal identification in networked society, edited by A.K. Jain, et al., Kluwer, pp.345-368, 2000
+[Way00] Wayman, J.L. "Technical testing and evaluation of biometric identification devices," Biometrics: Personal identification in networked society, edited by A.K. Jain, et al., Kluwer, pp.345-368, 2000
 
-[ISO/IEC19795-1]: ISO/IEC 19795-1, "Information technology-Biometric performance testing and reporting-Part 1: Principles and framework" <!-- 2006 2021 -->
+[ISO/IEC19795-1] ISO/IEC 19795-1, "Information technology-Biometric performance testing and reporting-Part 1: Principles and framework" <!-- 2006 2021 -->
 
-[New98]: Newcombe, R.G. "Two-sided confidence intervals for the single proportion: comparison of seven methods," Statistics in Medicine. 17 (8): pp.857-872, 1998
+[New98] Newcombe, R.G. "Two-sided confidence intervals for the single proportion: comparison of seven methods," Statistics in Medicine. 17 (8): pp.857-872, 1998
 
-[Wil27]: Wilson, E.B. "Probable inference, the law of succession, and statistical inference," Journal of the American Statistical Association. 22 (158): pp.209-212, 1927
+[Wil27] Wilson, E.B. "Probable inference, the law of succession, and statistical inference," Journal of the American Statistical Association. 22 (158): pp.209-212, 1927
 
-[BLC01]: Brown, L.D., Cai, T.T. and DasGupta, A. "Interval Estimation for a Binomial Proportion," Statistical Science. 16 (2): pp. 101-133, 2001
+[BLC01] Brown, L.D., Cai, T.T. and DasGupta, A. "Interval Estimation for a Binomial Proportion," Statistical Science. 16 (2): pp. 101-133, 2001
 
 ## [Changelog](./CHANGELOG.md)
 

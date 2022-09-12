@@ -206,9 +206,9 @@ normal | 二項分布を正規分布へ近似して求めた区間(`Normal appro
 
 描画結果:
 
-`k=0`の場合は、`n`が大きな場合に '`Rule of -ln(a)`' が良い近似になっていることが分かります。
+`k=0` の場合は、'`beta_approx`' と `n`が大きな場合に '`Rule of -ln(a)`' が良い近似になっていることが分かります。
 
-> EBCIC 0.0.3以降の interval_graph() では、 `k=0` の信頼区間は上限のみを描画するようにしてあります。(`k=0`の場合の下限は`0`であることが自明なのですが、'`Wilson cc`'などの近似を用いる方法では `0` とは異なる値が出力されるため。)
+> EBCIC 0.0.3以降の interval_graph() では、 `k=0` の信頼区間は片側の上限のみを描画するようにしてあります。(`k=0`の場合の下限は`0`であることが自明なのですが、'`Wilson cc`'などの近似を用いる方法では `0` とは異なる値が出力されるため。)
 
 ![Comparison of exact and approximated intervals for k=0](./figs/comparison_k0.png)
 
@@ -236,7 +236,7 @@ interval_graph(GraProps(
 
 - [BLC01]などの多くの文献で指摘されているとおり、'`normal`' (`Normal approximation interval` または `Wald confidence interval`)は `k` が小さい場合によい近似となっていないことが分かります。
 - 上限については '`normal`' **以外**はよい近似になっていることが分かります。
-- ベータ関数を使った近似は `k=n=1` **以外**はよい近似になっていることが分かります。
+- ベータ関数を使った近似は上下限共によい近似になっていることが分かります。(`k=n=1` の場合の信頼区間は片側になります。)
 
 ![Comparison of exact and approximated intervals for k=1](./figs/comparison_k1.png)
 
@@ -312,24 +312,23 @@ interval_graph(GraProps(
 
 ## 参考文献
 
-[CP34]:
-Clopper, C. and Pearson, E.S. "The use of confidence or fiducial limits illustrated in the case of the binomial," Biometrika. 26 (4): pp.404-413, 1934
+[CP34] Clopper, C. and Pearson, E.S. "The use of confidence or fiducial limits illustrated in the case of the binomial," Biometrika. 26 (4): pp.404-413, 1934
 
-[Lou81]: Louis, T.A. "Confidence intervals for a binomial parameter after observing no successes," The American Statistician, 35(3), p.154, 1981
+[Lou81] Louis, T.A. "Confidence intervals for a binomial parameter after observing no successes," The American Statistician, 35(3), p.154, 1981
 
-[HL83]: Hanley, J.A. and Lippman-Hand, A. "If nothing goes wrong, is everything all right? Interpreting zero numerators," Journal of the American Medical Association, 249(13), pp.1743-1745, 1983
+[HL83] Hanley, J.A. and Lippman-Hand, A. "If nothing goes wrong, is everything all right? Interpreting zero numerators," Journal of the American Medical Association, 249(13), pp.1743-1745, 1983
 
-[JL97]: Jovanovic, B.D. and Levy, P.S. "A look at the rule of three," The American Statistician, 51(2), pp.137-139, 1997
+[JL97] Jovanovic, B.D. and Levy, P.S. "A look at the rule of three," The American Statistician, 51(2), pp.137-139, 1997
 
-[Way00]: Wayman, J.L. "Technical testing and evaluation of biometric identification devices," Biometrics: Personal identification in networked society, edited by A.K. Jain, et al., Kluwer, pp.345-368, 2000
+[Way00] Wayman, J.L. "Technical testing and evaluation of biometric identification devices," Biometrics: Personal identification in networked society, edited by A.K. Jain, et al., Kluwer, pp.345-368, 2000
 
-[ISO/IEC19795-1]: ISO/IEC 19795-1, "Information technology - Biometric performance testing and reporting - Part 1: Principles and framework" <!-- 2006 2021 -->
+[ISO/IEC19795-1] ISO/IEC 19795-1, "Information technology - Biometric performance testing and reporting - Part 1: Principles and framework" <!-- 2006 2021 -->
 
-[New98]: Newcombe, R.G. "Two-sided confidence intervals for the single proportion: comparison of seven methods," Statistics in Medicine. 17 (8): pp.857-872, 1998
+[New98] Newcombe, R.G. "Two-sided confidence intervals for the single proportion: comparison of seven methods," Statistics in Medicine. 17 (8): pp.857-872, 1998
 
-[Wil27]: Wilson, E.B. "Probable inference, the law of succession, and statistical inference," Journal of the American Statistical Association. 22 (158): pp.209-212, 1927
+[Wil27] Wilson, E.B. "Probable inference, the law of succession, and statistical inference," Journal of the American Statistical Association. 22 (158): pp.209-212, 1927
 
-[BLC01]: Brown, L.D., Cai, T.T. and DasGupta, A. "Interval Estimation for a Binomial Proportion," Statistical Science. 16 (2): pp. 101-133, 2001
+[BLC01] Brown, L.D., Cai, T.T. and DasGupta, A. "Interval Estimation for a Binomial Proportion," Statistical Science. 16 (2): pp. 101-133, 2001
 
 ## [Changelog](./CHANGELOG.md)
 

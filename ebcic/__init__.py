@@ -690,14 +690,18 @@ def beta_approx(params):
     k = params.k
     alpha = params.alpha
 
-    '''
-    # NOTE: Use exact_border() or exact() for k == 0 or k == n.
-    if k == 0 or k == n:
-        lower_p, upper_p = params.exact_border()
+    if k == 0:
+        # one-sided
+        lower_p = 0.0
+        upper_p = beta.ppf(1-alpha, k+1, n-k)
+    elif k == n:
+        # one-sided
+        lower_p = beta.ppf(alpha, k, n-k+1)
+        upper_p = 1.0
     else:
-    '''
-    lower_p = beta.ppf(alpha/2, k, n-k+1)
-    upper_p = beta.ppf(1-alpha/2, k+1, n-k)
+        # two-sided
+        lower_p = beta.ppf(alpha/2, k, n-k+1)
+        upper_p = beta.ppf(1-alpha/2, k+1, n-k)
     return lower_p, upper_p
 
 
@@ -844,13 +848,30 @@ def wilson_score(params):
     """
     n = params.n
     k = params.k
-    z = params.zah
+    if k == 0 or k == n:
+        # one-sided
+        z = params.za
+    else:
+        # two-sided
+        z = params.zah
+
     p = k / n
     mu = 2 * k + z**2
     half_width = z * np.sqrt(z**2 + 4 * k * (1 - p))
     denomi = 2 * (n + z**2)
-    lower_p = max(0, (mu - half_width) / denomi)
-    upper_p = min(1, (mu + half_width) / denomi)
+
+    if k == 0:
+        # one-sided
+        lower_p = 0.0
+        upper_p = min(1, (mu + half_width) / denomi)
+    elif k == n:
+        # one-sided
+        lower_p = max(0, (mu - half_width) / denomi)
+        upper_p = 1.0
+    else:
+        # two-sided
+        lower_p = max(0, (mu - half_width) / denomi)
+        upper_p = min(1, (mu + half_width) / denomi)
     return lower_p, upper_p
 
 
@@ -877,13 +898,30 @@ def wilson_score_cc(params):
     """
     n = params.n
     k = params.k
-    z = params.zah
+    if k == 0 or k == n:
+        # one-sided
+        z = params.za
+    else:
+        # two-sided
+        z = params.zah
+
     p = k / n
     mu = 2 * k + z**2
     half_width = 1 + z * np.sqrt(z**2 - 1 / n + 4 * k * (1 - p) + (4 * p - 2))
     denomi = 2 * (n + z**2)
-    lower_p = max(0, (mu - half_width) / denomi)
-    upper_p = min(1, (mu + half_width) / denomi)
+
+    if k == 0:
+        # one-sided
+        lower_p = 0.0
+        upper_p = min(1, (mu + half_width) / denomi)
+    elif k == n:
+        # one-sided
+        lower_p = max(0, (mu - half_width) / denomi)
+        upper_p = 1.0
+    else:
+        # two-sided
+        lower_p = max(0, (mu - half_width) / denomi)
+        upper_p = min(1, (mu + half_width) / denomi)
     return lower_p, upper_p
 
 
