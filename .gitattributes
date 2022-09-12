@@ -1,0 +1,6 @@
+figs/comparison_k0.png filter=lfs diff=lfs merge=lfs -text
+figs/comparison_k1.png filter=lfs diff=lfs merge=lfs -text
+figs/comparison_k10.png filter=lfs diff=lfs merge=lfs -text
+figs/comparison_k100.png filter=lfs diff=lfs merge=lfs -text
+figs/confidence_percentage.png filter=lfs diff=lfs merge=lfs -text
+figs/num_of_errors.png filter=lfs diff=lfs merge=lfs -text
