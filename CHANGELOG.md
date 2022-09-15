@@ -17,6 +17,7 @@ All notable changes, such as backward incompatibilities, will be documented in t
 - Max of x-axis in a graph to (`k_end * 10**log_n_end`) from (`3 * k_end * 10**log_n_end`).
 - Made plot settings in interval_graph() in common as set_graph().
 - For k=0, interval_graph() shows only upper intervals due to set_graph().
+- Made k=0 and k=n be one-sided for 'wilson', 'wilson_cc' and 'beta_approx' in accordance with 'exact'.
 
 ## [0.0.2]
 
