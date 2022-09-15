@@ -7,7 +7,7 @@
 ![GitHub issues](https://img.shields.io/github/issues/kazkobara/ebcic)
 ![GitHub](https://img.shields.io/github/license/kazkobara/ebcic)
 
-[日本語 <img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/jp.svg" width="20" alt="Japanese" title="Japanese"/>](./README-jp.md)
+[日本語 <img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/jp.svg" width="20" alt="Japanese" title="Japanese"/>](https://github.com/KazKobara/ebcic/blob/master/README-jp.md)
 
 These programs are mainly for researchers, developers, and designers who calculate Binomial Confidence Intervals for given parameters:
 
@@ -144,7 +144,8 @@ interval_graph(GraProps(
 
 Result:
 
-If figures or links are not shown appropriately, visit [here](https://kazkobara.github.io/ebcic/).
+If figures or links are not shown appropriately, visit [here](https://github.com/KazKobara/ebcic).
+<!-- [here](https://kazkobara.github.io/ebcic/)-->
 
 ![Exact intervals and the line of k/n for k=1](./figs/confidence_percentage.png)
 

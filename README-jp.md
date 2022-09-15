@@ -152,7 +152,7 @@ interval_graph(GraProps(
 
 描画結果:
 
-(もし、図が表示されていない場合には、[こちら](https://kazkobara.github.io/ebcic/)をご参照下さい。)
+(もし、図が表示されていない場合には、[こちら](https://github.com/KazKobara/ebcic/blob/master/README-jp.md)をご参照下さい。)
 
 ![Exact intervals and the line of k/n for k=1](./figs/confidence_percentage.png)
 
