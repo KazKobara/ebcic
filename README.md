@@ -7,7 +7,8 @@
 ![GitHub issues](https://img.shields.io/github/issues/kazkobara/ebcic)
 ![GitHub](https://img.shields.io/github/license/kazkobara/ebcic)
 
-[日本語 <img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/jp.svg" width="20" alt="Japanese" title="Japanese"/>](https://github.com/KazKobara/ebcic/blob/master/README-jp.md)
+日本語([github.io](https://kazkobara.github.io/ebcic/README-jp.html), [github](https://github.com/KazKobara/ebcic/blob/master/README-jp.md))
+<img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/jp.svg" width="20" alt="Japanese" title="Japanese"/>
 
 These programs are mainly for researchers, developers, and designers who calculate Binomial Confidence Intervals for given parameters:
 
@@ -23,7 +24,7 @@ These programs are mainly for researchers, developers, and designers who calcula
 
 ### Jupyter notebook
 
-1. Open [ebcic.ipynb](https://kazkobara.github.io/ebcic/ebcic.ipynb) with Jupyter-notebook-compatible development environment such as Jupyter Notebook, JupyterLab, or Visual Studio Code.
+1. Open [ebcic.ipynb](https://github.com/KazKobara/ebcic/blob/master/ebcic.ipynb) with Jupyter-notebook-compatible development environment such as Jupyter Notebook, JupyterLab, or Visual Studio Code.
 2. Run the following initial cells:
 
     ~~~python
@@ -144,10 +145,9 @@ interval_graph(GraProps(
 
 Result:
 
-If figures or links are not shown appropriately, visit [here](https://github.com/KazKobara/ebcic).
-<!-- [here](https://kazkobara.github.io/ebcic/)-->
+If figures or links are not shown appropriately, visit [github.io page](https://kazkobara.github.io/ebcic/) or [github page](https://github.com/KazKobara/ebcic).
 
-![Exact intervals and the line of k/n for k=1](./figs/confidence_percentage.png)
+![Exact intervals and the line of k/n for k=1](https://github.com/KazKobara/ebcic/raw/master/figs/confidence_percentage.png)
 
 #### Exact intervals for k=0 to 5
 
@@ -165,7 +165,7 @@ interval_graph(GraProps(
 
 Result:
 
-![Exact intervals for k=0 to 5](./figs/num_of_errors.png)
+![Exact intervals for k=0 to 5](https://github.com/KazKobara/ebcic/raw/master/figs/num_of_errors.png)
 
 #### Comparison of exact and approximated intervals for k=0
 
@@ -207,7 +207,7 @@ As you can see from the following figure, '`rule of -ln(a)`' for large `n` and '
 
 > For `k=0`, interval_graph() of EBCIC v0.0.3 or later, displays only one-sided upper intervals since their lower intervals must be `0` (though some approximations, such as '`Wilson cc`', output wrong values than `0`).
 
-![Comparison of exact and approximated intervals for k=0](./figs/comparison_k0.png)
+![Comparison of exact and approximated intervals for k=0](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k0.png)
 
 #### Comparison of exact and approximated intervals for `k=1`
 
@@ -238,7 +238,7 @@ As you can see from the following figures and as warned in many papers such as [
 The upper intervals of the other approximations look tight.
 The approximation using beta function looks tight where the confidence interval for `k=n=1` is one-sided.
 
-![Comparison of exact and approximated intervals for k=1](./figs/comparison_k1.png)
+![Comparison of exact and approximated intervals for k=1](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k1.png)
 
 #### Comparison of exact and approximated intervals for `k=10`
 
@@ -265,7 +265,7 @@ Result:
 
 For `k=10`, '`normal`' still does not provide a good approximation.
 
-![Comparison of exact and approximated intervals for k=10](./figs/comparison_k10.png)
+![Comparison of exact and approximated intervals for k=10](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k10.png)
 
 #### Comparison of exact and approximated intervals for `k=100`
 
@@ -292,7 +292,7 @@ Result:
 
 At least for `k=100` and confidence percentage, `confi_perc=99.0`, all these approximations look tight.
 
-![Comparison of exact and approximated intervals for k=20](./figs/comparison_k100.png)
+![Comparison of exact and approximated intervals for k=100](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k100.png)
 
 ### [API Manual](https://github.com/KazKobara/ebcic/tree/master/docs/_build)
 

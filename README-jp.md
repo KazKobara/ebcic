@@ -15,7 +15,7 @@
 
 ### Jupyter notebook で使う場合
 
-1. [ebcic.ipynb](https://kazkobara.github.io/ebcic/ebcic.ipynb) を Jupyter, JupyterLab, Visual Studio Code などの Jupyter notebook を実行可能な環境で開きます。
+1. [ebcic.ipynb](https://github.com/KazKobara/ebcic/blob/master/ebcic.ipynb) を Jupyter, JupyterLab, Visual Studio Code などの Jupyter notebook を実行可能な環境で開きます。
 2. まずは、以下のセルを実行:
 
     ~~~python
@@ -152,9 +152,10 @@ interval_graph(GraProps(
 
 描画結果:
 
-(もし、図が表示されていない場合には、[こちら](https://github.com/KazKobara/ebcic/blob/master/README-jp.md)をご参照下さい。)
+(もし、図が表示されていない場合には、
+[github.ioのページ](https://github.com/KazKobara/ebcic/blob/master/README-jp.md) または [githubのページ](https://kazkobara.github.io/ebcic/README-jp.html) をご参照下さい。)
 
-![Exact intervals and the line of k/n for k=1](./figs/confidence_percentage.png)
+![Exact intervals and the line of k/n for k=1](https://github.com/KazKobara/ebcic/raw/master/figs/confidence_percentage.png)
 
 #### kを0から5まで変更した場合の厳密な信頼区間
 
@@ -170,7 +171,7 @@ interval_graph(GraProps(
 
 描画結果:
 
-![Exact intervals for k=0 to 5](./figs/num_of_errors.png)
+![Exact intervals for k=0 to 5](https://github.com/KazKobara/ebcic/raw/master/figs/num_of_errors.png)
 
 #### `k=0`の場合の厳密な信頼区間と近似的な信頼区間との比較
 
@@ -210,7 +211,7 @@ normal | 二項分布を正規分布へ近似して求めた区間(`Normal appro
 
 > EBCIC 0.0.3以降の interval_graph() では、 `k=0` の信頼区間は片側の上限のみを描画するようにしてあります。(`k=0`の場合の下限は`0`であることが自明なのですが、'`Wilson cc`'などの近似を用いる方法では `0` とは異なる値が出力されるため。)
 
-![Comparison of exact and approximated intervals for k=0](./figs/comparison_k0.png)
+![Comparison of exact and approximated intervals for k=0](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k0.png)
 
 #### `k=1`の場合の厳密な信頼区間と近似的な信頼区間との比較
 
@@ -238,7 +239,7 @@ interval_graph(GraProps(
 - 上限については '`normal`' **以外**はよい近似になっていることが分かります。
 - ベータ関数を使った近似は上下限共によい近似になっていることが分かります。(`k=n=1` の場合の信頼区間は片側になります。)
 
-![Comparison of exact and approximated intervals for k=1](./figs/comparison_k1.png)
+![Comparison of exact and approximated intervals for k=1](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k1.png)
 
 #### `k=10`の場合の厳密な信頼区間と近似的な信頼区間との比較
 
@@ -263,7 +264,7 @@ interval_graph(GraProps(
 
 `k=10`の場合でも、'`normal`'などはまだよい近似とはなっていないことが分かります。
 
-![Comparison of exact and approximated intervals for k=10](./figs/comparison_k10.png)
+![Comparison of exact and approximated intervals for k=10](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k10.png)
 
 #### `k=100`の場合の厳密な信頼区間と近似的な信頼区間との比較
 
@@ -288,7 +289,7 @@ interval_graph(GraProps(
 
 `k=100`で`confi_perc=99.0`の場合は、本図で比較した近似的な信頼区間はいずれも厳密な信頼区間のよい近似になっていることが分かります。
 
-![Comparison of exact and approximated intervals for k=20](./figs/comparison_k100.png)
+![Comparison of exact and approximated intervals for k=100](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k100.png)
 
 ## [APIマニュアル](https://github.com/KazKobara/ebcic/tree/master/docs/_build)
 
@@ -335,6 +336,10 @@ interval_graph(GraProps(
 ## [MIT License](./LICENSE)
 
 ---
+最後までお読み頂きありがとうございます。
+GitHubアカウントをお持ちでしたら、フォロー及び Star 頂ければと思います。リンクも歓迎です。
 
-- [https://github.com/KazKobara/](https://github.com/KazKobara/)
-- [https://kazkobara.github.io/](https://kazkobara.github.io/README-jp.html)
+- [Follow (クリック後の画面左)](https://github.com/KazKobara)
+- [Star (クリック後の画面右上)](https://github.com/KazKobara/tips-jp)
+
+[homeに戻る](https://kazkobara.github.io/README-jp.html)
