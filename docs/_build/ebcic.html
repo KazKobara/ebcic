@@ -1,17 +1,18 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
 
-    <title>ebcic module &#8212; EBCIC 0.0.3 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <title>ebcic module &#8212; EBCIC 0.0.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -29,7 +30,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to EBCIC’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.4 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">ebcic module</a></li> 
       </ul>
     </div>  
@@ -40,7 +41,7 @@
           <div class="body" role="main">
             
   <section id="module-ebcic">
-<span id="ebcic-module"></span><h1>ebcic module<a class="headerlink" href="#module-ebcic" title="Permalink to this headline">¶</a></h1>
+<span id="ebcic-module"></span><h1>ebcic module<a class="headerlink" href="#module-ebcic" title="Permalink to this heading">¶</a></h1>
 <p>Exact Binomial Confidence Interval Calculator</p>
 <p>This module provides functions to calculate exact binomial intervals
 and some of the approximated intervals, such as normal approximation,
@@ -60,8 +61,8 @@ the New Energy and Industrial Technology Development Organization (NEDO).</p>
 <p>Copyright (C) 2020-2022 National Institute of Advanced Industrial Science
 and Technology (AIST).</p>
 <dl class="py class">
-<dt id="ebcic.GraProps">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">GraProps</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_n_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confi_perc_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[99]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['with_exact']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'intervals.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leg_pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.GraProps">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">GraProps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_n_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confi_perc_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[99]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['with_exact']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savefig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig_file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'intervals.png'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leg_pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Parameter pool class for graph properties.</p>
 <dl class="field-list simple">
@@ -90,8 +91,8 @@ In jupyter, drag and drop the displayed figure to a folder,
 open it with Paint app and so on and then overwrite the figure.</p>
 </div>
 <dl class="py method">
-<dt id="ebcic.GraProps.set_graph">
-<code class="sig-name descname"><span class="pre">set_graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_upper</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_linestyle</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_label</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#ebcic.GraProps.set_graph" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.GraProps.set_graph">
+<span class="sig-name descname"><span class="pre">set_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_upper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_linestyle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#ebcic.GraProps.set_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set graphs for interval_graph()</p>
 <p>Subroutine to set graph parameters.</p>
 <dl class="field-list simple">
@@ -118,70 +119,153 @@ such as ‘solid’, ‘dashed’, ‘dashdot’ and ‘dotted’.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.GraProps.set_k">
-<code class="sig-name descname"><span class="pre">set_k</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps.set_k" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.GraProps.set_k">
+<span class="sig-name descname"><span class="pre">set_k</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps.set_k" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.GraProps.set_n">
-<code class="sig-name descname"><span class="pre">set_n</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_n_end</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps.set_n" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.GraProps.set_n">
+<span class="sig-name descname"><span class="pre">set_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_n_end</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.GraProps.set_n" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="ebcic.Params">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">Params</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warn_line_confi_perc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">Params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_lower</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_perc_lower</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_perc_upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warn_line_confi_perc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Parameter pool class for Binomial and confidence.</p>
-<p>This stores parameters regarding Binomial and confidence after
-checking them and avoiding duplicate checks and warnings.</p>
+<p>Parameter pool class for Binomial Confidence Interval.</p>
+<p>This stores parameters regarding binomial confidence intervals after
+checking and avoiding duplication.</p>
+<dl class="simple">
+<dt>Set the confidence with either of the following parameters:</dt><dd><ul class="simple">
+<li><p><cite>confi_perc</cite></p></li>
+<li><p><cite>alpha</cite></p></li>
+<li><p>both or either of <cite>rej_perc_upper</cite> and <cite>rej_perc_lower</cite></p></li>
+<li><p>both or either of <cite>rej_upper</cite> and <cite>rej_lower</cite></p></li>
+</ul>
+</dd>
+</dl>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>k</strong> (<em>int</em>) – Number of errors.</p></li>
 <li><p><strong>n</strong> (<em>int</em>) – Number of trials.</p></li>
-<li><p><strong>alpha</strong> (<em>float</em>) – 1 - ‘confi_perc’/100</p></li>
-<li><p><strong>confi_perc</strong> (<em>float</em>) – Confidence percentage for two-sided of 0&lt;k&lt;n
+<li><p><strong>rej_perc_upper</strong> (<em>float</em>) – Upper rejection area of assuming population in percentage.</p></li>
+<li><p><strong>rej_perc_lower</strong> (<em>float</em>) – Lower rejection area of assuming population in percentage.</p></li>
+<li><p><strong>rej_upper</strong> (<em>float</em>) – Upper rejection area of assuming population in ratio, or
+rej_perc_upper/100.</p></li>
+<li><p><strong>rej_lower</strong> (<em>float</em>) – Lower rejection area of assuming population in ratio, or
+rej_perc_lower/100.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – Rejection area of assuming population in ratio
+where 0 &lt; alpha &lt; 1.
+If <cite>alpha</cite> is not given, either of the following is set
+depending on the availability:
+- <cite>rej_upper + rej_lower</cite>
+- <cite>rej_perc_upper/100 + rej_perc_lower/100</cite>
+- <cite>1 - confi_perc/100</cite></p></li>
+<li><p><strong>confi_perc</strong> (<em>float</em>) – Confidence percentage (confidence coefficient in percentage
+or confidence level) for two-sided of 0&lt;k&lt;n
 where 0 &lt; confi_perc &lt; 100, or for one-sided of k=0 or k=n.
-For one-sided of 0&lt;k&lt;n, set
-confi_perc=(2 * confi_perc_for_one_sided - 100)
-where 50 &lt; confi_perc_for_one_sided &lt; 100.</p></li>
-<li><p><strong>warn_line_confi_perc</strong> (<em>float</em>) – Warned, if ‘confi_perc’ is smaller than this value.</p></li>
+For one-sided of 0&lt;k&lt;n, use rej_* variables or set
+<cite>confi_perc=(2 * s - 100)</cite> where <cite>s</cite> is
+the confidence percentage for one-sided of 0&lt;k&lt;n and
+<cite>50 &lt; s &lt; 100.
+If `confi_perc</cite> is not given, either of the following is set
+depending on the availability:
+- <cite>(1 - alpha)*100</cite>
+- <cite>(1 - (rej_upper + rej_lower))*100</cite>
+- <cite>100 - (rej_perc_upper + rej_perc_lower)</cite></p></li>
+<li><p><strong>warn_line_confi_perc</strong> (<em>float</em>) – Warned, if <cite>confi_perc</cite> is smaller than this value.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py method">
-<dt id="ebcic.Params.alpha_to_confi_perc">
-<code class="sig-name descname"><span class="pre">alpha_to_confi_perc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.alpha_to_confi_perc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.alpha_to_confi_perc">
+<span class="sig-name descname"><span class="pre">alpha_to_confi_perc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.alpha_to_confi_perc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Alpha to confidence percentage.</p>
 <p>Convert given ‘alpha’ in between 0 to 1 exclusive
-to ‘confi_perc’ in percentage between 0 to 100 exclusive
-after input check.</p>
+to ‘confi_perc’ in percentage between 0 to 100 exclusive.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.Params.check_and_warn_alpha">
-<code class="sig-name descname"><span class="pre">check_and_warn_alpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.check_and_warn_alpha" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.beta_approx">
+<span class="sig-name descname"><span class="pre">beta_approx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.beta_approx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximated interval using beta function.</p>
+<p>Good approximation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
+upper_p (float): upper interval of Binomial confidence.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.0002995283597770252</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">0.999700471640223</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()</span>
+<span class="go">(2.531777593461957e-06, 0.000557036997946958)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()</span>  <span class="c1"># noqa E501</span>
+<span class="go">(2.531777593461957e-06, 0.000557036997946958)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.00047429765916540134</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.00047429765916540134</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">0.9995257023408346</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">0.9995257023408346</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.check_and_warn_alpha">
+<span class="sig-name descname"><span class="pre">check_and_warn_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.check_and_warn_alpha" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.Params.check_and_warn_confi_perc">
-<code class="sig-name descname"><span class="pre">check_and_warn_confi_perc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.check_and_warn_confi_perc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.check_and_warn_confi_perc">
+<span class="sig-name descname"><span class="pre">check_and_warn_confi_perc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.check_and_warn_confi_perc" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.Params.confi_perc_to_alpha">
-<code class="sig-name descname"><span class="pre">confi_perc_to_alpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.confi_perc_to_alpha" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.confi_perc_to_alpha">
+<span class="sig-name descname"><span class="pre">confi_perc_to_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.confi_perc_to_alpha" title="Permalink to this definition">¶</a></dt>
 <dd><p>Confidence percentage to alpha.</p>
 <p>This converts ‘confi_perc’ given in percentage between
 0 to 100 exclusive
-to alpha in between 0 to 1 exclusive after input check.</p>
+to alpha in between 0 to 1 exclusive.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.Params.exact">
-<code class="sig-name descname"><span class="pre">exact</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.exact" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.exact">
+<span class="sig-name descname"><span class="pre">exact</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.exact" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return exact Binomial confidence interval for the parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -189,22 +273,47 @@ to alpha in between 0 to 1 exclusive after input check.</p>
 alpha (or confi_perc).</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>tuple containing:</p>
-<blockquote>
-<div><p>lower_p (float): lower interval of Binomial confidence.</p>
-<p>upper_p (float): upper interval of Binomial confidence.</p>
-</div></blockquote>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
+upper_p (float): upper interval of Binomial confidence.</p>
+</dd>
+</dl>
 </p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
+<span class="go">(2.5317775934704154e-06, 0.0005570369979470232)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
+<span class="go">(5.129316283730961e-06, 0.00047429765916542926)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>  <span class="c1"># noqa: E501</span>
+<span class="go">(2.5317775934704154e-06, 0.0005570369979470232)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
+<span class="go">(0.0, 0.00047429765916542926)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
+<span class="go">(0.9995257023408346, 0.9999948706837163)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
+<span class="go">(0.9995257023408346, 1.0)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.Params.exact_border">
-<code class="sig-name descname"><span class="pre">exact_border</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">tuple</span><a class="headerlink" href="#ebcic.Params.exact_border" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.exact_border">
+<span class="sig-name descname"><span class="pre">exact_border</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#ebcic.Params.exact_border" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exact Binomial Confidence Interval for k==0 or k==n.</p>
 <p>Return the exact binomial confidence interval for given parameters
 for k==0 or k==n.</p>
@@ -231,44 +340,453 @@ for k==0 or k==n.</p>
 <dd class="field-odd"><p>tuple</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact_border</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.00029952835977664627</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">round_h_up</span><span class="p">(</span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact_border</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span><span class="o">-</span><span class="mi">7</span><span class="p">)</span>  <span class="c1"># noqa: E501</span>
+<span class="go">0.0002995</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact_border</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.00029952835977664627</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact_border</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">0.9997004716402234</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_upper</span> <span class="o">=</span> <span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">exact_border</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">0.9997004716402234</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.Params.set_alpha">
-<code class="sig-name descname"><span class="pre">set_alpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_alpha" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.interval_update">
+<span class="sig-name descname"><span class="pre">interval_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itvls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#ebcic.Params.interval_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update confidence parameters if new to the stored ones.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>itvls</strong> – Dict of interval values.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of warned.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>warned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.normal_approx">
+<span class="sig-name descname"><span class="pre">normal_approx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.normal_approx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximated interval using normal distribution</p>
+<p>Interval obtained by approximating Binomial distribution
+to normal distribution, which is available only 0&lt;k&lt;n.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and ‘alpha’
+(or ‘confi_perc’).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
+upper_p (float): upper interval of Binomial confidence.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Normal approximation does not give good approximation for small
+n or k being close to 0 or n.</p></li>
+<li><p>v0.0.4 and newer do not set Z_{alpha} and Z_{alpha/2} to Params
+but generate them from ‘alpha’.</p></li>
+</ul>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">normal_approx</span><span class="p">()</span>
+<span class="go">(0.0, 0.00029600580053504625)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">normal_approx</span><span class="p">()</span>  <span class="c1"># noqa E501</span>
+<span class="go">(0.0, 0.00029600580053504625)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">normal_approx</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.00026449322486687016</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span><span class="o">.</span><span class="n">normal_approx</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.00026449322486687016</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">normal_approx</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">0.9997355067751331</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_upper</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span><span class="o">.</span><span class="n">normal_approx</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">0.9997355067751331</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.print_interval">
+<span class="sig-name descname"><span class="pre">print_interval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.print_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print exact interval as text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and
+‘confi_perc’ (confidence percentage) or ‘alpha’.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_interval</span><span class="p">(</span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">))</span>  <span class="c1"># noqa: E501  </span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.rule_of_ln_alpha">
+<span class="sig-name descname"><span class="pre">rule_of_ln_alpha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.rule_of_ln_alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generalized rule of three.</p>
+<p>Interval of rule of -ln(alpha), i.e generalized version of
+‘rule of three’.
+This can be used only when (k == 0 or k == n) and
+reliable if n is large enough, say n &gt; 50.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
+upper_p (float): upper interval of Binomial confidence.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">rule_of_ln_alpha</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.0002995732273553991</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">round_h_up</span><span class="p">(</span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">rule_of_ln_alpha</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span><span class="o">-</span><span class="mi">7</span><span class="p">)</span>  <span class="c1"># noqa: E501</span>
+<span class="go">0.0002996</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span><span class="o">.</span><span class="n">rule_of_ln_alpha</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.0002995732273553991</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_upper</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">)</span><span class="o">.</span><span class="n">rule_of_ln_alpha</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">0.9997004267726446</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.set_alpha">
+<span class="sig-name descname"><span class="pre">set_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_alpha" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set alpha, i.e. (1 - (confidence percentage)/100), and more.</p>
 <p>This also sets its corresponding
-‘perc_confi’ (confidence percentage),
-Z_{alpha} and Z_{alpha/2}.</p>
+‘perc_confi’ (confidence percentage).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alpha</strong> (<em>0 &lt; x &lt; 1</em>) – (1 - (confidence percentage)/100).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of warned.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>warned</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>v0.0.4 and newer do not set Z_{alpha} and Z_{alpha/2}
+but generate them from ‘alpha’.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.Params.set_confi_perc">
-<code class="sig-name descname"><span class="pre">set_confi_perc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_confi_perc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.set_confi_perc">
+<span class="sig-name descname"><span class="pre">set_confi_perc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_confi_perc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set confidence percentage and more.</p>
-<p>This also sets its corresponding alpha, Z_{alpha} and Z_{alpha/2}.</p>
+<p>This also sets its corresponding ‘alpha’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>confi_perc</strong> (<em>0 &lt; x &lt; 100</em>) – Confidence percentage.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of warned.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>warned</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>v0.0.4 and newer do not set Z_{alpha} and Z_{alpha/2}
+but generate them from ‘alpha’.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.Params.set_k">
-<code class="sig-name descname"><span class="pre">set_k</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_k" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.set_k">
+<span class="sig-name descname"><span class="pre">set_k</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_k" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="ebcic.Params.set_n">
-<code class="sig-name descname"><span class="pre">set_n</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_n" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.Params.set_n">
+<span class="sig-name descname"><span class="pre">set_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.set_n" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.set_rej">
+<span class="sig-name descname"><span class="pre">set_rej</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rej_lower</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_upper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#ebcic.Params.set_rej" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set rejection area in ratio.</p>
+<p>This also sets its corresponding
+‘perc_confi’ (confidence percentage) and ‘alpha’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rej_lower</strong> (<em>0 &lt;= x &lt; 0.5</em>) – Lower rejection area of assuming population in ratio.</p></li>
+<li><p><strong>rej_upper</strong> (<em>0 &lt;= x &lt; 0.5</em>) – Upper rejection area of assuming population in ratio.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of warned.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>warned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.set_rej_perc">
+<span class="sig-name descname"><span class="pre">set_rej_perc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rej_perc_lower</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rej_perc_upper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#ebcic.Params.set_rej_perc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set rejection area in percentage.</p>
+<p>This also sets its corresponding
+‘confi_perc’ (confidence percentage) and ‘alpha’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rej_perc_lower</strong> (<em>0 &lt;= x &lt; 50</em>) – Percentage of lower rejection area in assuming population.</p></li>
+<li><p><strong>rej_perc_upper</strong> (<em>0 &lt;= x &lt; 50</em>) – Percentage of upper rejection area in assuming population.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of warned.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>warned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.verify_interval_of_p">
+<span class="sig-name descname"><span class="pre">verify_interval_of_p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lower_p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.verify_interval_of_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the reliability of the given interval.</p>
+<p>This checks, for given parameteres, if integral of outside of
+the interval is alpha or not, and so on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p></li>
+<li><p><strong>lower_p</strong> – Lower interval of p for the params.</p></li>
+<li><p><strong>upper_p</strong> – Upper interval of p for the params.</p></li>
+<li><p><strong>sig_digits</strong> – Significant digits.</p></li>
+<li><p><strong>verbose</strong> – 0: no message
+1: show only errors
+2: show always</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>1 if unreliable, 0 reliable,
+i.e. no evidence was found to consider them unreliable.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.wilson_score">
+<span class="sig-name descname"><span class="pre">wilson_score</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.wilson_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wilson score interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and ‘alpha’
+(or ‘confi_perc’).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
+upper_p (float): upper interval of Binomial confidence.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Upper interval seems close to the exact one, but
+lower one seems a little greater than the exact one.</p></li>
+<li><p>v0.0.4 and newer do not set Z_{alpha} and Z_{alpha/2} to Params
+but generate them from ‘alpha’.</p></li>
+</ul>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">0.00027047997304067333</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">0.9997295200269593</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()</span>
+<span class="go">(1.76527238382147e-05, 0.0005662672867662839)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()</span>  <span class="c1"># noqa E501</span>
+<span class="go">(1.76527238382147e-05, 0.0005662672867662839)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()</span>
+<span class="go">(0.9994337327132337, 0.9999823472761619)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()</span>  <span class="c1"># noqa E501</span>
+<span class="go">(0.9994337327132337, 0.9999823472761619)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">90.</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()</span>
+<span class="go">(2.230960071836048e-05, 0.0004481162763277046)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()</span>
+<span class="go">(0.0, 0.0004481162763277046)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()</span>
+<span class="go">(0.9995518837236722, 0.9999776903992816)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score</span><span class="p">()</span>
+<span class="go">(0.9995518837236722, 1.0)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ebcic.Params.wilson_score_cc">
+<span class="sig-name descname"><span class="pre">wilson_score_cc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.wilson_score_cc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wilson score interval with continuity correction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and ‘alpha’</p></li>
+<li><p><strong>'confi_perc'</strong><strong>)</strong><strong>.</strong> (<em>(</em><em>or</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
+upper_p (float): upper interval of Binomial confidence.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Lower interval is not a good approximation for small k,
+i.e. it becomes higher than the exact lower interval,
+though it is better than Wilson score interval
+(without continuity correction).</p></li>
+<li><p>v0.0.4 and newer do not set Z_{alpha} and Z_{alpha/2} to Params
+but generate them from ‘alpha’.</p></li>
+</ul>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>
+<span class="go">(0.0, 0.00025428323087746505)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>
+<span class="go">(0.9996364213055936, 1.0)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>
+<span class="go">(5.220053865461516e-06, 0.000578699956739037)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>  <span class="c1"># noqa E501</span>
+<span class="go">(5.220053865461516e-06, 0.000578699956739037)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>
+<span class="go">(0.9993507610423017, 1.0)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>  <span class="c1"># noqa E501</span>
+<span class="go">(0.9993507610423017, 1.0)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>
+<span class="go">(6.874230637052348e-06, 0.0004635516464090127)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span> <span class="o">=</span> <span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>
+<span class="go">(0.0, 0.0004635516464090127)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>
+<span class="go">(0.9994722211307717, 1.0)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_upper</span> <span class="o">=</span> <span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">wilson_score_cc</span><span class="p">()</span>
+<span class="go">(0.9994722211307717, 1.0)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.alpha_to_confi_perc_wo_check">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">alpha_to_confi_perc_wo_check</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.alpha_to_confi_perc_wo_check" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.alpha_to_confi_perc_wo_check">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">alpha_to_confi_perc_wo_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.alpha_to_confi_perc_wo_check" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.alpha_to_za">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">alpha_to_za</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.alpha_to_za" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.alpha_to_za">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">alpha_to_za</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#ebcic.alpha_to_za" title="Permalink to this definition">¶</a></dt>
 <dd><p>alpha to Z_alpha for one-sided test in normal distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -293,8 +811,8 @@ Z_{alpha} and Z_{alpha/2}.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.alpha_to_zah">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">alpha_to_zah</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.alpha_to_zah" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.alpha_to_zah">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">alpha_to_zah</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#ebcic.alpha_to_zah" title="Permalink to this definition">¶</a></dt>
 <dd><p>alpha to Z_{alpha/2} for two-sided test in normal distribution.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -316,59 +834,141 @@ Z_{alpha} and Z_{alpha/2}.</p>
 <span class="go">2.57583</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not used in v0.0.4 (except in test_for_z()) and will be deprecated.</p>
+</div>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.beta_approx">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">beta_approx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.beta_approx" title="Permalink to this definition">¶</a></dt>
-<dd><p>Approximated interval using beta function.</p>
-<p>Good approximation for (0 &lt; k &lt; n).</p>
+<dt class="sig sig-object py" id="ebcic.beta_approx">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">beta_approx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.beta_approx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebcic.check_alpha">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">check_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_alpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebcic.check_between_k_and_n">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">check_between_k_and_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_between_k_and_n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebcic.check_confi_perc">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">check_confi_perc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_confi_perc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebcic.check_k">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">check_k</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_k" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebcic.check_n">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">check_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ebcic.check_range_float">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">check_range_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_inclusive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_inclusive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_exit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#ebcic.check_range_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the range of the float variable.
+:param min: Minimum of <cite>value</cite>.
+:param min_inclusive: ‘&lt;=’ if True ‘&lt;’ otherwise.
+:param max: Maximum of <cite>value</cite>.
+:param max_inclusive: ‘&lt;=’ if True ‘&lt;’ otherwise.
+:param value: Float value to check.
+:param val_name: The value’s variable name.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>If holds.
+False: If not hold and do_exit=False.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>tuple containing:</p>
-<blockquote>
-<div><p>lower_p (float): lower interval of Binomial confidence.</p>
-<p>upper_p (float): upper interval of Binomial confidence.</p>
-</div></blockquote>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>True</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_range_float</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;test1&#39;</span><span class="p">,</span> <span class="n">do_exit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_range_float</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;test2&#39;</span><span class="p">,</span> <span class="n">do_exit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_range_float</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;test3&#39;</span><span class="p">,</span> <span class="n">do_exit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_range_float</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;test4&#39;</span><span class="p">,</span> <span class="n">do_exit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.check_alpha">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">check_alpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_alpha" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="ebcic.cli">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">cli</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cli_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>EBCIC Command Line Interface</p>
+<p>See the command line examples on <a class="reference external" href="https://github.com/KazKobara/ebcic">https://github.com/KazKobara/ebcic</a>
+and below.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cli_args</strong> – Command line args.
+If ‘cli_args is None’, it uses args given by the command interface.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p># Show help
+# python -m ebcic -h
+&gt;&gt;&gt; cli([‘-h’])  # doctest: +SKIP</p>
+<p>### Two-sided confidence interval for 0&lt;k&lt;n ###
+# python -m ebcic -k 1 -n 100 -c 95 -lu
+&gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-c’, ‘95’, ‘-lu’])
+0.00025314603297743815
+0.0544593853920806</p>
+<p># python -m ebcic -k 1 -n 100 -r 2.5 -s 2.5 -lu
+&gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-r’, ‘2.5’, ‘-s’, ‘2.5’, ‘-lu’])
+0.00025314603297743815
+0.0544593853920806</p>
+<p>### One-sided upper confidence interval for k=0 ###
+# python -m ebcic -k 0 -n 100 -c 95 -u
+&gt;&gt;&gt; cli([‘-k’, ‘0’, ‘-n’, ‘100’, ‘-c’, ‘95’, ‘-u’])
+0.029513049607039932</p>
+<p># python -m ebcic -k 0 -n 100 –rej-perc-lower 5 -u
+&gt;&gt;&gt; cli([‘-k’, ‘0’, ‘-n’, ‘100’, ‘-r’, ‘5’, ‘-u’])
+0.029513049607039932</p>
+<p>### One-sided lower confidence interval for k=n ###
+# python -m ebcic -k 100 -n 100 –rej-perc-upper 5 -l
+&gt;&gt;&gt; cli([‘-k’, ‘100’, ‘-n’, ‘100’, ‘-s’, ‘5’, ‘-l’])
+0.9704869503929601</p>
+<p>### One-sided upper confidence interval for 0&lt;k&lt;n ###
+# python -m ebcic -k 1 -n 100 -r 5 -u
+&gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-r’, ‘5.’, ‘-u’])
+0.04655981145353891</p>
+<p># python -m ebcic -k 1 -n 100 -c 90 -u
+&gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-c’, ‘90.’, ‘-u’])
+0.04655981145353891</p>
+<p># python -m ebcic -k 1 -n 100 -a 0.1 -u
+&gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-a’, ‘0.1’, ‘-u’])
+0.04655981145353891</p>
+<p>### One-sided lower confidence interval for 0&lt;k&lt;n ###
+# python -m ebcic -k 99 -n 100 -s 5 -l
+&gt;&gt;&gt; cli([‘-k’, ‘99’, ‘-n’, ‘100’, ‘-s’, ‘5.’, ‘-l’])
+0.9534401885464611</p>
+<p># python -m ebcic -k 99 -n 100 -c 90 -l
+&gt;&gt;&gt; cli([‘-k’, ‘99’, ‘-n’, ‘100’, ‘-c’, ‘90.’, ‘-l’])
+0.9534401885464611</p>
+<p># python -m ebcic -k 99 -n 100 -a 0.1 -l
+&gt;&gt;&gt; cli([‘-k’, ‘99’, ‘-n’, ‘100’, ‘-a’, ‘0.1’, ‘-l’])
+0.9534401885464611</p>
+</dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.check_between_k_and_n">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">check_between_k_and_n</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_between_k_and_n" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="ebcic.check_confi_perc">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">check_confi_perc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_confi_perc" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="ebcic.check_k">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">check_k</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_k" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="ebcic.check_n">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">check_n</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.check_n" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="ebcic.compare_dist">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">compare_dist</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.compare_dist" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.compare_dist">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">compare_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.compare_dist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compare major probability distributions in a graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -378,42 +978,24 @@ to Params().</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">compare_dist</span><span class="p">(</span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">compare_dist</span><span class="p">(</span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>  
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.confi_perc_to_alpha_wo_check">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">confi_perc_to_alpha_wo_check</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.confi_perc_to_alpha_wo_check" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.confi_perc_to_alpha_wo_check">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">confi_perc_to_alpha_wo_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.confi_perc_to_alpha_wo_check" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.exact">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">exact</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.exact" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return exact Binomial confidence interval for the parameter.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and
-alpha (or confi_perc).</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>tuple containing:</p>
-<blockquote>
-<div><p>lower_p (float): lower interval of Binomial confidence.</p>
-<p>upper_p (float): upper interval of Binomial confidence.</p>
-</div></blockquote>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="ebcic.exact">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">exact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.exact" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.interval_graph">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">interval_graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gra_props</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.interval_graph" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.interval_graph">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">interval_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gra_props</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.interval_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show interval graphs.</p>
 <p>Coloring rule:</p>
 <ul class="simple">
@@ -434,7 +1016,7 @@ log_n_end, confi_perc_line, line_list.</p>
 <p class="rubric">Examples</p>
 <p>Show intervals for multiple confidence percentages.
 See ebcic.ipynb for more examples.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">interval_graph</span><span class="p">(</span><span class="n">GraProps</span><span class="p">(</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">interval_graph</span><span class="p">(</span><span class="n">GraProps</span><span class="p">(</span>  
 <span class="go">    k_start=1,    # &gt;= 0</span>
 <span class="go">    k_end=1,      # &gt; k_start</span>
 <span class="go">    k_step=1,     # &gt; 0</span>
@@ -468,55 +1050,18 @@ open it with Paint app and so on and then overwrite the figure.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.normal_approx">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">normal_approx</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.normal_approx" title="Permalink to this definition">¶</a></dt>
-<dd><p>Approximated interval using normal distribution.</p>
-<p>Interval obtained by approximating Binomial distribution
-to normal distribution.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and zah (Z_{alpha/2})
-where zah is set by giving either ‘alpha’ or ‘confi_perc’
-to Params().</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>tuple containing:</p>
-<blockquote>
-<div><p>lower_p (float): lower interval of Binomial confidence.</p>
-<p>upper_p (float): upper interval of Binomial confidence.</p>
-</div></blockquote>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Normal approximation does not give good approximation for small
-n or k being close to 0 or n.</p>
-</div>
-</dd></dl>
+<dt class="sig sig-object py" id="ebcic.normal_approx">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">normal_approx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.normal_approx" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.print_interval">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">print_interval</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.print_interval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Print exact interval as text.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and
-‘confi_perc’ (confidence percentage) or ‘alpha’.</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">print_interval</span><span class="p">(</span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span> <span class="o">=</span> <span class="mf">95.0</span><span class="p">))</span>
-</pre></div>
-</div>
-</dd></dl>
+<dt class="sig sig-object py" id="ebcic.print_interval">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">print_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.print_interval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.round_h_up">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">round_h_up</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.round_h_up" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.round_h_up">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">round_h_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.round_h_up" title="Permalink to this definition">¶</a></dt>
 <dd><p>Round half up.</p>
 <p>Round half up $x$ to the decimal point corresponding to $10^sig_digits$.</p>
 <dl class="field-list simple">
@@ -535,7 +1080,7 @@ n or k being close to 0 or n.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">round_h_up</span><span class="p">(</span><span class="mf">123.45678</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="go">123.4</span>
+<span class="go">123.5</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">round_h_up</span><span class="p">(</span><span class="mf">123.45678</span><span class="p">,</span>  <span class="mi">0</span><span class="p">)</span>
@@ -549,41 +1094,20 @@ n or k being close to 0 or n.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.rule_of_ln_alpha">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">rule_of_ln_alpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.rule_of_ln_alpha" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generalized rule of three.</p>
-<p>Interval of rule of -ln(alpha), i.e generalized version of
-‘rule of three’.
-This can be used only when (k == 0 or k == n) and
-reliable if n is large enough, say n &gt; 50.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>tuple containing:</p>
-<blockquote>
-<div><p>lower_p (float): lower interval of Binomial confidence.</p>
-<p>upper_p (float): upper interval of Binomial confidence.</p>
-</div></blockquote>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="ebcic.rule_of_ln_alpha">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">rule_of_ln_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.rule_of_ln_alpha" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.test_all">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">test_all</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_all" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.test_all">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">test_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test of all or some of the above tests.</p>
 <p>Higher ‘ret’ is more critical.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.test_for_z">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">test_for_z</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_for_z" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.test_for_z">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">test_for_z</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_for_z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Self test regarding Z_{alpha/2} and Z_{alpha}.</p>
 <p>alpha_to_za(), za_to_alpha(),
 alpha_to_zah() and zah_to_alpha() are tested.</p>
@@ -598,8 +1122,8 @@ alpha_to_zah() and zah_to_alpha() are tested.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.test_of_intervals">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">test_of_intervals</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_of_intervals" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.test_of_intervals">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">test_of_intervals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confi_perc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_of_intervals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test of reliability of obtained intervals for given parameters.</p>
 <p>Check if ‘alpha’ is equal to the integral of the outside of the interval
 for given parameters, such as k and n, and then return 0 if it holds.</p>
@@ -612,9 +1136,9 @@ for given parameters, such as k and n, and then return 0 if it holds.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p>See ebcic.ipynb for the parameters where reliable intervas
+<p>See ebcic.ipynb for the parameters where reliable intervals
 might not be able to be obtained.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">test_of_intervals</span><span class="p">(</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">test_of_intervals</span><span class="p">(</span>  
 <span class="go">    n_start=1,</span>
 <span class="go">    n_end=1000,</span>
 <span class="go">    n_step=1,</span>
@@ -625,8 +1149,8 @@ might not be able to be obtained.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.test_warning_once">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">test_warning_once</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_warning_once" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.test_warning_once">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">test_warning_once</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.test_warning_once" title="Permalink to this definition">¶</a></dt>
 <dd><p>Self test of warning once.</p>
 <p>Test of warning once for the same setting.</p>
 <dl class="field-list simple">
@@ -640,96 +1164,23 @@ might not be able to be obtained.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.verify_interval_of_p">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">verify_interval_of_p</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.verify_interval_of_p" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check the reliability of the given interval.</p>
-<p>This checks, for given parameteres, if integral of outside of
-the interval is alpha or not, and so on.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p></li>
-<li><p><strong>lower_p</strong> – Lower interval of p for the params.</p></li>
-<li><p><strong>upper_p</strong> – Upper interval of p for the params.</p></li>
-<li><p><strong>sig_digits</strong> – Significant digits.</p></li>
-<li><p><strong>verbose</strong> – 0: no message
-1: show only errors
-2: show always</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>1 if unreliable, 0 reliable,
-i.e. no evidence was found to consider them unreliable.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="ebcic.verify_interval_of_p">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">verify_interval_of_p</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper_p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.verify_interval_of_p" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.wilson_score">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">wilson_score</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.wilson_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wilson score interval.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and zah (Z_{alpha/2})
-where zah is set by giving either ‘alpha’ or ‘confi_perc’
-to Params().</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>tuple containing:</p>
-<blockquote>
-<div><p>lower_p (float): lower interval of Binomial confidence.</p>
-<p>upper_p (float): upper interval of Binomial confidence.</p>
-</div></blockquote>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Upper interval seems close to the exact one, but
-lower one seems a little greater than the exact one.</p>
-</div>
-</dd></dl>
+<dt class="sig sig-object py" id="ebcic.wilson_score">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">wilson_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.wilson_score" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.wilson_score_cc">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">wilson_score_cc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.wilson_score_cc" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wilson score interval with continuity correction.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n and zah (Z_{alpha/2})
-where zah is set by giving either ‘alpha’ or ‘confi_perc’
-to Params().</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>tuple containing:</p>
-<blockquote>
-<div><p>lower_p (float): lower interval of Binomial confidence.</p>
-<p>upper_p (float): upper interval of Binomial confidence.</p>
-</div></blockquote>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Lower interval is not a good approximation for small k,
-i.e. it becomes higher than the exact lower interval,
-though it is better than Wilson score interval
-(without continuity correction).</p>
-</div>
-</dd></dl>
+<dt class="sig sig-object py" id="ebcic.wilson_score_cc">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">wilson_score_cc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.wilson_score_cc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.za_to_alpha">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">za_to_alpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">za</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.za_to_alpha" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.za_to_alpha">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">za_to_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">za</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.za_to_alpha" title="Permalink to this definition">¶</a></dt>
 <dd><p>Z_alpha to alpha.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -754,8 +1205,8 @@ though it is better than Wilson score interval
 </dd></dl>
 
 <dl class="py function">
-<dt id="ebcic.zah_to_alpha">
-<code class="sig-prename descclassname"><span class="pre">ebcic.</span></code><code class="sig-name descname"><span class="pre">zah_to_alpha</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zah</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.zah_to_alpha" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ebcic.zah_to_alpha">
+<span class="sig-prename descclassname"><span class="pre">ebcic.</span></span><span class="sig-name descname"><span class="pre">zah_to_alpha</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zah</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.zah_to_alpha" title="Permalink to this definition">¶</a></dt>
 <dd><p>Z_{alpha/2} to alpha.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -788,9 +1239,11 @@ though it is better than Wilson score interval
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to EBCIC’s documentation!</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Welcome to EBCIC’s documentation!</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -802,12 +1255,12 @@ though it is better than Wilson score interval
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -824,13 +1277,13 @@ though it is better than Wilson score interval
         <li class="right" >
           <a href="index.html" title="Welcome to EBCIC’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EBCIC 0.0.4 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">ebcic module</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020-2022 National Institute of Advanced Industrial Science and Technology (AIST).
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

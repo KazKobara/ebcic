@@ -10,15 +10,19 @@
 日本語([github.io](https://kazkobara.github.io/ebcic/README-jp.html), [github](https://github.com/KazKobara/ebcic/blob/master/README-jp.md))
 <img src="https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/jp.svg" width="20" alt="Japanese" title="Japanese"/>
 
-These programs are mainly for researchers, developers, and designers who calculate Binomial Confidence Intervals for given parameters:
+These programs are mainly for researchers, developers, and designers who calculate Binomial Confidence Intervals.
+
+<!--for given parameters:
 
 - `n`: the number of Bernoulli or Binomial trials.
 - `k`: the number of target events happened.
-- `confi_perc`: confidence percentage:
-  - for two-sided of `0<k<n` where `0 < confi_perc < 100`, or for one-sided of `k=0` or `k=n`.
-  - for one-sided of `0<k<n`, set `confi_perc = (2 * confi_perc_for_one_sided - 100)` where `50 < confi_perc_for_one_sided < 100`.
+- Confidence parameter given
+  - `confi_perc`: confidence percentage:
+    - for two-sided of `0<k<n` where `0 < confi_perc < 100`, or for one-sided of `k=0` or `k=n`.
+    - for one-sided of `0<k<n`, set `confi_perc = (2 * confi_perc_for_one_sided - 100)` where `50 < confi_perc_for_one_sided < 100`.
+-->
 
-[EBCIC](https://kazkobara.github.io/ebcic/) calculates binomial intervals exactly, i.e. by implementing Clopper-Pearson interval [CP34] without simplifying mathematical equations that may deteriorate intervals for certain combinations of the above parameters. EBCIC can also shows graphs for comparing exact intervals with approximated ones.
+[EBCIC](https://kazkobara.github.io/ebcic/) calculates binomial intervals exactly, i.e. by implementing Clopper-Pearson interval [CP34] without simplifying mathematical equations that may deteriorate intervals for certain combinations of parameters. EBCIC can also shows graphs for comparing exact intervals with approximated ones.
 
 ## How to use
 
@@ -64,7 +68,7 @@ These programs are mainly for researchers, developers, and designers who calcula
         python -m ebcic -h
         ~~~
 
-3. Cf. the [examples](#examples) below.
+3. Cf. the [examples](#command-line-examples) below.
 
 ### MATLAB (with Python and `ebcic` package)
 
@@ -74,33 +78,91 @@ These programs are mainly for researchers, developers, and designers who calcula
 
 > NOTE: If you manage the edited file with git, save it as a MATLAB code file (*\.m) file to commit (or commit the live code file (\*.mlx) to a git LFS (Large File Storage)) since live code files (\*.mlx) are not git friendly. If necessary, save it as a \*.html file as well to check its look.
 
-## Examples
+## Command Line Examples
+
+To print exact intervals as text.
+
+### One-sided upper 95% confidence interval for no error among 100 trials
+
+~~~console
+python -m ebcic -k 0 -n 100 -c 95 -u
+~~~
+
+> - For `k=0` or `k=n`, give `-c` option **one-sided** confidence percentage.
+> - v0.0.4 or newer returns the same value as the above result by setting `--rej-perc-lower` (`-r`) option the percentage of the lower rejection area in assuming population as follows:
+
+~~~console
+python -m ebcic -k 0 -n 100 --rej-perc-lower 5 -u
+~~~
+
+### Two-sided 95% confidence interval for one error among 100 trials
+
+~~~console
+python -m ebcic -k 1 -n 100 -c 95 -lu
+~~~
+
+> - For `0<k<n`, give `-c` option **two-sided** confidence percentage.
+> - v0.0.4 or newer returns the same value as the above result by setting both `--rej-perc-lower` (`-r`) and `--rej-perc-upper` (`-s`) options equally divided percentages of assuming population as follows:
+
+~~~console
+python -m ebcic -k 1 -n 100 -r 2.5 -s 2.5 -lu
+~~~
+
+### One-sided upper 95% confidence interval for one error among 100 trials
+
+~~~console
+python -m ebcic -k 1 -n 100 -r 5 -u
+~~~
+
+> - For v0.0.4 and newer, set `--rej-perc-lower` (`-r`) option the percentage of the lower rejection area in assuming population.
+> - For v0.0.3 and older and `0<k<n`, give `-c` option `2*s-100` as follows where `s` is the one-sided confidence percentage (in this case `s=95` and `2*s-100=2*95-100=90`).
+
+~~~console
+python -m ebcic -k 1 -n 100 -c 90 -u
+~~~
+
+> Giving `-c 90` is the same as giving `--alpha 0.1` (or `-a 0.1`).
+
+~~~console
+python -m ebcic -k 1 -n 100 --alpha 0.1 -u
+~~~
+
+### One-sided lower 95% confidence interval for 99 errors among 100 trials
+
+~~~console
+python -m ebcic -k 99 -n 100 -s 5 -l
+~~~
+
+> - For v0.0.4 and newer, set `--rej-perc-upper` (`-s`) option the percentage of the upper rejection area in assuming population.
+> - For v0.0.3 and older and `0<k<n`, the equivalent value is obtained in the same way as the previous example using `-c` or `-a` option as follows:
+
+~~~console
+python -m ebcic -k 99 -n 100 -c 90 -l
+python -m ebcic -k 99 -n 100 -a 0.1 -l
+~~~
+
+## Python Interpreter or Jupyter Cell Examples
 
 ### Print exact interval as text
 
-Command line:
-
-~~~console
-python -m ebcic -k 1 -n 501255 --confi-perc 99.0
-~~~
-
-Python Interpreter or Jupyter cell to run:
+Edit the following parameters, `k`, `n`, and `confi_perc` (or `rej_perc_lower` and `rej_perc_upper`), and then run the cell.
 
 ~~~python
-"""Print exact interval as text.
-Edit the following parameters, k, n, confi_perc, and run this cell.
-"""
 print_interval(Params(
     k=1,             # Number of errors
     n=501255,        # Number of trials
     confi_perc=99.0  # Confidence percentage
-        # for two-sided of 0<k<n where 0 < confi_perc < 100,
-        # or for one-sided of k=0 or k=n.
-        # For one-sided of 0<k<n, set
-        # confi_perc = (2 * confi_perc_for_one_sided - 100)
-        # where 50 < confi_perc_for_one_sided < 100.
     ))
 ~~~
+
+where `confi_perc` is set as follows:
+
+- For `k=0` or `k=n`:
+  - give the percentage of **one-sided** confidence interval.
+- For `0<k<n`:
+  - give the percentage of **two-sided** confidence interval.
+- For `0<k<n` and to get one-sided confidence interval:
+  - give `-c` option `2*s-100` where `s` is the one-sided confidence percentage.
 
 Result:
 
@@ -109,6 +171,30 @@ Result:
 Upper : 1.482295806e-05
 Lower : 9.99998e-09
 Width : 1.481295808e-05
+~~~
+
+For v0.0.4 and newer, instead of `confi_perc` or `alpha`, Params() can set the confidence with
+either or both of `rej_perc_lower` and `rej_perc_upper` in percentage of `0 <= x < 50` (or either or both of `rej_lower` and `rej_upper` in ratio of `0 <= x < 0.5`. Params()'s class functions are also available.
+
+~~~python
+Params(
+    k=1,                # Number of errors
+    n=501255,           # Number of trials
+    # Rejection area in percentage
+    rej_perc_lower=0.5  # Lower rejection area (to get upper interval)
+    rej_perc_upper=0.5  # Upper rejection area (to get lower interval)
+    ).print_interval()
+~~~
+
+> Note that it uses the **lower** rejection area to get the **upper** confidence interval and vice versa.
+
+Result:
+
+~~~text
+===== Exact interval of p with rejection area of lower 0.5 [%] and upper 0.5 [%] =====
+Upper :  1.482295806e-05
+Lower :  9.99998e-09
+Width :  1.481295808e-05
 ~~~
 
 ### Depict graphs
@@ -205,7 +291,7 @@ Result:
 
 As you can see from the following figure, '`rule of -ln(a)`' for large `n` and '`beta_approx`' are good approximations for `k=0`.
 
-> For `k=0`, interval_graph() of EBCIC v0.0.3 or later, displays only one-sided upper intervals since their lower intervals must be `0` (though some approximations, such as '`Wilson cc`', output wrong values than `0`).
+> For `k=0`, interval_graph() of EBCIC v0.0.3 and newer, display only one-sided upper intervals since their lower intervals must be `0` (though some approximations, such as '`Wilson cc`', output wrong values than `0`).
 
 ![Comparison of exact and approximated intervals for k=0](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k0.png)
 
