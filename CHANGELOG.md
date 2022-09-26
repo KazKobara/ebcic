@@ -23,7 +23,7 @@ All notable changes, such as backward incompatibilities, will be documented in t
 
 ### Added
 
-- Approximation using the beta function.
+- Approximation using the beta distribution.
 - Params.exact_border() and Params.exact().
 
 ### Changed

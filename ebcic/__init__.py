@@ -1013,7 +1013,7 @@ class Params:
         return lower_p, upper_p
 
     def beta_approx(self):
-        """Approximated interval using beta function.
+        """Approximated interval using beta distribution.
 
         Good approximation.
 
@@ -1976,7 +1976,7 @@ def interval_graph(gra_props):
                     )
 
             if 'with_beta_approx' in line_list:
-                # Approximation using beta function
+                # Approximation using beta distribution
                 gra_props.set_graph(
                     params,
                     lower_upper=np.array(

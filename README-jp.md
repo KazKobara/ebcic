@@ -244,7 +244,7 @@ interval_graph(GraProps(
         #'with_normal',      # 0<k<n の場合でのみ使用可能
         'with_wilson',       # Wilson
         'with_wilson_cc',    # Wilson cc
-        'with_beta_approx',  # approximation using beta function
+        'with_beta_approx',  # approximation using beta distribution
     ],
     # savefig=True,  # Pythonインタプリタで実行する場合にはコメントを外す
     # fig_file_name='intervals.png',  # 描画ファイル名を指定
@@ -259,7 +259,7 @@ exact | Clopper-Pearson [CP34] の考え方を近似を行わずに計算した�
 rule_of_la | `k=0` の近似信頼区間である '`Rule of three`' [Lou81,HL83,JL97,Way00,ISO/IEC19795-1]を 95% 以外の信頼区間と `k=n` にも適用できるように一般化した近似区間 ('`Rule of -ln(a)`'または'`Rule of -log_e(alpha)`')  | `k=0` or `k=n`
 wilson | `Wilson score interval` [Wil27] の近似区間
 wilson_cc | `Wilson score interval with continuity correction` [New98] の近似区間
-beta_approx | ベータ関数を使った近似区間
+beta_approx | ベータ分布を使った近似区間
 normal | 二項分布を正規分布へ近似して求めた区間(`Normal approximation interval` または `Wald confidence interval`) | `0<k<n`
 
 描画結果:

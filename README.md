@@ -284,7 +284,7 @@ exact | Implementation of Clopper-Pearson interval [CP34] without approximation.
 rule_of_la | '`Rule of -ln(a)`' or '`Rule of -log_e(alpha)`'; Generalization of the '`Rule of three`' [Lou81,HL83,JL97,Way00,ISO/IEC19795-1] that is for `k=0` and `alpha=0.05` (95% confidence percentage), to other confidence percentages than 95% and `k=n`. | `k=0` or `k=n`
 wilson | `Wilson score interval` [Wil27].
 wilson_cc | `Wilson score interval with continuity correction` [New98].
-beta_approx | Approximated interval using beta function.
+beta_approx | Approximated interval using beta distribution.
 normal | `Normal approximation interval` or `Wald confidence interval`. | `0<k<n`
 
 Result:
@@ -322,7 +322,7 @@ Result:
 As you can see from the following figures and as warned in many papers such as [BLC01], normal-approximation intervals are not good approximations for small `k`.
 
 The upper intervals of the other approximations look tight.
-The approximation using beta function looks tight where the confidence interval for `k=n=1` is one-sided.
+The approximation using beta distribution looks tight where the confidence interval for `k=n=1` is one-sided.
 
 ![Comparison of exact and approximated intervals for k=1](https://github.com/KazKobara/ebcic/raw/master/figs/comparison_k1.png)
 
