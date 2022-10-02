@@ -397,6 +397,6 @@ interval_graph(GraProps(
 GitHubアカウントをお持ちでしたら、フォロー及び Star 頂ければと思います。リンクも歓迎です。
 
 - [Follow (クリック後の画面左)](https://github.com/KazKobara)
-- [Star (クリック後の画面右上)](https://github.com/KazKobara/tips-jp)
+- [Star (クリック後の画面右上)](https://github.com/KazKobara/ebcic)
 
 [homeに戻る](https://kazkobara.github.io/README-jp.html)

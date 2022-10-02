@@ -1213,7 +1213,7 @@ class Params:
             if k == 0:
                 lower_p = 0.0
                 upper_p = min(1, (mu + half_width) / denomi)
-            elif k == n:
+            else:  # k == n:
                 lower_p = max(0, (mu - half_width) / denomi)
                 upper_p = 1.0
         else:
@@ -1310,12 +1310,11 @@ class Params:
             if k == 0:
                 lower_p = 0.0
                 upper_p = min(1, (mu + half_width) / denomi)
-            elif k == n:
+            else:  # k == n:
                 lower_p = max(0, (mu - half_width) / denomi)
                 upper_p = 1.0
         else:
             # two-sided
-            z = alpha_to_za(self.alpha / 2.)
             if (self.rej_lower is None) and (self.rej_upper is None):
                 # use alpha (= rej_lower + rej_upper)
                 z = alpha_to_za(self.alpha / 2.)
