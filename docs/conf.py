@@ -33,7 +33,7 @@ release = '0.0.4'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.githubpages']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -56,6 +56,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'modules.rst']
 # html_theme = "bizstyle"
 # html_theme = "pyramid"
 html_theme = "nature"
+# html_theme = "groundwork"
+# html_theme = 'sphinx_rtd_theme'
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
