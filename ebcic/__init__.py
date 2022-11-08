@@ -505,12 +505,12 @@ class Params:
         self.rej_upper = None
         self.alpha = None
         self.confi_perc = None
-        # 'warn_line' shall be set by warn_line_confi_perc even for alpha.
+        # 'warn_line' is set to both confi_perc and alpha
         check_confi_perc(warn_line_confi_perc)  # may exit
         self.warn_line_confi_perc = warn_line_confi_perc
         self.warn_line_alpha = confi_perc_to_alpha_wo_check(
             warn_line_confi_perc)
-        self.num_of_warned = 0  # For test
+        self.num_of_warned = 0  # for test
         # Check and set parameters.
         # Set k and n
         if n is not None:
@@ -554,6 +554,9 @@ class Params:
         if itvl_input_method is None:
             if warn_line_confi_perc is None:
                 area_err = True
+            elif self.k is not None and self.n is not None:
+                # not warn_line set only
+                area_err = True
             # else: warn_line set only
         elif itvl_input_method == 'duplicated':
             area_err = True
@@ -573,8 +576,8 @@ class Params:
                 sys.exit(1)
         if area_err:
             logger.error(
-                "give confidence with 'confi_perc', 'alpha', "
-                "'rej_perc_{lower,upper}' or 'rej_{lower,upper}'!")
+                "give confidence with 'confi_perc' (-c), 'alpha' (-a), or "
+                "'rej_perc_lower' (-r) and/or 'rej_perc_upper' (-s)!")
             sys.exit(1)
 
     def set_k(self, k):
@@ -593,9 +596,8 @@ class Params:
         check_confi_perc(confi_perc)
         if confi_perc < self.warn_line_confi_perc:
             logger.warning(
-                f"'confi_perc < {self.warn_line_confi_perc}'"
-                " is unusual.\n"
-                f"Is 'confi_perc={confi_perc}' correct?")
+                f"confi_perc={confi_perc} is too small "
+                f"(than {self.warn_line_confi_perc}).")
             warned = 1
             self.num_of_warned += 1
         else:
@@ -629,6 +631,15 @@ class Params:
             # rejection area
             self.rej_lower = itvls['rej_lower']
             self.rej_upper = itvls['rej_upper']
+            # warning to rej_*
+            if (self.n is not None) and (self.k is not None):
+                nh = self.n / 2.
+                if self.rej_upper == 0. and self.k > nh:
+                    logger.warning(
+                        "rej_upper=0 is not appropriate for k>n/2.")
+                elif self.rej_lower == 0. and self.k < nh:
+                    logger.warning(
+                        "rej_lower=0 is not appropriate for k<n/2.")
         return warned
 
     def set_confi_perc(self, confi_perc: float):
@@ -733,7 +744,7 @@ class Params:
         # alpha is checked with confi_perc in interval_update()
         alpha = rej_lower + rej_upper
         confi_perc = 100. - (rej_perc_lower + rej_perc_upper)
-        self.check_and_warn_confi_perc(confi_perc)
+        # self.check_and_warn_confi_perc(confi_perc)
         itvls = {
             'confi_perc': confi_perc,
             'alpha': alpha,
@@ -836,6 +847,7 @@ class Params:
             lower_p, upper_p = self.exact_border()
         else:
             # 0 < k < n
+            nh = n / 2
             if (self.rej_lower is None) and (self.rej_upper is None):
                 # even two-sided
                 rl = self.alpha / 2.
@@ -848,7 +860,7 @@ class Params:
             reverse_mode = False
             # Cumulative error becomes large for k >> n/2,
             # so make k < n/2.
-            if k > n / 2:
+            if k > nh:
                 reverse_mode = True
                 k = n - k
                 tmp = rl
@@ -870,6 +882,7 @@ class Params:
             # return 1-sum([binom.pmf(i,n,result_lower) for i in range(k)]) - r
             # return sum([binom.pmf(i,n,result_lower) for i in range(k,n)]) - r
 
+            # set init value
             # 0 < k < n
             tmp = k / n
             u_init = tmp
@@ -879,9 +892,18 @@ class Params:
             elif k == 2:
                 l_init = k / (2 * n)
             # print(f"l_init={l_init}, u_init={u_init}")
-            lower_p = optimize.fsolve(lower, l_init)[0]
-            if n == 2 and k == 1:
-                # Exception of k/n = 1/2 and n is too small.
+            # solve lower
+            if ru == 0.:
+                lower_p = 0.
+            else:
+                lower_p = optimize.fsolve(lower, l_init)[0]
+            # solve upper
+            if rl == 0.:
+                upper_p = 1.
+            elif (
+                    (n % 2) == 0 and k == nh and
+                    (self.rej_lower is None) and (self.rej_upper is None)):
+                # even two-sided, k/n = 1/2, and n is even
                 upper_p = 1 - lower_p
             else:
                 upper_p = optimize.fsolve(upper, u_init)[0]
