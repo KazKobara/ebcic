@@ -92,14 +92,14 @@ open it with Paint app and so on and then overwrite the figure.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="ebcic.GraProps.set_graph">
-<span class="sig-name descname"><span class="pre">set_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_upper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_linestyle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#ebcic.GraProps.set_graph" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_upper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_linestyle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">this_label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#ebcic.GraProps.set_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set graphs for interval_graph()</p>
 <p>Subroutine to set graph parameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>params</strong> (<a class="reference internal" href="#ebcic.Params" title="ebcic.Params"><em>Params</em></a>) – Instance including k, n, alpha (or confi_perc).</p></li>
-<li><p><strong>lower_upper</strong> (<em>tuple</em>) – <p>tuple containing
+<li><p><strong>lower_upper</strong> (<em>ndarray</em>) – <p>ndarray containing
 both for 0&lt;k or upper_p only for k=0:</p>
 <p>lower_p (float): lower interval of Binomial confidence</p>
 <p>upper_p (float): upper interval of Binomial confidence</p>
@@ -110,10 +110,10 @@ such as ‘solid’, ‘dashed’, ‘dashdot’ and ‘dotted’.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>0 for no error, 1 otherwise.</p>
+<dd class="field-even"><p>0 for no error, &gt;=1 otherwise.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
+<dd class="field-odd"><p>return code</p>
 </dd>
 </dl>
 </dd></dl>
@@ -190,7 +190,7 @@ to ‘confi_perc’ in percentage between 0 to 100 exclusive.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ebcic.Params.beta_approx">
-<span class="sig-name descname"><span class="pre">beta_approx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.beta_approx" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">beta_approx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ebcic.Params.beta_approx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Approximated interval using beta distribution.</p>
 <p>Good approximation.</p>
 <dl class="field-list simple">
@@ -199,8 +199,12 @@ to ‘confi_perc’ in percentage between 0 to 100 exclusive.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
-upper_p (float): upper interval of Binomial confidence.</p>
+<dt>tuple containing:</dt><dd><dl class="simple">
+<dt>lower_p (float):</dt><dd><p>lower interval of Binomial confidence.</p>
+</dd>
+<dt>upper_p (float):</dt><dd><p>upper interval of Binomial confidence.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </p>
@@ -265,7 +269,7 @@ to alpha in between 0 to 1 exclusive.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ebcic.Params.exact">
-<span class="sig-name descname"><span class="pre">exact</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.exact" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">exact</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ebcic.Params.exact" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return exact Binomial confidence interval for the parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -274,8 +278,12 @@ alpha (or confi_perc).</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
-upper_p (float): upper interval of Binomial confidence.</p>
+<dt>tuple containing:</dt><dd><dl class="simple">
+<dt>lower_p (float):</dt><dd><p>lower interval of Binomial confidence.</p>
+</dd>
+<dt>upper_p (float):</dt><dd><p>upper interval of Binomial confidence.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </p>
@@ -313,7 +321,7 @@ upper_p (float): upper interval of Binomial confidence.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ebcic.Params.exact_border">
-<span class="sig-name descname"><span class="pre">exact_border</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#ebcic.Params.exact_border" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">exact_border</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ebcic.Params.exact_border" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exact Binomial Confidence Interval for k==0 or k==n.</p>
 <p>Return the exact binomial confidence interval for given parameters
 for k==0 or k==n.</p>
@@ -365,7 +373,7 @@ for k==0 or k==n.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ebcic.Params.interval_update">
-<span class="sig-name descname"><span class="pre">interval_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itvls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#ebcic.Params.interval_update" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">interval_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">itvls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#ebcic.Params.interval_update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update confidence parameters if new to the stored ones.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -382,7 +390,7 @@ for k==0 or k==n.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ebcic.Params.normal_approx">
-<span class="sig-name descname"><span class="pre">normal_approx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.normal_approx" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">normal_approx</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ebcic.Params.normal_approx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Approximated interval using normal distribution</p>
 <p>Interval obtained by approximating Binomial distribution
 to normal distribution, which is available only 0&lt;k&lt;n.</p>
@@ -393,8 +401,12 @@ to normal distribution, which is available only 0&lt;k&lt;n.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
-upper_p (float): upper interval of Binomial confidence.</p>
+<dt>tuple containing:</dt><dd><dl class="simple">
+<dt>lower_p (float):</dt><dd><p>lower interval of Binomial confidence.</p>
+</dd>
+<dt>upper_p (float):</dt><dd><p>upper interval of Binomial confidence.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </p>
@@ -457,7 +469,7 @@ but generate them from ‘alpha’.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ebcic.Params.rule_of_ln_alpha">
-<span class="sig-name descname"><span class="pre">rule_of_ln_alpha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.rule_of_ln_alpha" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">rule_of_ln_alpha</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ebcic.Params.rule_of_ln_alpha" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generalized rule of three.</p>
 <p>Interval of rule of -ln(alpha), i.e generalized version of
 ‘rule of three’.
@@ -469,8 +481,12 @@ reliable if n is large enough, say n &gt; 50.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
-upper_p (float): upper interval of Binomial confidence.</p>
+<dt>tuple containing:</dt><dd><dl class="simple">
+<dt>lower_p (float):</dt><dd><p>lower interval of Binomial confidence.</p>
+</dd>
+<dt>upper_p (float):</dt><dd><p>upper interval of Binomial confidence.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </p>
@@ -629,7 +645,7 @@ i.e. no evidence was found to consider them unreliable.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ebcic.Params.wilson_score">
-<span class="sig-name descname"><span class="pre">wilson_score</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.wilson_score" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">wilson_score</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ebcic.Params.wilson_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wilson score interval.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -638,8 +654,12 @@ i.e. no evidence was found to consider them unreliable.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
-upper_p (float): upper interval of Binomial confidence.</p>
+<dt>tuple containing:</dt><dd><dl class="simple">
+<dt>lower_p (float):</dt><dd><p>lower interval of Binomial confidence.</p>
+</dd>
+<dt>upper_p (float):</dt><dd><p>upper interval of Binomial confidence.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </p>
@@ -702,7 +722,7 @@ but generate them from ‘alpha’.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ebcic.Params.wilson_score_cc">
-<span class="sig-name descname"><span class="pre">wilson_score_cc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ebcic.Params.wilson_score_cc" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">wilson_score_cc</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ebcic.Params.wilson_score_cc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wilson score interval with continuity correction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -713,8 +733,12 @@ but generate them from ‘alpha’.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
-<dt>tuple containing:</dt><dd><p>lower_p (float): lower interval of Binomial confidence.
-upper_p (float): upper interval of Binomial confidence.</p>
+<dt>tuple containing:</dt><dd><dl class="simple">
+<dt>lower_p (float):</dt><dd><p>lower interval of Binomial confidence.</p>
+</dd>
+<dt>upper_p (float):</dt><dd><p>upper interval of Binomial confidence.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </p>

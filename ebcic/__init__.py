@@ -38,6 +38,7 @@ import logging
 import numpy as np
 import math
 import warnings
+from typing import Tuple
 from scipy import optimize
 from scipy.stats import norm, binom, poisson, beta
 from matplotlib import pyplot as plt
@@ -89,10 +90,10 @@ if not isinstance(numeric_level_file, int):
 # or restart Jupyter kernel.
 if 'sh' in globals():
     # print(sh)
-    logger.removeHandler(sh)  # noqa: F821  # needed for Jupyter
+    logger.removeHandler(sh)  # type: ignore # noqa: F821  # needed for Jupyter
 if 'fh' in globals():
     # print(fh)
-    logger.removeHandler(fh)  # noqa: F821  # needed for Jupyter
+    logger.removeHandler(fh)  # type: ignore # noqa: F821  # needed for Jupyter
 
 sh = logging.StreamHandler(sys.stdout)  # for Jupyter
 # sh = logging.StreamHandler()  # for non Jupyter
@@ -604,7 +605,7 @@ class Params:
             warned = 0
         return warned
 
-    def interval_update(self, itvls: dict) -> bool:
+    def interval_update(self, itvls: dict) -> int:
         """Update confidence parameters if new to the stored ones.
 
         Args:
@@ -808,7 +809,7 @@ class Params:
         confi_perc = alpha_to_confi_perc_wo_check(alpha)
         return confi_perc
 
-    def exact(self):
+    def exact(self) -> Tuple[float, float]:
         """Return exact Binomial confidence interval for the parameter.
 
         Args:
@@ -817,8 +818,10 @@ class Params:
 
         Returns:
             tuple: tuple containing:
-                lower_p (float): lower interval of Binomial confidence.
-                upper_p (float): upper interval of Binomial confidence.
+                lower_p (float):
+                    lower interval of Binomial confidence.
+                upper_p (float):
+                    upper interval of Binomial confidence.
 
         Examples:
             >>> Params(k=1, n=10000, confi_perc=95.0).exact()
@@ -914,7 +917,7 @@ class Params:
                 upper_p = 1 - tmp
         return lower_p, upper_p
 
-    def exact_border(self) -> tuple:
+    def exact_border(self) -> Tuple[float, float]:
         """Exact Binomial Confidence Interval for k==0 or k==n.
 
         Return the exact binomial confidence interval for given parameters
@@ -977,7 +980,7 @@ class Params:
         return lower_p, upper_p
 
     # Approximated intervals
-    def rule_of_ln_alpha(self):
+    def rule_of_ln_alpha(self) -> Tuple[float, float]:
         """ Generalized rule of three.
 
         Interval of rule of -ln(alpha), i.e generalized version of
@@ -990,8 +993,10 @@ class Params:
 
         Returns:
             tuple: tuple containing:
-                lower_p (float): lower interval of Binomial confidence.
-                upper_p (float): upper interval of Binomial confidence.
+                lower_p (float):
+                    lower interval of Binomial confidence.
+                upper_p (float):
+                    upper interval of Binomial confidence.
 
         Examples:
             >>> Params(k=0, n=10000, confi_perc = 95.0).rule_of_ln_alpha()[1]
@@ -1011,14 +1016,14 @@ class Params:
         alpha = self.alpha
         # print(f"alpha={alpha}")
         # Get interval
-        lower_p = None
-        upper_p = None
+        # lower_p = None
+        # upper_p = None
         if k == 0:
             if (self.rej_upper is not None) and (self.rej_upper != 0.):
                 logger.error(
                     "'rej_upper' and 'rej_perc_upper' shall be 0.0 for 'k=0'!")
                 sys.exit(1)
-            lower_p = 0
+            lower_p = 0.
             upper_p = -np.log(alpha) / n
         elif k == n:
             if (self.rej_lower is not None) and (self.rej_lower != 0.):
@@ -1026,7 +1031,7 @@ class Params:
                     "'rej_lower' and 'rej_perc_lower' shall be 0.0 for 'k=n'!")
                 sys.exit(1)
             lower_p = 1 - (-np.log(alpha) / n)
-            upper_p = 1
+            upper_p = 1.
         else:  # 0 < k < n
             # raise ValueError("either k==0 or k==n must hold!!")
             logger.error(
@@ -1034,7 +1039,7 @@ class Params:
             sys.exit(1)
         return lower_p, upper_p
 
-    def beta_approx(self):
+    def beta_approx(self) -> Tuple[float, float]:
         """Approximated interval using beta distribution.
 
         Good approximation.
@@ -1044,8 +1049,10 @@ class Params:
 
         Returns:
             tuple: tuple containing:
-                lower_p (float): lower interval of Binomial confidence.
-                upper_p (float): upper interval of Binomial confidence.
+                lower_p (float):
+                    lower interval of Binomial confidence.
+                upper_p (float):
+                    upper interval of Binomial confidence.
 
         Examples:
             >>> Params(k=0, n=10000, confi_perc=95.0).beta_approx()[1]
@@ -1098,7 +1105,7 @@ class Params:
             upper_p = beta.ppf(1-rl, k+1, n-k)
         return lower_p, upper_p
 
-    def normal_approx(self):
+    def normal_approx(self) -> Tuple[float, float]:
         """Approximated interval using normal distribution
 
         Interval obtained by approximating Binomial distribution
@@ -1110,8 +1117,10 @@ class Params:
 
         Returns:
             tuple: tuple containing:
-                lower_p (float): lower interval of Binomial confidence.
-                upper_p (float): upper interval of Binomial confidence.
+                lower_p (float):
+                    lower interval of Binomial confidence.
+                upper_p (float):
+                    upper interval of Binomial confidence.
 
         Note:
             - Normal approximation does not give good approximation for small
@@ -1168,7 +1177,7 @@ class Params:
                 lower_p = max(0., p - half_width_l)
         return lower_p, upper_p
 
-    def wilson_score(self):
+    def wilson_score(self) -> Tuple[float, float]:
         """Wilson score interval.
 
         Args:
@@ -1177,8 +1186,10 @@ class Params:
 
         Returns:
             tuple: tuple containing:
-                lower_p (float): lower interval of Binomial confidence.
-                upper_p (float): upper interval of Binomial confidence.
+                lower_p (float):
+                    lower interval of Binomial confidence.
+                upper_p (float):
+                    upper interval of Binomial confidence.
 
         Note:
             - Upper interval seems close to the exact one, but
@@ -1222,7 +1233,8 @@ class Params:
         p = k / n
 
         def wilson_components(
-                z: float, k: int, n: int, p: float) -> (float, float, float):
+                z: float, k: int, n: int, p: float
+                ) -> Tuple[float, float, float]:
             mu = 2 * k + z**2
             half_width = z * np.sqrt(z**2 + 4 * k * (1 - p))
             denomi = 2 * (n + z**2)
@@ -1262,7 +1274,7 @@ class Params:
                     lower_p = max(0., (mu - half_width) / denomi)
         return lower_p, upper_p
 
-    def wilson_score_cc(self):
+    def wilson_score_cc(self) -> Tuple[float, float]:
         """Wilson score interval with continuity correction.
 
         Args:
@@ -1271,8 +1283,10 @@ class Params:
 
         Returns:
             tuple: tuple containing:
-                lower_p (float): lower interval of Binomial confidence.
-                upper_p (float): upper interval of Binomial confidence.
+                lower_p (float):
+                    lower interval of Binomial confidence.
+                upper_p (float):
+                    upper interval of Binomial confidence.
 
         Note:
             - Lower interval is not a good approximation for small k,
@@ -1318,7 +1332,8 @@ class Params:
         p = k / n
 
         def wilson_cc_components(
-                z: float, k: int, n: int, p: float) -> (float, float, float):
+                z: float, k: int, n: int, p: float
+                ) -> Tuple[float, float, float]:
             mu = 2 * k + z**2
             half_width = 1 + z * np.sqrt(
                 z**2 - 1 / n + 4 * k * (1 - p) + (4 * p - 2))
@@ -1750,16 +1765,16 @@ class GraProps:
 
     def set_graph(
             self, params,
-            lower_upper: tuple,
+            lower_upper,  # ndarray
             this_linestyle: str, this_label: str,
-            ) -> bool:
+            ) -> int:
         """Set graphs for interval_graph()
 
         Subroutine to set graph parameters.
 
         Args:
             params (Params): Instance including k, n, alpha (or confi_perc).
-            lower_upper (tuple): tuple containing
+            lower_upper (ndarray): ndarray containing
                 both for 0<k or upper_p only for k=0:
 
                 lower_p (float): lower interval of Binomial confidence
@@ -1771,7 +1786,7 @@ class GraProps:
             this_label (str): label string in the graph legend.
 
         Returns:
-            bool: 0 for no error, 1 otherwise.
+            return code: 0 for no error, >=1 otherwise.
         """
         if params.k == 0:
             lower_upper_size = 1  # upper only
