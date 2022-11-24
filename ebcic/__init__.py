@@ -1378,7 +1378,7 @@ class Params:
             self, lower_p, upper_p, sig_digits=-5, verbose=1):
         """Check the reliability of the given interval.
 
-        This checks, for given parameteres, if integral of outside of
+        This checks, for given parameters, if integral of outside of
         the interval is alpha or not, and so on.
 
         Args:
@@ -1898,7 +1898,7 @@ def interval_graph(gra_props):
     # With other lines
     line_types_per_k = 1  # Exact interval
     if k_diff == 0:
-        # commmon
+        # common
         if 'with_wilson' in line_list:
             line_types_per_k += 1
         if 'with_wilson_cc' in line_list:
@@ -1918,7 +1918,7 @@ def interval_graph(gra_props):
     col_max = (
         gra_props.k_end - gra_props.k_start + 1) * gra_props.col_max_per_k
     cm = plt.get_cmap('brg')
-    # yellow lines are haed to see.
+    # yellow lines are head to see.
     # cm = plt.get_cmap('gist_rainbow')
     # cm = plt.get_cmap('rainbow')
     cNorm = colors.Normalize(vmin=0, vmax=col_max - 1)
