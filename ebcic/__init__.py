@@ -139,13 +139,13 @@ def cli(cli_args=None):
         ### Two-sided confidence interval for 0<k<n ###
         # python -m ebcic -k 1 -n 100 -c 95 -lu
         >>> cli(['-k', '1', '-n', '100', '-c', '95', '-lu'])
-        0.00025314603297743815
-        0.0544593853920806
+        0.0002531460329774381
+        0.054459385392080686
 
         # python -m ebcic -k 1 -n 100 -r 2.5 -s 2.5 -lu
         >>> cli(['-k', '1', '-n', '100', '-r', '2.5', '-s', '2.5', '-lu'])
-        0.00025314603297743815
-        0.0544593853920806
+        0.0002531460329774381
+        0.054459385392080686
 
         ### One-sided upper confidence interval for k=0 ###
         # python -m ebcic -k 0 -n 100 -c 95 -u
@@ -164,28 +164,32 @@ def cli(cli_args=None):
         ### One-sided upper confidence interval for 0<k<n ###
         # python -m ebcic -k 1 -n 100 -r 5 -u
         >>> cli(['-k', '1', '-n', '100', '-r', '5.', '-u'])
-        0.04655981145353891
+        0.04655981145353888
 
         # python -m ebcic -k 1 -n 100 -c 90 -u
         >>> cli(['-k', '1', '-n', '100', '-c', '90.', '-u'])
-        0.04655981145353891
+        0.04655981145353888
 
         # python -m ebcic -k 1 -n 100 -a 0.1 -u
         >>> cli(['-k', '1', '-n', '100', '-a', '0.1', '-u'])
-        0.04655981145353891
+        0.04655981145353888
 
         ### One-sided lower confidence interval for 0<k<n ###
         # python -m ebcic -k 99 -n 100 -s 5 -l
         >>> cli(['-k', '99', '-n', '100', '-s', '5.', '-l'])
-        0.9534401885464611
+        0.9534401885464612
 
         # python -m ebcic -k 99 -n 100 -c 90 -l
         >>> cli(['-k', '99', '-n', '100', '-c', '90.', '-l'])
-        0.9534401885464611
+        0.9534401885464612
 
         # python -m ebcic -k 99 -n 100 -a 0.1 -l
         >>> cli(['-k', '99', '-n', '100', '-a', '0.1', '-l'])
-        0.9534401885464611
+        0.9534401885464612
+
+    Note:
+        With scipy < 1.7.0, the above examples output negligibly
+        small different values.
     """
     import argparse
     parser = argparse.ArgumentParser(
@@ -825,23 +829,27 @@ class Params:
 
         Examples:
             >>> Params(k=1, n=10000, confi_perc=95.0).exact()
-            (2.5317775934704154e-06, 0.0005570369979470232)
+            (2.531777593421685e-06, 0.0005570369979470381)
 
             >>> Params(k=1, n=10000, confi_perc=90.0).exact()
-            (5.129316283730961e-06, 0.00047429765916542926)
+            (5.129316283723786e-06, 0.0004742976591654902)
 
             >>> Params(k=1, n=10000, rej_perc_lower=2.5, rej_perc_upper=2.5).exact()  # noqa: E501
-            (2.5317775934704154e-06, 0.0005570369979470232)
+            (2.531777593421685e-06, 0.0005570369979470381)
 
             >>> Params(k=1, n=10000, rej_perc_lower=5.).exact()
-            (0.0, 0.00047429765916542926)
+            (0.0, 0.0004742976591654902)
 
             >>> Params(k=9999, n=10000, confi_perc=90.0).exact()
-            (0.9995257023408346, 0.9999948706837163)
+            (0.9995257023408345, 0.9999948706837163)
 
             >>> Params(k=9999, n=10000, rej_perc_upper=5.).exact()
-            (0.9995257023408346, 1.0)
-            """
+            (0.9995257023408345, 1.0)
+
+        Note:
+            With scipy < 1.7.0, the above examples output negligibly
+            small different values.
+        """
         n = self.n
         k = self.k
 
@@ -1056,28 +1064,32 @@ class Params:
 
         Examples:
             >>> Params(k=0, n=10000, confi_perc=95.0).beta_approx()[1]
-            0.0002995283597770252
+            0.00029952835977661195
 
             >>> Params(k=10000, n=10000, confi_perc=95.0).beta_approx()[0]
-            0.999700471640223
+            0.9997004716402234
 
             >>> Params(k=1, n=10000, confi_perc=95.0).beta_approx()
-            (2.531777593461957e-06, 0.000557036997946958)
+            (2.5317775934746866e-06, 0.0005570369979470473)
 
             >>> Params(k=1, n=10000, rej_perc_lower=2.5, rej_perc_upper=2.5).beta_approx()  # noqa E501
-            (2.531777593461957e-06, 0.000557036997946958)
+            (2.5317775934746866e-06, 0.0005570369979470473)
 
             >>> Params(k=1, n=10000, confi_perc=90.0).beta_approx()[1]
-            0.00047429765916540134
+            0.0004742976591654368
 
             >>> Params(k=1, n=10000, rej_perc_lower=5.).beta_approx()[1]
-            0.00047429765916540134
+            0.0004742976591654368
 
             >>> Params(k=9999, n=10000, confi_perc=90.0).beta_approx()[0]
             0.9995257023408346
 
             >>> Params(k=9999, n=10000, rej_perc_upper=5.).beta_approx()[0]
             0.9995257023408346
+
+        Note:
+            With scipy < 1.7.0, the above examples output negligibly
+            small different values.
         """
         n = self.n
         k = self.k

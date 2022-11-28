@@ -215,27 +215,27 @@ to ‘confi_perc’ in percentage between 0 to 100 exclusive.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
-<span class="go">0.0002995283597770252</span>
+<span class="go">0.00029952835977661195</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="go">0.999700471640223</span>
+<span class="go">0.9997004716402234</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()</span>
-<span class="go">(2.531777593461957e-06, 0.000557036997946958)</span>
+<span class="go">(2.5317775934746866e-06, 0.0005570369979470473)</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()</span>  <span class="c1"># noqa E501</span>
-<span class="go">(2.531777593461957e-06, 0.000557036997946958)</span>
+<span class="go">(2.5317775934746866e-06, 0.0005570369979470473)</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
-<span class="go">0.00047429765916540134</span>
+<span class="go">0.0004742976591654368</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
-<span class="go">0.00047429765916540134</span>
+<span class="go">0.0004742976591654368</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
@@ -245,6 +245,11 @@ to ‘confi_perc’ in percentage between 0 to 100 exclusive.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">beta_approx</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">0.9995257023408346</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With scipy &lt; 1.7.0, the above examples output negligibly
+small different values.</p>
 </div>
 </dd></dl>
 
@@ -294,28 +299,33 @@ alpha (or confi_perc).</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">95.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
-<span class="go">(2.5317775934704154e-06, 0.0005570369979470232)</span>
+<span class="go">(2.531777593421685e-06, 0.0005570369979470381)</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
-<span class="go">(5.129316283730961e-06, 0.00047429765916542926)</span>
+<span class="go">(5.129316283723786e-06, 0.0004742976591654902)</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>  <span class="c1"># noqa: E501</span>
-<span class="go">(2.5317775934704154e-06, 0.0005570369979470232)</span>
+<span class="go">(2.531777593421685e-06, 0.0005570369979470381)</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_lower</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
-<span class="go">(0.0, 0.00047429765916542926)</span>
+<span class="go">(0.0, 0.0004742976591654902)</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">confi_perc</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
-<span class="go">(0.9995257023408346, 0.9999948706837163)</span>
+<span class="go">(0.9995257023408345, 0.9999948706837163)</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Params</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">9999</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">rej_perc_upper</span><span class="o">=</span><span class="mf">5.</span><span class="p">)</span><span class="o">.</span><span class="n">exact</span><span class="p">()</span>
-<span class="go">(0.9995257023408346, 1.0)</span>
+<span class="go">(0.9995257023408345, 1.0)</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With scipy &lt; 1.7.0, the above examples output negligibly
+small different values.</p>
 </div>
 </dd></dl>
 
@@ -951,12 +961,12 @@ If ‘cli_args is None’, it uses args given by the command interface.</p>
 <p>### Two-sided confidence interval for 0&lt;k&lt;n ###
 # python -m ebcic -k 1 -n 100 -c 95 -lu
 &gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-c’, ‘95’, ‘-lu’])
-0.00025314603297743815
-0.0544593853920806</p>
+0.0002531460329774381
+0.054459385392080686</p>
 <p># python -m ebcic -k 1 -n 100 -r 2.5 -s 2.5 -lu
 &gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-r’, ‘2.5’, ‘-s’, ‘2.5’, ‘-lu’])
-0.00025314603297743815
-0.0544593853920806</p>
+0.0002531460329774381
+0.054459385392080686</p>
 <p>### One-sided upper confidence interval for k=0 ###
 # python -m ebcic -k 0 -n 100 -c 95 -u
 &gt;&gt;&gt; cli([‘-k’, ‘0’, ‘-n’, ‘100’, ‘-c’, ‘95’, ‘-u’])
@@ -971,23 +981,28 @@ If ‘cli_args is None’, it uses args given by the command interface.</p>
 <p>### One-sided upper confidence interval for 0&lt;k&lt;n ###
 # python -m ebcic -k 1 -n 100 -r 5 -u
 &gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-r’, ‘5.’, ‘-u’])
-0.04655981145353891</p>
+0.04655981145353888</p>
 <p># python -m ebcic -k 1 -n 100 -c 90 -u
 &gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-c’, ‘90.’, ‘-u’])
-0.04655981145353891</p>
+0.04655981145353888</p>
 <p># python -m ebcic -k 1 -n 100 -a 0.1 -u
 &gt;&gt;&gt; cli([‘-k’, ‘1’, ‘-n’, ‘100’, ‘-a’, ‘0.1’, ‘-u’])
-0.04655981145353891</p>
+0.04655981145353888</p>
 <p>### One-sided lower confidence interval for 0&lt;k&lt;n ###
 # python -m ebcic -k 99 -n 100 -s 5 -l
 &gt;&gt;&gt; cli([‘-k’, ‘99’, ‘-n’, ‘100’, ‘-s’, ‘5.’, ‘-l’])
-0.9534401885464611</p>
+0.9534401885464612</p>
 <p># python -m ebcic -k 99 -n 100 -c 90 -l
 &gt;&gt;&gt; cli([‘-k’, ‘99’, ‘-n’, ‘100’, ‘-c’, ‘90.’, ‘-l’])
-0.9534401885464611</p>
+0.9534401885464612</p>
 <p># python -m ebcic -k 99 -n 100 -a 0.1 -l
 &gt;&gt;&gt; cli([‘-k’, ‘99’, ‘-n’, ‘100’, ‘-a’, ‘0.1’, ‘-l’])
-0.9534401885464611</p>
+0.9534401885464612</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With scipy &lt; 1.7.0, the above examples output negligibly
+small different values.</p>
+</div>
 </dd></dl>
 
 <dl class="py function">
